@@ -1,0 +1,15 @@
+	Version 1.0.0.20151231
+1)All the basic templates files committed.
+2)Added a readme file.
+3)Added a contactUs page.
+4)Commented the currency module in the index page.
+
+	Version	1.1.0.20160107
+1)Included footer and header templates and then incoporated them into index file.
+2)Reorganized the folders.
+3)Added angular UI.js file and linked it.
+4)Incoporated the angular MVC architecture into the website.
+5)Changed the Header and footer templates.
+6)Added a changelog for reference later(!not to be shown to the prof)
+7)Made a webliography document online.
+8)Added the main app module app.js file and linked it.

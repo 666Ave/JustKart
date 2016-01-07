@@ -580,10 +580,8 @@ ul.sub-menu {
   margin-left: 15px;
 }
 
-.footer-bottom p span a {
+.footer-bottom p span {
   color: #FE980F;
-  font-style: italic;
-  text-decoration: underline;
 }
 
 
@@ -2543,5 +2541,3 @@ h2.title {
 .contact-info .social-networks ul li a:hover{
   color: #FE980F;
 }
-
-
