@@ -99,10 +99,13 @@
 							</ul>
 						</div>
 					</div>
-					<div class="col-sm-3">
-						<div class="search_box pull-right">
-							<input type="text" placeholder="Search"/>
+					<div class="col-xs-3">
+						<div class="search_box">
+                            <form method="get" action="search_results.php" enctype="multipart/form-data">
+				                <input type="text" name="user_query" placeholder="Search"/>
+                            </form>
 						</div>
+                        <input type="image" src="/images/home/searchicon.png" name="searchButton" alt="search" class="search_button" />
 					</div>
 				</div>
 			</div>

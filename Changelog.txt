@@ -13,3 +13,14 @@
 6)Added a changelog for reference later(!not to be shown to the prof)
 7)Made a webliography document online.
 8)Added the main app module app.js file and linked it.
+
+	Version 1.1.0.2016.01.12
+1)Edited the 'Sendmail.php' to add my mail.
+2)Admin_area & customer folders created.
+3)The search button added and fixed the position.
+4)Created Database and 3 tables (products,categories,brands).
+5)Added values in categories.
+6)Wrote getCat.php to retrieve values from the database.
+7)Wrote maincontroller.js to use 'getCat.php'.
+8)Got the categories to update dynamically.
+9)Saved any of the first stuff in replaced_code.html.

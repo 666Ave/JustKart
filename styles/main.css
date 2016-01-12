@@ -287,9 +287,15 @@ a#scrollUp i{
   outline: medium none;
   padding-left: 10px;
   width: 155px;
-  background-image: url(../images/home/searchicon.png);
-  background-repeat: no-repeat;
-  background-position: 130px;
+  float: left;
+}
+
+.search_button{
+    border: 0px;
+    height: 12px;
+    width: 12px;
+    margin-top: 12px;
+    margin-left: -15px;
 }
 
 
