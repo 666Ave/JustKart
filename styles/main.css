@@ -287,9 +287,15 @@ a#scrollUp i{
   outline: medium none;
   padding-left: 10px;
   width: 155px;
-  background-image: url(../images/home/searchicon.png);
-  background-repeat: no-repeat;
-  background-position: 130px;
+  float: left;
+}
+
+.search_button{
+    border: 0px;
+    height: 12px;
+    width: 12px;
+    margin-top: 12px;
+    margin-left: -15px;
 }
 
 
@@ -580,10 +586,8 @@ ul.sub-menu {
   margin-left: 15px;
 }
 
-.footer-bottom p span a {
+.footer-bottom p span {
   color: #FE980F;
-  font-style: italic;
-  text-decoration: underline;
 }
 
 
@@ -914,55 +918,10 @@ h2.title {
  position:relative;
 }
 
-.product-overlay {
-  background:#FE980F;
-  top: 0;
-  display: none;
-  height: 0;
-  position: absolute;
-  transition: height 500ms ease 0s;
-  width: 100%;
-  display: block;
-  opacity:;
-}
-
-.single-products:hover .product-overlay {
+.single-products:hover {
   display:block;
   height:100%;
 }
-
-
-.product-overlay .overlay-content {
-  bottom: 0;
-  position: absolute;
-  bottom: 0;
-  text-align: center;
-  width: 100%;
-}
-
-.product-overlay .add-to-cart {
-  background:#fff;
-  border: 0 none;
-  border-radius: 0;
-  color: #FE980F;
-  font-family: 'Roboto', sans-serif;
-  font-size: 15px;
-  margin-bottom: 25px;
-}
-
-.product-overlay .add-to-cart:hover {
-  background:#fff;
-  color: #FE980F;
-}
-
-
-.product-overlay p{
-  font-family: 'Roboto', sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  color: #fff;
-}
-
 
 
 .add-to-cart {
@@ -2543,5 +2502,3 @@ h2.title {
 .contact-info .social-networks ul li a:hover{
   color: #FE980F;
 }
-
-

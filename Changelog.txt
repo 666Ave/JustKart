@@ -1,0 +1,37 @@
+	Version 1.0.0.20151231
+1)All the basic templates files committed.
+2)Added a readme file.
+3)Added a contactUs page.
+4)Commented the currency module in the index page.
+
+	Version	1.1.0.20160107
+1)Included footer and header templates and then incoporated them into index file.
+2)Reorganized the folders.
+3)Added angular UI.js file and linked it.
+4)Incoporated the angular MVC architecture into the website.
+5)Changed the Header and footer templates.
+6)Added a changelog for reference later(!not to be shown to the prof)
+7)Made a webliography document online.
+8)Added the main app module app.js file and linked it.
+
+	Version 1.2.0.2016.01.12
+1)Edited the 'Sendmail.php' to add my mail.
+2)Admin_area & customer folders created.
+3)The search button added and fixed the position.
+4)Created Database and 3 tables (products,categories,brands).
+5)Added values in categories.
+6)Wrote getCat.php to retrieve values from the database.
+7)Wrote maincontroller.js to use 'getCat.php'.
+8)Got the categories to update dynamically.
+9)Saved any of the first stuff in replaced_code.html.
+
+    Version 1.3.0.2016.01.14
+1)Added values in brands table.
+2)Wrote getBrand.php to retrieve values fronm the database.
+3)Wrote maincontroller.js to use 'getCat.php'.
+4)Got the brands and the number/ of items in that brands(for now just the brand id) to update dynamically.
+5)Fixed the slider somewhat.
+6)Renamed contact.html to contact_us.html.
+7)Fixed the contact_us and footer pages.
+8)Added the div with category-products class.
+9)Removed the orange cover hover effect on the product images.
