@@ -35,3 +35,8 @@
 7)Fixed the contact_us and footer pages.
 8)Added the div with category-products class.
 9)Removed the orange cover hover effect on the product images.
+
+    Version 1.3.1.2016.01.15
+1)Created insert_products.html page to simplify inserting products into webpages.
+2)Added a javascript pulgin tinymse to Help the product description part.
+3)The insert page is not tested and needs to be designed more.
