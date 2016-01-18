@@ -25,7 +25,7 @@
 8)Got the categories to update dynamically.
 9)Saved any of the first stuff in replaced_code.html.
 
-    Version 1.3.0.2016.01.14
+    Version 1.2.1.2016.01.14
 1)Added values in brands table.
 2)Wrote getBrand.php to retrieve values fronm the database.
 3)Wrote maincontroller.js to use 'getCat.php'.
@@ -36,19 +36,26 @@
 8)Added the div with category-products class.
 9)Removed the orange cover hover effect on the product images.
 
-    Version 1.3.1.2016.01.15
+    Version 1.2.2.2016.01.15
 1)Created insert_products.html page to simplify inserting products into webpages.
 2)Added a javascript pulgin tinymse to Help the product description part.
 3)The insert page is not tested and needs to be designed more.
 
-    Version 1.3.2.2016.01.17
+    Version 1.2.3.2016.01.17
 1)The insert page is designed properly but the inserting values modules is still missing.
 2)The database file is added to the github repository.
 
-    Version 1.4.0.2016.01.18
+    Version 1.2.4.2016.01.18
 1)The connection script is made different and included in all the php files.
 2)The insert page is fully working.
 3)The images uploaded will be uploaded to images/products folder.
 4)Created getProduct.php file.
 5)Got the products to appear randamly.
 6)Added some items in the products tables.
+
+    Version 1.2.5.2016.01.18
+1)Added some more experimental products into the DB.
+2)Made the brands in the index file to come randomly (any6).
+3)The images resized and the products are coming properly most of the time.(sometimes they come distorted)
+4)The product title & image are linked to the product-details.html page and have being given css tags
+5)Added pro_id values to the href links for the products.

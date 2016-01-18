@@ -117,7 +117,7 @@
                             <div class="brands_products"><!--brands_products-->
                                 <h2>Brands</h2>
                                 <div class="brands-name">
-                                    <ul class="nav nav-pills nav-stacked" ng-repeat="brand in brands">
+                                    <ul class="nav nav-pills nav-stacked" ng-repeat="brand in brands" ng-if="$index < 6">
                                         <li><a href="#"> <span class="pull-right">{{ brand.brand_id }}</span>{{ brand.brand_title }}</a></li>
                                     </ul>
                                 </div>
@@ -146,17 +146,20 @@
                                     <div class="product-image-wrapper">
                                         <div class="single-products">
                                                 <div class="productinfo text-center">
-                                                    <img src="images/products/{{ pro.product_image }}" alt="{{ pro.product_image }}" height="268" width="249" />
+                                                        <a class="product-image" href="product-details.html?pro_id={{ pro.product_id }}">
+                                                            <img src="images/products/{{ pro.product_image }}" alt="{{ pro.product_image }}"/>
+                                                        </a>
                                                     <h2>₹{{ pro.product_price }}</h2>
-                                                    <p>{{ pro.product_title
-                                                        }}</p>
-                                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                                    <a href="product-details.html?pro_id={{ pro.product_id }}" class="product-title">
+                                                        <p>{{ pro.product_title}}</p>
+                                                    </a>
+                                                    <a href="index.php?pro_id{{ pro.product_id }}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                                 </div>
                                         </div>
                                         <div class="choose">
                                             <ul class="nav nav-pills nav-justified">
-                                                <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                                                <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
+                                                <li><a href="index.php?pro_id{{ pro.product_id }}"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+                                                <li><a href="index.php?pro_id{{ pro.product_id }}"><i class="fa fa-plus-square"></i>Add to compare</a></li>
                                             </ul>
                                         </div>
                                     </div>

@@ -895,6 +895,11 @@ h2.title {
 	font-size: 24px;
 	font-weight: 700;
 }
+
+.productinfo .product-title :hover{
+	text-decoration: underline;
+}
+
 .product-overlay h2{
 	color: #fff;
 	font-family: 'Roboto', sans-serif;
@@ -921,6 +926,7 @@ h2.title {
 .single-products:hover {
   display:block;
   height:100%;
+  border: 2px solid orange;
 }
 
 
