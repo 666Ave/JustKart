@@ -1,8 +1,5 @@
 <?php
-    $link = mysqli_connect('localhost','root','123456','justkart');
-    if(!$link)  {
-        die('Could not connect to MySQL : '.mysqli_error());
-    }
+    include 'conn.php';
     $get_cats = "SELECT * FROM categories";
     $run_cats = mysqli_query($link,$get_cats);
     if($run_cats) {

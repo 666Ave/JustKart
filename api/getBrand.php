@@ -1,8 +1,5 @@
 <?php
-    $link = mysqli_connect('localhost','root','123456','justkart');
-    if(!$link)  {
-        die('Could not connect to MySQL : '.mysqli_error());
-    }
+    include 'conn.php';
     $get_brands = "SELECT * FROM brands";
     $run_brands = mysqli_query($link,$get_brands);
     if($run_brands) {

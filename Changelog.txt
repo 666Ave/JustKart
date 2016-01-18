@@ -41,7 +41,14 @@
 2)Added a javascript pulgin tinymse to Help the product description part.
 3)The insert page is not tested and needs to be designed more.
 
-    Version 1.3.2.2016.01.15
+    Version 1.3.2.2016.01.17
 1)The insert page is designed properly but the inserting values modules is still missing.
 2)The database file is added to the github repository.
-3)
+
+    Version 1.4.0.2016.01.18
+1)The connection script is made different and included in all the php files.
+2)The insert page is fully working.
+3)The images uploaded will be uploaded to images/products folder.
+4)Created getProduct.php file.
+5)Got the products to appear randamly.
+6)Added some items in the products tables.

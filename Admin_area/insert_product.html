@@ -16,12 +16,12 @@
                 </tr>
                 <tr>
                     <td align="right"><b>Product Title : </b></td>
-                    <td><input type="text" name="product_title" /></td>
+                    <td><input type="text" name="product_title" size="60" required/></td>
                 </tr>
                 <tr>
                     <td align="right"><b>Product Category : </b></td>
                     <td>   
-                        <select name="product_cat">
+                        <select name="product_cat" required>
                             <option >Select a Category</option>
                             <option ng-repeat="cat in category" value="{{ cat.cat_id }}">{{ cat.cat_title }}</option>
                         </select>
@@ -30,7 +30,7 @@
                 <tr>
                     <td align="right"><b>Product Brand : </b></td>
                     <td>
-                        <select name="product_cat">
+                        <select name="product_brand" required>
                             <option>Select a brand</option>       
                                 <option ng-repeat="brand in brands" value="{{ brand.brand_id }}">{{ brand.brand_title }}</option>
                         </select>
@@ -38,19 +38,19 @@
                 </tr>
                 <tr>
                     <td align="right"><b>Product Image : </b></td>
-                    <td><input type="file" name="product_image" /></td>
+                    <td><input type="file" name="product_image" required/></td>
                 </tr>
                 <tr>
                     <td align="right"><b>Product Price : </b></td>
-                    <td><input type="text" name="product_price" /></td>
+                    <td><input type="text" name="product_price" required /></td>
                 </tr>
                 <tr>
                     <td align="right"><b>Product Description : </b></td>
-                    <td><textarea name="product_descrption" cols="20" rows="10"></textarea></td>
+                    <td><textarea name="product_desc" cols="20" rows="10"></textarea></td>
                 </tr>
                 <tr>
                     <td align="right"><b>Product Keywords : </b></td>
-                    <td><input type="text" name="product_keywords" /></td>
+                    <td><input type="text" name="product_keywords" size="50" required/></td>
                 </tr>
                 <tr align="center">
                     <td colspan="8"><input type="submit" name="insert_post" value="Insert!"/></td>
