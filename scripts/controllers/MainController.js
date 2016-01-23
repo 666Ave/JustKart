@@ -20,6 +20,6 @@ app.controller('MainController',function($scope,$http){
             $scope.products = response;
         })
         .error(function(response){
-            console.log('error occured2');
+            console.log('error occured3');
         });
 });

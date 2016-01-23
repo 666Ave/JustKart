@@ -1,6 +1,4 @@
 
-
-
 app.controller('InsertCtrl',function($scope,$http){
     $http.get("../api/getCat.php")
         .success(function(response) {
