@@ -34,6 +34,13 @@ a {
     transition: 300ms;
 }
 
+button {
+  -webkit-transition: 300ms;
+  -moz-transition: 300ms;
+    -o-transition: 300ms;
+    transition: 300ms;	
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Roboto', sans-serif;
 }
@@ -233,7 +240,7 @@ a#scrollUp i{
 	margin-right:3px;
 }
 
-.mainmenu ul li a:hover, .mainmenu ul li a.active {
+.mainmenu ul li a:hover, .mainmenu ul li a:active {
 	background:none;
 	color:#fdb45e;
 }
@@ -254,7 +261,7 @@ a#scrollUp i{
   outline: medium none;
   padding-left: 10px;
   width: 300px;
-    vertical-align: middle;
+  vertical-align: middle;
 }
 
 .search_box .search_button{
@@ -611,18 +618,6 @@ ul.sub-menu {
 	font-family: 'Roboto', sans-serif;
 }
 
-.get {
-  background: #FE980F;
-  border: 0 none;
-  border-radius: 0;
-  color: #FFFFFF;
-  font-family: 'Roboto', sans-serif;
-  font-size: 16px;
-  font-weight: 300;
-  margin-top: 23px;
-}
-
-
 .item button:hover {
   background: #FE980F;
 }
@@ -891,7 +886,7 @@ h2.title {
 .single-products:hover {
   display:block;
   height:100%;
-  border: 2px solid orange;
+  border: 2px solid #FE980F;
 }
 
 
@@ -918,11 +913,6 @@ h2.title {
 
 .add-to-cart i{
 	margin-right:5px;
-}
-
-.add-to-cart:hover {
-  background: #FE980F;
-  color: #FFFFFF;
 }
 
 .choose {
@@ -1098,6 +1088,29 @@ h2.title {
 *******Product Details CSS******
 **************************/
 
+#pnav {
+	font-family: 'Roboto', sans-serif;
+  	font-size: 14px;
+}
+
+#pnav :last-child{
+	font-weight: 700;
+}
+
+#pnav li:first-child::before {
+	font-family: FontAwesome;
+	content:"\f015"
+}
+
+#pnav li::before {
+	font-family: FontAwesome;
+	content:"\f105";
+}
+
+#pnav li{
+	float: left;
+}
+
 .product-details{
 	overflow:hidden;
 }
@@ -1236,14 +1249,19 @@ h2.title {
 
 
 .cart {
-  background: #FE980F;
+  background: #F5F5ED;
   border: 0 none;
   border-radius: 0;
-  color: #FFFFFF;
+  color: #696763;
   font-family: 'Roboto', sans-serif;
   font-size: 15px;
   margin-bottom: 10px;
   margin-left: 20px;
+}
+
+.cart:hover {
+  background: #FE980F;
+  color: #FFFFFF;
 }
 
 

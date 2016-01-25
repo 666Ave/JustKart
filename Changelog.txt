@@ -71,3 +71,14 @@
 8)Created getProductByID.php api.
 9)The product-details pages is dynamic.
 10)Created a template for the categories and brands view.
+
+	Version 1.4.0.2016.01.25
+1)Got the products page to work properly.
+2)Created a service and interchanged data.
+3)Removed all the ui router part.
+4)Created carouselCtrl to store the carousel data and linked them in the index page.
+5)Added navigation links in the product-details page.
+6)Renamed the headings in index page to recently viewed and new launches.
+
+	Version 1.4.1.2016.
+1)

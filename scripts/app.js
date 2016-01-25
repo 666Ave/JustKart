@@ -1,9 +1,7 @@
 var app = angular
-    .module('Myapp',[
-        'ui.router'
-]);
+    .module('Myapp',[])
 
-app.config(function($stateProvider, $urlRouterProvider){
+/*.config(function($stateProvider, $urlRouterProvider){
     $urlRouterProvider.otherwise('/home');
     
     $stateProvider
@@ -11,19 +9,14 @@ app.config(function($stateProvider, $urlRouterProvider){
         //Home
         .state('home',{
             url: '/home',
-            templateUrl: 'index.html'
+            templateUrl: 'index.html',
+			controller: 'MainController'
         })
-    
-        //product details and other nested views
-        /*.state('productDetail',{
-            url: '/productDetails',
-            templateUrl: 'product-details.html'
-        })*/
     
         .state('productDetails',{
             url: '/productDetails?:pid',
             templateUrl: 'product-details.html',
-            controller: function($scope,$http,$stateParams){
+          controller: function($scope,$http,$stateParams){
 				$http.get("api/getProductByID.php",{params:{pid:$stateParams.pid}})
 					.success(function(response) {
 						$scope.product = response;
@@ -32,9 +25,17 @@ app.config(function($stateProvider, $urlRouterProvider){
 					.error(function(response){
 						console.log('error occured');
 					});
-			}
+			},
+			controller: 'MainController'/*,
+			resolve: {
+				proDService: function($http,$stateParams){
+					return $http.get("api/getProductByID.php",{params:{pid:$stateParams.pid}}).then(function(response){
+						return response.data;
+					})
+				}
+			
 		})
-    
+  
         //orders
         .state('orders',{
             url: '/orders',
@@ -63,5 +64,12 @@ app.config(function($stateProvider, $urlRouterProvider){
         .state('login',{
             url: '/login',
             templateUrl: 'login.html'
-        })   
-});
+        })
+	
+		//adminpage
+		.state('insertproducts',{
+            url: '/insertproducts',
+            templateUrl: '/Admin_area/insert_product.html',
+			controller: 'InsertCtrl'
+        })
+});*/

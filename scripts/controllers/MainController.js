@@ -1,7 +1,10 @@
-app.controller('MainController',function($scope,$http){
+app.controller('MainController',function($scope,$http,proinfo){
+	var self = this;
     $http.get("api/getCat.php")
         .success(function(response) {
             $scope.category = response;
+			proinfo.storeCats($scope.category);
+			console.log($scope.category);
         })
         .error(function(response){
             console.log('error occured1');
@@ -10,6 +13,7 @@ app.controller('MainController',function($scope,$http){
     $http.get("api/getBrand.php")
         .success(function(response) {
             $scope.brands = response;
+			proinfo.storeBrands($scope.brands);
         })
         .error(function(response){
             console.log('error occured2');
@@ -22,4 +26,5 @@ app.controller('MainController',function($scope,$http){
         .error(function(response){
             console.log('error occured3');
         });
+
 });
