@@ -6,7 +6,7 @@ app.controller('proCtrl',function($scope,$http,$location,proinfo){
 			self.pBrand=proinfo.getBrands();	//get the brands
 			for(var i=0; i<self.pBrand.length; i++) {
 				if(self.pBrand[i].brand_id == $scope.product[0].product_brand){
-					$scope.pBrand=self.pBrand[i].brand_title;	//get the brand title
+					$scope.pBrand=self.pBrand[i].brand_title;//get the brand title
 					break;
 				}
 			}
@@ -17,7 +17,6 @@ app.controller('proCtrl',function($scope,$http,$location,proinfo){
 					break;
 				}
 			}
-			console.log($scope.pbrand);
 		})
 		.error(function(response){
 			console.log('error occured');

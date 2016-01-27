@@ -67,7 +67,7 @@
 										<div class="panel panel-default" ng-repeat="cat in category">
 											<div class="panel-heading">
 												<h4 class="panel-title">
-													<a href="shop.html#/?{{cat.cat_title}}">
+													<a href="shop.html#/?catname={{cat.cat_title}}&catid={{cat.cat_id}}">
 														{{ cat.cat_title }}
 													</a>
 												</h4>
@@ -144,11 +144,12 @@
                                                         <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                                     </div>
 
-                                                </div>
+												</div>
                                             </div>
                                         </div> 
 									</div>
-								</div><!--/category-tab-->
+								</div>
+							</div><!--/category-tab-->
 
                             <div class="recommended_items"><!--recommended_items-->
                                 <h2 class="title text-center">recently viewed items</h2>

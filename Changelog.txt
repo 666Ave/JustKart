@@ -80,5 +80,10 @@
 5)Added navigation links in the product-details page.
 6)Renamed the headings in index page to recently viewed and new launches.
 
-	Version 1.4.1.2016.
-1)
+	Version 1.4.1.2016.01.27
+1)Got the shops file to show according to category.
+2)Fixed the recently viewed items.
+3)Added navigation links in the shop page.
+4)Made the nav links in both the pages work(The brands link and page need to be worked).
+5)Fixed the footer.
+6)Updated the .db file.

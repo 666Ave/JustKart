@@ -4,7 +4,6 @@ app.controller('MainController',function($scope,$http,proinfo){
         .success(function(response) {
             $scope.category = response;
 			proinfo.storeCats($scope.category);
-			console.log($scope.category);
         })
         .error(function(response){
             console.log('error occured1');
