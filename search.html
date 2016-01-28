@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="An express local shopping website">
         <meta name="author" content="Avian Silveira && Umesh Basniwal">
-        <title>Products | JustKart</title>
+        <title>Search Products | JustKart</title>
 		<link rel="shortcut icon" href="/images/logo.ico" />
         <link href="styles/bootstrap.min.css" rel="stylesheet">
         <link href="styles/font-awesome.min.css" rel="stylesheet">
@@ -17,18 +17,15 @@
     </head><!--/head-->
 
     <body ng-app="Myapp">             
-        <div id="header" ng-include src="'templates/header.html'"><!--header-->
-        </div><!--/header-->
 		<div ng-controller="MainController">
-			<div ng-controller="proCatCtrl">
+			<div ng-controller="searchCtrl">
+				<div id="header" ng-include src="'templates/header.html'"><!--header-->
+				</div><!--/header-->
 				<section>
 					<div class="container">
 						<div class="row">
 							<div class="col-sm-12">
-								<ul id="pnav">
-									<li><a href="/">Home</a></li>
-									<li>{{cat}}</li>
-								</ul>
+								<p id="search_results">Showing {{ total }} results for "{{ user_query }}"</p>
 							</div>
 						</div>
 					</div>
@@ -66,13 +63,13 @@
 							</div>
 
 							<div class="col-sm-9 padding-right">
-								<div class="features_items"><!--features_items-->
+								<div class="features_items" ng-init="total = 0"><!--features_items-->
 									<h2 class="title text-center">Features Items</h2>
-									<div ng-repeat="pro in proCats">
+									<div ng-repeat="pro in searchProd track by $index">
 										<div class="col-sm-4">
 											<div class="product-image-wrapper">
 												<div class="single-products">
-														<div class="productinfo text-center">
+														<div class="productinfo text-center" ng-init="$parent.total = $parent.total + 1">
 																<a class="product-image" href="product-details.html#/?pid={{pro.product_id}}">
 																	<img src="images/products/{{pro.product_image}}" alt="{{pro.product_image}}"/>
 																</a>
@@ -92,7 +89,6 @@
 											</div>
 										</div>
 									</div>
-
 									<ul class="pagination">
 										<li class="active"><a href="">1</a></li>
 										<li><a href="">2</a></li>
@@ -115,7 +111,7 @@
         <script src="scripts/app.js"></script>
 		<script src="scripts/services/proinfo.js"></script>
         <script src="scripts/controllers/MainController.js"></script>
-		<script src="scripts/controllers/proCatCtrl.js"></script>
+		<script src="scripts/controllers/searchCtrl.js"></script>
         <script src="scripts/js/bootstrap.min.js"></script>
         <script src="scripts/js/jquery.scrollUp.min.js"></script>
         <script src="scripts/js/price-range.js"></script>

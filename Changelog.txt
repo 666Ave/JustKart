@@ -87,3 +87,9 @@
 4)Made the nav links in both the pages work(The brands link and page need to be worked).
 5)Fixed the footer.
 6)Updated the .db file.
+
+	Version 1.4.2.2016.01.28
+1)Created a .ico file and linked it to the title.
+2)Created search.html, search_results.php and searchCtrl.js for the searching module.
+3)The searching module is working perfectly fine.
+4)Got the ng-repeat counter outside.

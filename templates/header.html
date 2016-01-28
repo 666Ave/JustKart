@@ -58,9 +58,9 @@
 					</div>
                     <div class="col-sm-4">
 						<div class="search_box pull-left">
-                            <form method="get" action="search_results.php" enctype="multipart/form-data">
+                            <form method="get" action="search.html" onsubmit="location.href=this.action+'#/?user_query='+this.user_query.value; return false;" enctype="multipart/form-data">
 				                <input type="text" name="user_query" placeholder="Search"/>
-                                 <input type="image" src="/images/home/searchicon.png" name="searchButton" alt="search" class="search_button" >
+                                <input type="image" src="/images/home/searchicon.png" name="searchButton" alt="search" class="search_button" ng-click="reloadPage()" />
                             </form>
 						</div>
 					</div>
@@ -84,7 +84,7 @@
                                         <li><a href="wishlist.html"><i class="fa fa-opencart"></i> Wishlist</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="cart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                                <li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
 							</ul>
 						</div>
 					</div>
