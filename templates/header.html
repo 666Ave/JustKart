@@ -73,7 +73,7 @@
 								<span class="icon-bar"></span>
 							</button>
 						</div>
-						<div class="mainmenu pull-right">
+						<div class="mainmenu pull-right" ng-init="PageLoad()">
 							<ul class="nav navbar-nav collapse navbar-collapse">
 								<li><a href="contact_us.html"><i class="fa fa-question-circle"></i> Help</a></li>
 								<li><a href="orders.html"><i class="fa fa-cart-arrow-down"></i> Track Order</a></li>
@@ -84,7 +84,7 @@
                                         <li><a href="wishlist.html"><i class="fa fa-opencart"></i> Wishlist</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+								<li><a href="cart.html" class="cart_qty"><i class="fa fa-shopping-cart"></i> Cart<span>{{ Cart_total }}</span></a></li>
 							</ul>
 						</div>
 					</div>

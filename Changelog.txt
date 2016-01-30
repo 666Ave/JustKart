@@ -93,3 +93,12 @@
 2)Created search.html, search_results.php and searchCtrl.js for the searching module.
 3)The searching module is working perfectly fine.
 4)Got the ng-repeat counter outside.
+
+	Version 1.4.3.2016.01.30
+1)Created carts table in the database.
+2)Created cartCtrl.js and cart_add.php to add items in the cart table.
+3)Linked the index file to the cartCtrl and made a function to add items in cart without refreshing.
+4)Created a total_cart_items.php file to get total cart items.
+5)Wrote css for making a circle around the total items.
+6)Made the cart items number appear but currently only updates when refreshed.
+7)Removed the add to cart feature on all pages except the product-details page.

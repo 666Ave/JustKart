@@ -17,10 +17,10 @@
     </head><!--/head-->
 
     <body ng-app="Myapp">             
-        <div id="header" ng-include src="'templates/header.html'"><!--header-->
-        </div><!--/header-->
 		<div ng-controller="MainController">
 			<div ng-controller="proCatCtrl">
+				<div id="header" ng-include src="'templates/header.html'"><!--header-->
+				</div><!--/header-->
 				<section>
 					<div class="container">
 						<div class="row">
@@ -80,7 +80,6 @@
 															<a href="product-details.html#/?pid={{pro.product_id}}" class="product-title">
 																<p>{{ pro.product_title}}</p>
 															</a>
-															<a href="home" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 														</div>
 												</div>
 												<div class="choose">
