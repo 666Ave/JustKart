@@ -19,86 +19,88 @@
     <body ng-app="Myapp">             
 		<div ng-controller="MainController">
 			<div ng-controller="searchCtrl">
-				<div id="header" ng-include src="'templates/header.html'"><!--header-->
-				</div><!--/header-->
-				<section>
-					<div class="container">
-						<div class="row">
-							<div class="col-sm-12">
-								<p id="search_results">Showing {{ total }} results for "{{ user_query }}"</p>
-							</div>
-						</div>
-					</div>
-				</section>
-				<section id="advertisement">
-					<div class="container">
-						<img src="images/shop/advertisement.jpg" alt="" />
-					</div>
-				</section>
-
-				<section>
-					<div class="container">
-						<div class="row">
-							<div class="col-sm-3">
-								 <div class="left-sidebar">
-									<div class="brands_products"><!--brands_products-->
-										<h2>Brands</h2>
-										<div class="brands-name">
-											<ul class="nav nav-pills nav-stacked" ng-repeat="brand in brands" ng-if="$index < 6">
-												<li><a href="#"> <span class="pull-right">{{ brand.brand_id }}</span>{{ brand.brand_title }}</a></li>
-											</ul>
-										</div>
-									</div><!--/brands_products-->
-									<div class="price-range"><!--price-range-->
-										<h2>Price Range</h2>
-										<div class="well text-center">
-											 <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600" data-slider-step="5" data-slider-value="[0,600]" id="sl2" ><br />
-											 <b class="pull-left">₹ 0</b> <b class="pull-right">₹ 600</b>
-										</div>
-									</div><!--/price-range-->
-									<div class="shipping text-center"><!--shipping-->
-										<img src="images/home/shipping.jpg" alt="" />
-									</div><!--/shipping-->
+				<div ng-controller="cartCtrl">
+					<div id="header" ng-include src="'templates/header.html'"><!--header-->
+					</div><!--/header-->
+					<section>
+						<div class="container">
+							<div class="row">
+								<div class="col-sm-12">
+									<p id="search_results">Showing {{ total }} results for "{{ user_query }}"</p>
 								</div>
 							</div>
+						</div>
+					</section>
+					<section id="advertisement">
+						<div class="container">
+							<img src="images/shop/advertisement.jpg" alt="" />
+						</div>
+					</section>
 
-							<div class="col-sm-9 padding-right">
-								<div class="features_items" ng-init="total = 0"><!--features_items-->
-									<h2 class="title text-center">Features Items</h2>
-									<div ng-repeat="pro in searchProd track by $index">
-										<div class="col-sm-4">
-											<div class="product-image-wrapper">
-												<div class="single-products">
-														<div class="productinfo text-center" ng-init="$parent.total = $parent.total + 1">
-																<a class="product-image" href="product-details.html#/?pid={{pro.product_id}}">
-																	<img src="images/products/{{pro.product_image}}" alt="{{pro.product_image}}"/>
+					<section>
+						<div class="container">
+							<div class="row">
+								<div class="col-sm-3">
+									 <div class="left-sidebar">
+										<div class="brands_products"><!--brands_products-->
+											<h2>Brands</h2>
+											<div class="brands-name">
+												<ul class="nav nav-pills nav-stacked" ng-repeat="brand in brands" ng-if="$index < 6">
+													<li><a href="#"> <span class="pull-right">{{ brand.brand_id }}</span>{{ brand.brand_title }}</a></li>
+												</ul>
+											</div>
+										</div><!--/brands_products-->
+										<div class="price-range"><!--price-range-->
+											<h2>Price Range</h2>
+											<div class="well text-center">
+												 <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600" data-slider-step="5" data-slider-value="[0,600]" id="sl2" ><br />
+												 <b class="pull-left">₹ 0</b> <b class="pull-right">₹ 600</b>
+											</div>
+										</div><!--/price-range-->
+										<div class="shipping text-center"><!--shipping-->
+											<img src="images/home/shipping.jpg" alt="" />
+										</div><!--/shipping-->
+									</div>
+								</div>
+
+								<div class="col-sm-9 padding-right">
+									<div class="features_items" ng-init="total = 0"><!--features_items-->
+										<h2 class="title text-center">Features Items</h2>
+										<div ng-repeat="pro in searchProd track by $index">
+											<div class="col-sm-4">
+												<div class="product-image-wrapper">
+													<div class="single-products">
+															<div class="productinfo text-center" ng-init="$parent.total = $parent.total + 1">
+																	<a class="product-image" href="product-details.html#/?pid={{pro.product_id}}">
+																		<img src="images/products/{{pro.product_image}}" alt="{{pro.product_image}}"/>
+																	</a>
+																<h2>{{ pro.product_price | currency :"₹" :0}}</h2>
+																<a href="product-details.html#/?pid={{pro.product_id}}" class="product-title">
+																	<p>{{ pro.product_title}}</p>
 																</a>
-															<h2>{{ pro.product_price | currency :"₹" :0}}</h2>
-															<a href="product-details.html#/?pid={{pro.product_id}}" class="product-title">
-																<p>{{ pro.product_title}}</p>
-															</a>
-														</div>
-												</div>
-												<div class="choose">
-													<ul class="nav nav-pills nav-justified">
-														<li><a href="home"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-														<li><a href="home"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-													</ul>
+															</div>
+													</div>
+													<div class="choose">
+														<ul class="nav nav-pills nav-justified">
+															<li><a href="home"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+															<li><a href="home"><i class="fa fa-plus-square"></i>Add to compare</a></li>
+														</ul>
+													</div>
 												</div>
 											</div>
 										</div>
-									</div>
-									<ul class="pagination">
-										<li class="active"><a href="">1</a></li>
-										<li><a href="">2</a></li>
-										<li><a href="">3</a></li>
-										<li><a href="">&raquo;</a></li>
-									</ul>
-								</div><!--features_items-->
+										<ul class="pagination">
+											<li class="active"><a href="">1</a></li>
+											<li><a href="">2</a></li>
+											<li><a href="">3</a></li>
+											<li><a href="">&raquo;</a></li>
+										</ul>
+									</div><!--features_items-->
+								</div>
 							</div>
 						</div>
-					</div>
-				</section>
+					</section>
+				</div>
 			</div>
 		</div>
 	
@@ -111,6 +113,7 @@
 		<script src="scripts/services/proinfo.js"></script>
         <script src="scripts/controllers/MainController.js"></script>
 		<script src="scripts/controllers/searchCtrl.js"></script>
+		<script src="scripts/controllers/cartCtrl.js"></script>
         <script src="scripts/js/bootstrap.min.js"></script>
         <script src="scripts/js/jquery.scrollUp.min.js"></script>
         <script src="scripts/js/price-range.js"></script>

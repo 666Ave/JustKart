@@ -1,5 +1,11 @@
 var app = angular
-    .module('Myapp',[])
+    .module('Myapp',[]);
+
+app.filter('num', function() {
+    return function(input) {
+       return parseInt(input, 10);
+    }
+});
 
 /*.config(function($stateProvider, $urlRouterProvider){
     $urlRouterProvider.otherwise('/home');

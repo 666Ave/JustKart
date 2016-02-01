@@ -26,12 +26,14 @@
 						<div class="container">
 							<div class="row">
 								<div class="col-sm-12">
-									<ul id="pnav">
-										<li><a href="/">Home</a></li>
-										<li><a href="/shop.html#/?catname={{pCat}}&catid={{product[0].product_cat}}">{{pCat}}</a></li>
-										<li><a>{{pBrand}}</a></li>
-										<li>{{product[0].product_title}}</li>
-									</ul>
+									<div class="breadcrumbs">
+										<ol class="breadcrumb">
+											<li><a href="/">Home</a></li>
+											<li><a href="/shop.html#/?catname={{pCat}}&catid={{product[0].product_cat}}">{{pCat}}</a></li>
+											<li><a href="/">{{pBrand}}</a></li>
+											<li class="active">{{product[0].product_title}}</li>
+										</ol>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -88,8 +90,9 @@
 													<span>
 														<span>{{product[0].product_price | currency :"₹":0}}</span>
 														<label>Quantity:</label>
-														<input type="text" value="3" />
-														<button type="button" ng-click="loadData(product[0].product_id);" class="btn btn-fefault cart">
+														<input type="number" ng-model="pQty"
+           min="1" max="10" name="product_qty"/>
+														<button type="button" ng-click="cartAdd(product[0].product_id,this.product_qty.value);" class="btn btn-fefault cart">
 															<i class="fa fa-shopping-cart"></i>
 															Add to cart
 														</button>

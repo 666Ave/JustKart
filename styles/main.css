@@ -1064,29 +1064,6 @@ h2.title {
 *******Product Details CSS******
 **************************/
 
-#pnav {
-	font-family: 'Roboto', sans-serif;
-  	font-size: 14px;
-}
-
-#pnav :last-child{
-	font-weight: 700;
-}
-
-#pnav li:first-child::before {
-	font-family: FontAwesome;
-	content:"\f015"
-}
-
-#pnav li::before {
-	font-family: FontAwesome;
-	content:"\f105";
-}
-
-#pnav li{
-	float: left;
-}
-
 .product-details{
 	overflow:hidden;
 }
@@ -1490,6 +1467,10 @@ h2.title {
   padding: 3px 7px;
 }
 
+.breadcrumbs .breadcrumb li a:hover {
+  text-decoration:underline;
+}
+
 .breadcrumbs .breadcrumb li a:after {
   content:"";
   height:auto;
@@ -1499,8 +1480,7 @@ h2.title {
   border-color:transparent transparent transparent #FE980F;
   position: absolute;
   top: 11px;
-  left:48px;
-
+  margin-left: 7px;
 }
 
 .breadcrumbs .breadcrumb > li + li:before {
@@ -1554,8 +1534,12 @@ h2.title {
   font-family: 'Roboto',sans-serif;
   font-size: 20px;
   font-weight: normal;
-
 }
+
+#cart_items .cart_info .cart_description h4 a:hover {
+  text-decoration: underline;
+}
+
 
 #cart_items .cart_info .cart_description p {
   color:#696763
@@ -1570,26 +1554,15 @@ h2.title {
 
 #cart_items .cart_info .cart_total_price {
   color: #FE980F;
-  font-size: 24px;
+  font-size: 18px;
 }
 
-.cart_product {
+.cart_product img {
   display: block;
   margin: 15px -70px 10px 25px;
+heigth:179px;
+	width:41px;
 }
-
-.cart_quantity_button a {
-  background:#F0F0E9;
-  color: #696763;
-  display: inline-block;
-  font-size: 16px;
-  height: 28px;
-  overflow: hidden;
-  text-align: center;
-  width: 35px;
-  float: left;
-}
-
 
 .cart_quantity_input {
   color: #696763;
@@ -1597,7 +1570,8 @@ h2.title {
   font-size: 16px;
   text-align: center;
   font-family: 'Roboto',sans-serif;
-  
+  float:center;
+  margin-top:3px;
 }
 
 
@@ -1608,14 +1582,18 @@ h2.title {
 }
 
 
-.cart_delete a {
+.cart_delete button {
   background:#F0F0E9;
   color: #FFFFFF;
   padding: 5px 7px;
   font-size: 16px
+  float:left;
+  margin-left: 10px;
+  margin-right:10px;
+  margin-top: 10px;
 }
 
-.cart_delete a:hover {
+.cart_delete button:hover {
   background:#FE980F
 }
 
@@ -1638,11 +1616,6 @@ h2.title {
   font-weight: 300;
 }
 
-
-#do_action .total_area {
-  padding-bottom: 18px !important;
-}
-
 #do_action .total_area, #do_action .chose_area {
   border: 1px solid #E6E4DF;
   color: #696763;
@@ -1652,6 +1625,11 @@ h2.title {
 
 .total_area span {
   float: right;
+}
+
+.total_area ul {
+  margin-top:-10px;
+  margin-bottom:20px;
 }
 
 .total_area ul li {
@@ -1701,42 +1679,25 @@ h2.title {
 .user_info > li > span {
 }
 
-.user_info input, select, textarea {
-  background: #F0F0E9;
-  border:0;
-  color: #696763;
-  padding: 5px;
-  width: 100%;
-  border-radius: 0;
-  resize: none
-}
-
 .user_info select:focus {
   border: 0
 }
 
-
-.chose_area .update {
-  margin-left: 40px;
-}
-
-.update, .check_out {
-  background: #FE980F;
+.check_out {
+  background: #E6E4DF;
   border-radius: 0;
-  color: #FFFFFF;
+  color: #696763;
   margin-top: 18px;
   border: none;
   padding: 5px 15px;
-}
-.update{
-    margin-left: 40px;
+  margin-left: 40px;
 }
 
-.check_out {
-  margin-left: 20px
+.check_out:hover{
+	background: #FE980F;
+	color: #FFF;
+	margin-left: 60px;
 }
-
-
 
 /*************************
 *******checkout CSS******

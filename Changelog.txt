@@ -102,3 +102,12 @@
 5)Wrote css for making a circle around the total items.
 6)Made the cart items number appear but currently only updates when refreshed.
 7)Removed the add to cart feature on all pages except the product-details page.
+
+	Version 1.4.4.2016.02.01
+1)Add to cart button refreshs page.
+2)The navigation links are styled with bootstap and css.
+3)Fixed the cart items init on all pages.
+4)The cart page displays items.
+5)The delete item button works.
+6)The quantity updates in the DB from the product-details page.
+7)The cart display total price depending on the quantity.
