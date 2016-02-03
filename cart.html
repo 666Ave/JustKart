@@ -9,9 +9,6 @@
 		<link rel="shortcut icon" href="/images/logo.ico" />
         <link href="styles/bootstrap.min.css" rel="stylesheet">
         <link href="styles/font-awesome.min.css" rel="stylesheet">
-        <link href="styles/prettyPhoto.css" rel="stylesheet">
-        <link href="styles/price-range.css" rel="stylesheet">
-        <link href="styles/animate.css" rel="stylesheet">
         <link href="styles/main.css" rel="stylesheet">
         <link href="styles/responsive.css" rel="stylesheet">
     </head><!--/head-->
@@ -44,7 +41,7 @@
 							<tbody>
 								<tr ng-repeat="pro in cart_items">
 									<td class="cart_product" >
-										<a href=""><img src="images/products/{{ pro.product_image }}" alt=""></a>
+										<a href="product-details.html#/?pid={{pro.product_id}}"><img src="images/products/{{ pro.product_image }}" alt="{{ pro.product_title }}"></a>
 									</td>
 									<td class="cart_description">
 										<h4><a href="product-details.html#/?pid={{pro.product_id}}">{{ pro.product_title }}</a></h4>
@@ -120,10 +117,5 @@
         <script src="scripts/js/angular.min.js"></script>
         <script src="scripts/app.js"></script>
 		<script src="scripts/controllers/cartCtrl.js"></script>
-        <script src="scripts/js/bootstrap.min.js"></script>
-        <script src="scripts/js/jquery.scrollUp.min.js"></script>
-        <script src="scripts/js/price-range.js"></script>
-        <script src="scripts/js/jquery.prettyPhoto.js"></script>
-        <script src="scripts/js/main.js"></script>
     </body>
 </html>

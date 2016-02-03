@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 26, 2016 at 01:46 PM
+-- Generation Time: Feb 03, 2016 at 02:03 PM
 -- Server version: 5.6.12-log
 -- PHP Version: 5.4.12
 
@@ -29,8 +29,8 @@ USE `justkart`;
 --
 
 CREATE TABLE IF NOT EXISTS `brands` (
-  `brand_id` int(100) NOT NULL AUTO_INCREMENT,
-  `brand_title` text NOT NULL,
+  `brand_id` int(100) NOT NULL AUTO_INCREMENT COMMENT 'Brand ID',
+  `brand_title` text NOT NULL COMMENT 'Title of the brand',
   PRIMARY KEY (`brand_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
@@ -55,12 +55,33 @@ INSERT INTO `brands` (`brand_id`, `brand_title`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `cart`
+--
+
+CREATE TABLE IF NOT EXISTS `cart` (
+  `pro_id` int(11) NOT NULL COMMENT 'ID of the Product in the cart',
+  `ip_addr` varchar(255) NOT NULL COMMENT 'IP Address of the user',
+  `qty` int(11) NOT NULL COMMENT 'Quantity of the items in the specify item',
+  PRIMARY KEY (`pro_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`pro_id`, `ip_addr`, `qty`) VALUES
+(4, '::1', 1),
+(5, '::1', 2);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `categories`
 --
 
 CREATE TABLE IF NOT EXISTS `categories` (
-  `cat_id` int(100) NOT NULL AUTO_INCREMENT,
-  `cat_title` text NOT NULL,
+  `cat_id` int(100) NOT NULL AUTO_INCREMENT COMMENT 'ID of the Category',
+  `cat_title` text NOT NULL COMMENT 'Category title',
   PRIMARY KEY (`cat_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
@@ -87,14 +108,14 @@ INSERT INTO `categories` (`cat_id`, `cat_title`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `products` (
-  `product_id` int(100) NOT NULL AUTO_INCREMENT,
-  `product_cat` int(100) NOT NULL,
-  `product_brand` int(100) NOT NULL,
-  `product_title` varchar(255) NOT NULL,
-  `product_price` int(255) NOT NULL,
-  `product_descrp` text NOT NULL,
-  `product_image` text NOT NULL,
-  `product_keywords` text NOT NULL,
+  `product_id` int(100) NOT NULL AUTO_INCREMENT COMMENT 'ID of the Product',
+  `product_cat` int(100) NOT NULL COMMENT 'ID linking to ID of the category table',
+  `product_brand` int(100) NOT NULL COMMENT 'ID linking to ID of the brand table',
+  `product_title` varchar(255) NOT NULL COMMENT 'Product Title',
+  `product_price` int(255) NOT NULL COMMENT 'Product price',
+  `product_descrp` text NOT NULL COMMENT 'Product Description',
+  `product_image` text NOT NULL COMMENT 'Product Image',
+  `product_keywords` text NOT NULL COMMENT 'Product Keywords',
   PRIMARY KEY (`product_id`),
   KEY `fkprocat` (`product_cat`),
   KEY `fkprobrand` (`product_brand`)
@@ -116,9 +137,42 @@ INSERT INTO `products` (`product_id`, `product_cat`, `product_brand`, `product_t
 (9, 10, 11, 'Hero Green & Black Next 26T 18 Speed Sprint Bicycle', 6530, ' Brand : Hero Product Type : Bicycle Features : Light in weight Moves swiftly over dirt and debris Others : Comfortable seat Easy on legs and ankles SUPC: SDL240540072 ', 'Hero-Green.jpg', 'Hero cycles, green & black'),
 (10, 10, 12, 'Kamachi 6 in 1 Manual Treadmill', 15995, ' - Training for the game of life - This is a heavy product and might take longer than usual to get delivered - Compact & foldable - Product Type: Manual Treadmill - Easy to store ', 'Kamachi-6-in-1.jpg', 'Kamachi , Manual Treadmill');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE IF NOT EXISTS `user` (
+  `User_ID` int(255) NOT NULL AUTO_INCREMENT COMMENT 'ID of the User',
+  `UName` varchar(255) NOT NULL COMMENT 'User Name',
+  `Email_address` varchar(255) NOT NULL COMMENT 'Email Address of the User',
+  `Password` varchar(255) NOT NULL COMMENT 'Password of the User(Encrypted)',
+  `Mobile_no` int(11) NOT NULL COMMENT 'Mobile number of the user',
+  `Address` varchar(255) NOT NULL COMMENT 'Home Address of the user',
+  `Pin_code` int(11) NOT NULL COMMENT 'Pin Code of the User''s home Address',
+  `Purchases` varchar(255) NOT NULL COMMENT 'Purchases made by the user',
+  `Name` varchar(255) NOT NULL COMMENT 'Name of the User',
+  PRIMARY KEY (`User_ID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`User_ID`, `UName`, `Email_address`, `Password`, `Mobile_no`, `Address`, `Pin_code`, `Purchases`, `Name`) VALUES
+(1, 'root', '', '123456', 0, '', 0, '', 'Admin'),
+(2, 'aa', 'avian.silveira@gmail.com', '123456', 0, '', 401207, '', 'Avian Silveira');
+
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `cart`
+--
+ALTER TABLE `cart`
+  ADD CONSTRAINT `FKCartProID` FOREIGN KEY (`pro_id`) REFERENCES `products` (`product_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `products`

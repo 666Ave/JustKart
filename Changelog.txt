@@ -111,3 +111,13 @@
 5)The delete item button works.
 6)The quantity updates in the DB from the product-details page.
 7)The cart display total price depending on the quantity.
+
+	Version 1.4.5.2016
+1)Cleaned the images folder.
+2)Cleaned all of the working pages from unnecessary includes.
+3)Initiated the login page.
+4)Created a users table in the database.
+5)Enhanced the login page from with angular validations.
+6)Commented the keep me signed in option for later fnctionality.
+7)Registiration part is functioning.
+8)Updated the db file.
