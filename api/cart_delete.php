@@ -1,10 +1,10 @@
 <?php
 	include 'conn.php';
-	include 'userIP.php';
 	
 	$pro_id = $_GET['delete_cart'];
+	$uid = $_GET['uID'];
 
-	$delete_products = "delete from cart where ip_addr='$user_ip' AND pro_id='$pro_id'";
+	$delete_products = "delete from cart where User_ID='$uid' AND pro_id='$pro_id'";
 	$run_delete = mysqli_query($link,$delete_products);
 
 	if($run_delete) {

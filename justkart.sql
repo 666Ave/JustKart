@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Feb 03, 2016 at 02:03 PM
+-- Generation Time: Feb 08, 2016 at 01:22 AM
 -- Server version: 5.6.12-log
 -- PHP Version: 5.4.12
 
@@ -60,18 +60,29 @@ INSERT INTO `brands` (`brand_id`, `brand_title`) VALUES
 
 CREATE TABLE IF NOT EXISTS `cart` (
   `pro_id` int(11) NOT NULL COMMENT 'ID of the Product in the cart',
-  `ip_addr` varchar(255) NOT NULL COMMENT 'IP Address of the user',
+  `User_ID` int(255) NOT NULL COMMENT 'ID of the User who put this product in the cart',
   `qty` int(11) NOT NULL COMMENT 'Quantity of the items in the specify item',
-  PRIMARY KEY (`pro_id`)
+  KEY `fk_cart_UID` (`User_ID`),
+  KEY `pro_id` (`pro_id`),
+  KEY `pro_id_2` (`pro_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `cart`
 --
 
-INSERT INTO `cart` (`pro_id`, `ip_addr`, `qty`) VALUES
-(4, '::1', 1),
-(5, '::1', 2);
+INSERT INTO `cart` (`pro_id`, `User_ID`, `qty`) VALUES
+(1, 1, 2),
+(2, 1, 0),
+(3, 2, 0),
+(5, 1, 0),
+(6, 1, 0),
+(7, 1, 1),
+(8, 2, 1),
+(3, 1, 0),
+(1, 2, 1),
+(9, 2, 1),
+(4, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -154,7 +165,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `Purchases` varchar(255) NOT NULL COMMENT 'Purchases made by the user',
   `Name` varchar(255) NOT NULL COMMENT 'Name of the User',
   PRIMARY KEY (`User_ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `user`
@@ -162,7 +173,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 INSERT INTO `user` (`User_ID`, `UName`, `Email_address`, `Password`, `Mobile_no`, `Address`, `Pin_code`, `Purchases`, `Name`) VALUES
 (1, 'root', '', '123456', 0, '', 0, '', 'Admin'),
-(2, 'aa', 'avian.silveira@gmail.com', '123456', 0, '', 401207, '', 'Avian Silveira');
+(2, 'Ave', 'root@gmail.com', '123456', 0, '', 123456, '', 'Ave');
 
 --
 -- Constraints for dumped tables
@@ -172,7 +183,8 @@ INSERT INTO `user` (`User_ID`, `UName`, `Email_address`, `Password`, `Mobile_no`
 -- Constraints for table `cart`
 --
 ALTER TABLE `cart`
-  ADD CONSTRAINT `FKCartProID` FOREIGN KEY (`pro_id`) REFERENCES `products` (`product_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_cart_PID` FOREIGN KEY (`pro_id`) REFERENCES `products` (`product_id`),
+  ADD CONSTRAINT `fk_cart_UID` FOREIGN KEY (`User_ID`) REFERENCES `user` (`User_ID`);
 
 --
 -- Constraints for table `products`

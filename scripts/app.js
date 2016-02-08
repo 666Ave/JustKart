@@ -1,5 +1,5 @@
 var app = angular
-    .module('Myapp',[]);
+    .module('Myapp',['ngCookies']);
 
 app.filter('num', function() {
     return function(input) {

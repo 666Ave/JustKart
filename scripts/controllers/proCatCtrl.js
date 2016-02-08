@@ -1,4 +1,4 @@
-app.controller('proCatCtrl',function($scope,$http,$location,proinfo){
+app.controller('proCatCtrl',function($scope,$http,$location){
     $http.get("api/getCatPro.php",{params:{catid:$location.search().catid}})
         .success(function(response) {
             $scope.proCats = response;

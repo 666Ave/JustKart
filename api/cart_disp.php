@@ -1,8 +1,9 @@
 <?php
     include 'conn.php';
-	include 'userIP.php';
 
-    $get_cart = "SELECT * FROM cart where ip_addr ='$user_ip'";
+	$uid = $_GET['uID'];
+
+    $get_cart = "SELECT * FROM cart where User_ID ='$uid'";
     $run_cart = mysqli_query($link,$get_cart);
     if($run_cart) {
         if(mysqli_num_rows($run_cart)>0){

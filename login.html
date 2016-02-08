@@ -16,78 +16,76 @@
 
     <body ng-app="Myapp"> 
 		<div ng-controller="loginCtrl">
-			<div ng-controller="cartCtrl">
-				<div id="header" ng-include src="'templates/header.html'"><!--header-->
-				</div><!--/header-->
-	
-				<section id="form"><!--form-->
-					<div class="container">
-						<div class="row">
-							<div class="col-sm-4 col-sm-offset-1">
-								<div class="login-form"><!--login form-->
-									<h2>Login to your account</h2>
-									<form name="loginForm" ng-submit="processLogin(loginForm.$valid)" novalidate>
-										<div class="form-group" ng-class="{ 'has-error' : loginForm.Username.$invalid && !loginForm.Username.$pristine }">
-											<input type="text" class="form-control" name="Username" placeholder="Email Address Or User Name" ng-model="loginData.Lname" required>
-											<span ng-show="loginForm.Username.$invalid && !loginForm.Username.$pristine" class="help-block">Your User Name is required.</span>
-										</div>
-										<div class="form-group" ng-class="{ 'has-error' : loginForm.password.$invalid && !loginForm.password.$pristine }">
-											<input type="password" name="Loginpassword" class="form-control" placeholder="Password" ng-model="loginData.Lpassword" ng-minlength="4" ng-maxlength="8" required>
-											<span ng-show="loginForm.Loginpassword.$error.minlength" class="help-block">Password is too short.</span>
-											<span ng-show="loginForm.Loginpassword.$error.maxlength" class="help-block">Password is too long.</span>
-										</div>
-										<!--<span>
-											<input type="checkbox" class="checkbox"> DO later
-											Keep me signed in
-										</span>-->
-										<button type="submit" class="btn btn-default" ng-disabled="userForm.$invalid">Login</button>
-										<br/>
-										<div>{{message}}</div>
-									</form>
-								</div><!--/login form-->
-							</div>
-							<div class="col-sm-1">
-								<h2 class="or">OR</h2>
-							</div>
-							<div class="col-sm-4">
-								<div class="signup-form"><!--sign up form-->
-									<h2>New User Signup!</h2>
-									<form name="RegForm" ng-submit="processReg(RegForm.$valid)" novalidate>
-										<div class="form-group" ng-class="{ 'has-error' : RegForm.name.$invalid && !RegForm.name.$pristine }"><!--Name-->
-											<input type="text" class="form-control" name="name" placeholder="Name" ng-model="regData.Rname" required>
-											<span ng-show="RegForm.name.$invalid && !RegForm.name.$pristine" class="help-block">Your name is required.</span>
-										</div>
-										<div class="form-group" ng-class="{ 'has-error' : RegForm.Uname.$invalid && !RegForm.Uname.$pristine }"><!--User Name-->
-											<input type="text" class="form-control" name="Uname" placeholder="User Name" ng-model="regData.Rusername" required>
-											<span ng-show="RegForm.Uname.$invalid && !RegForm.Uname.$pristine" class="help-block">Your User name is required.</span>
-										</div>
-										<div class="form-group" ng-class="{ 'has-error' : RegForm.email.$invalid && !RegForm.email.$pristine }"><!--Email-->
-											<input type="email" class="form-control" name="email" placeholder="Email Address" ng-model="regData.Remail" required>
-											<span ng-show="RegForm.email.$invalid && !RegForm.email.$pristine" class="help-block">Your email is required.</span>
-										</div>
-										<div class="form-group" ng-class="{ 'has-error' : RegForm.password.$invalid && !RegForm.password.$pristine }"><!--Password-->
-											<input type="password" class="form-control" name="password" placeholder="Password" ng-model="regData.Rpassword" ng-minlength="4" ng-maxlength="8" required>
-											<span ng-show="RegForm.password.$error.minlength" class="help-block">Password is too short( min 4 ).</span>
-											<span ng-show="RegForm.password.$error.maxlength" class="help-block">Password is too long( max 8 ).</span>
-										</div>
-										<div class="form-group" ng-class="{ 'has-error' : RegForm.Conpassword.$invalid && !RegForm.Conpassword.$pristine }"><!--Confirm Password-->
-											<input type="password" class="form-control" name="Conpassword" placeholder="Confirm Password" ng-model="regData.RConpassword" required>
-											<span ng-show="RegForm.Conpassword.$invalid && !RegForm.Conpassword.$pristine" class="help-block">Password is not the same as the above password.</span>
-										</div>
-										<div class="form-group" ng-class="{ 'has-error' : RegForm.pincode.$invalid && !RegForm.pincode.$pristine }"><!--Pin Code-->
-											<input type="text" class="form-control" name="pincode" placeholder="Pin Code" ng-model="regData.Rpincode" ng-minlength="6" ng-maxlength="6" required>
-										<span ng-show="RegForm.pincode.$error.minlength" class="help-block">Pin Code should be 6 digits.</span>
-										<span ng-show="RegForm.pincode.$error.maxlength" class="help-block">Pin Code is only 6 digits!</span>
-										</div>
-										<button type="submit" class="btn btn-default">Signup</button>
-									</form>
-								</div><!--/sign up form-->
-							</div>
-							{{regData}}
+			<div id="header" ng-include src="'templates/header.html'"><!--header-->
+			</div><!--/header-->
+
+			<section id="form"><!--form-->
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-4 col-sm-offset-1">
+							<div class="login-form"><!--login form-->
+								<h2>Login to your account</h2>
+								<form name="loginForm" ng-submit="processLogin(loginForm.$valid)" novalidate>
+									<div class="form-group" ng-class="{ 'has-error' : loginForm.Username.$invalid && !loginForm.Username.$pristine }">
+										<input type="text" class="form-control" name="Username" placeholder="Email Address Or User Name" ng-model="loginData.Lname" required>
+										<span ng-show="loginForm.Username.$invalid && !loginForm.Username.$pristine" class="help-block">Your User Name is required.</span>
+									</div>
+									<div class="form-group" ng-class="{ 'has-error' : loginForm.password.$invalid && !loginForm.password.$pristine }">
+										<input type="password" name="Loginpassword" class="form-control" placeholder="Password" ng-model="loginData.Lpassword" ng-minlength="4" ng-maxlength="8" required>
+										<span ng-show="loginForm.Loginpassword.$error.minlength" class="help-block">Password is too short.</span>
+										<span ng-show="loginForm.Loginpassword.$error.maxlength" class="help-block">Password is too long.</span>
+									</div>
+									<!--<span>
+										<input type="checkbox" class="checkbox"> DO later
+										Keep me signed in
+									</span>-->
+									<button type="submit" class="btn btn-default" ng-disabled="userForm.$invalid">Login</button>
+									<br/>
+									<div>{{message}}</div>
+								</form>
+							</div><!--/login form-->
 						</div>
+						<div class="col-sm-1">
+							<h2 class="or">OR</h2>
+						</div>
+						<div class="col-sm-4">
+							<div class="signup-form"><!--sign up form-->
+								<h2>New User Signup!</h2>
+								<form name="RegForm" ng-submit="processReg(RegForm.$valid)" novalidate>
+									<div class="form-group" ng-class="{ 'has-error' : RegForm.name.$invalid && !RegForm.name.$pristine }"><!--Name-->
+										<input type="text" class="form-control" name="name" placeholder="Name" ng-model="regData.Rname" required>
+										<span ng-show="RegForm.name.$invalid && !RegForm.name.$pristine" class="help-block">Your name is required.</span>
+									</div>
+									<div class="form-group" ng-class="{ 'has-error' : RegForm.Uname.$invalid && !RegForm.Uname.$pristine }"><!--User Name-->
+										<input type="text" class="form-control" name="Uname" placeholder="User Name" ng-model="regData.Rusername" required>
+										<span ng-show="RegForm.Uname.$invalid && !RegForm.Uname.$pristine" class="help-block">Your User name is required.</span>
+									</div>
+									<div class="form-group" ng-class="{ 'has-error' : RegForm.email.$invalid && !RegForm.email.$pristine }"><!--Email-->
+										<input type="email" class="form-control" name="email" placeholder="Email Address" ng-model="regData.Remail" required>
+										<span ng-show="RegForm.email.$invalid && !RegForm.email.$pristine" class="help-block">Your email is required.</span>
+									</div>
+									<div class="form-group" ng-class="{ 'has-error' : RegForm.password.$invalid && !RegForm.password.$pristine }"><!--Password-->
+										<input type="password" class="form-control" name="password" placeholder="Password" ng-model="regData.Rpassword" ng-minlength="4" ng-maxlength="8" required>
+										<span ng-show="RegForm.password.$error.minlength" class="help-block">Password is too short( min 4 ).</span>
+										<span ng-show="RegForm.password.$error.maxlength" class="help-block">Password is too long( max 8 ).</span>
+									</div>
+									<div class="form-group" ng-class="{ 'has-error' : RegForm.Conpassword.$invalid && !RegForm.Conpassword.$pristine }"><!--Confirm Password-->
+										<input type="password" class="form-control" name="Conpassword" placeholder="Confirm Password" ng-model="regData.RConpassword" required>
+										<span ng-show="RegForm.Conpassword.$invalid && !RegForm.Conpassword.$pristine" class="help-block">Password is not the same as the above password.</span>
+									</div>
+									<div class="form-group" ng-class="{ 'has-error' : RegForm.pincode.$invalid && !RegForm.pincode.$pristine }"><!--Pin Code-->
+										<input type="text" class="form-control" name="pincode" placeholder="Pin Code" ng-model="regData.Rpincode" ng-minlength="6" ng-maxlength="6" required>
+									<span ng-show="RegForm.pincode.$error.minlength" class="help-block">Pin Code should be 6 digits.</span>
+									<span ng-show="RegForm.pincode.$error.maxlength" class="help-block">Pin Code is only 6 digits!</span>
+									</div>
+									<button type="submit" class="btn btn-default">Signup</button>
+								</form>
+							</div><!--/sign up form-->
+						</div>
+						{{regData}}
 					</div>
-				</section><!--/form-->
-			</div>
+				</div>
+			</section><!--/form-->
 		</div>
 	
 		<div id="footer" ng-include src="'templates/footer.html'"><!--Footer-->		
@@ -95,8 +93,9 @@
 			
 		<script src="scripts/js/jquery.js"></script>			
         <script src="scripts/js/angular.min.js"></script>
+		<script src="scripts/js/angular-cookies.min.js"></script>
         <script src="scripts/app.js"></script>
-		<script src="scripts/services/proinfo.js"></script>
+		<script src="scripts/services/authFact.js"></script>
 		<script src="scripts/controllers/cartCtrl.js"></script>
 		<script src="scripts/controllers/loginCtrl.js"></script>
     </body>

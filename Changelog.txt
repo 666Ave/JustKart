@@ -121,3 +121,11 @@
 6)Commented the keep me signed in option for later fnctionality.
 7)Registiration part is functioning.
 8)Updated the db file.
+
+	Version 1.4.6.2016
+1)All the $window reloads get an alert notification first.
+2)Made all the remaining pages (Just the outline) and the 404.html page.
+3)Added angular-cookies.js file and linked it on all neceassry pages.
+4)Added the login feature and the site shows login or logout depending on whether your logged in.
+5)The total cart times and the cart items number is per user.
+6)Updated the db file in the repo.
