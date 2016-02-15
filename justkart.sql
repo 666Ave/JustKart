@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Feb 08, 2016 at 01:22 AM
+-- Generation Time: Feb 15, 2016 at 02:31 AM
 -- Server version: 5.6.12-log
 -- PHP Version: 5.4.12
 
@@ -59,30 +59,28 @@ INSERT INTO `brands` (`brand_id`, `brand_title`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `cart` (
+  `Cart_ID` int(255) NOT NULL AUTO_INCREMENT COMMENT 'ID of the Cart items',
   `pro_id` int(11) NOT NULL COMMENT 'ID of the Product in the cart',
   `User_ID` int(255) NOT NULL COMMENT 'ID of the User who put this product in the cart',
   `qty` int(11) NOT NULL COMMENT 'Quantity of the items in the specify item',
+  PRIMARY KEY (`Cart_ID`),
   KEY `fk_cart_UID` (`User_ID`),
   KEY `pro_id` (`pro_id`),
-  KEY `pro_id_2` (`pro_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  KEY `pro_id_2` (`pro_id`),
+  KEY `pro_id_3` (`pro_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `cart`
 --
 
-INSERT INTO `cart` (`pro_id`, `User_ID`, `qty`) VALUES
-(1, 1, 2),
-(2, 1, 0),
-(3, 2, 0),
-(5, 1, 0),
-(6, 1, 0),
-(7, 1, 1),
-(8, 2, 1),
-(3, 1, 0),
-(1, 2, 1),
-(9, 2, 1),
-(4, 1, 2);
+INSERT INTO `cart` (`Cart_ID`, `pro_id`, `User_ID`, `qty`) VALUES
+(1, 1, 1, 2),
+(2, 1, 2, 1),
+(3, 4, 1, 2),
+(4, 7, 1, 1),
+(5, 8, 2, 1),
+(6, 9, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -94,7 +92,7 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `cat_id` int(100) NOT NULL AUTO_INCREMENT COMMENT 'ID of the Category',
   `cat_title` text NOT NULL COMMENT 'Category title',
   PRIMARY KEY (`cat_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `categories`

@@ -27,7 +27,8 @@
 								<div class="breadcrumbs">
 									<ol class="breadcrumb">
 										<li><a href="/">Home</a></li>
-										<li>{{cat}}</li>
+										<li ng-class="{'active': activey == 'true'}"><span ng-hide="activey == 'true'"><a href="/shop.html#/?catname={{cat}}&catid={{product[0].product_cat}}" ng-click="reload()">{{cat}}</a></span><span ng-show="activey == 'true'">{{cat}}</span></li>
+										<li class="active">{{brand}}</li>
 									</ol>
 								</div>
 							</div>
@@ -69,7 +70,7 @@
 							<div class="col-sm-9 padding-right">
 								<div class="features_items"><!--features_items-->
 									<h2 class="title text-center">Features Items</h2>
-									<div ng-repeat="pro in proCats">
+									<div ng-repeat="pro in product">
 										<div class="col-sm-4">
 											<div class="product-image-wrapper">
 												<div class="single-products">

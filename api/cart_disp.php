@@ -8,7 +8,6 @@
     if($run_cart) {
         if(mysqli_num_rows($run_cart)>0){
 			$products = array();
-			$total_price = 0;
             while($row = mysqli_fetch_assoc($run_cart)) {
                 $pro_id = $row['pro_id'];
 				$get_cart_items = "SELECT * FROM products where product_id='$pro_id'";
@@ -27,10 +26,8 @@
 						'quantity' => $row['qty']
 					);
 					$products = array_merge($products,$product);
-					$total_price +=  $row2['product_price'];
 				}
 			}
-			$products['total_price'] = $total_price;
 			header('Content-type: application/json');
 			echo json_encode($products);
 		}

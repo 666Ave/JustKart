@@ -112,7 +112,7 @@
 6)The quantity updates in the DB from the product-details page.
 7)The cart display total price depending on the quantity.
 
-	Version 1.4.5.2016
+	Version 1.4.5.2016.02.03
 1)Cleaned the images folder.
 2)Cleaned all of the working pages from unnecessary includes.
 3)Initiated the login page.
@@ -122,10 +122,18 @@
 7)Registiration part is functioning.
 8)Updated the db file.
 
-	Version 1.4.6.2016
+	Version 1.4.6.2016.02.08
 1)All the $window reloads get an alert notification first.
 2)Made all the remaining pages (Just the outline) and the 404.html page.
 3)Added angular-cookies.js file and linked it on all neceassry pages.
 4)Added the login feature and the site shows login or logout depending on whether your logged in.
 5)The total cart times and the cart items number is per user.
 6)Updated the db file in the repo.
+
+	Version 1.4.7.2016.02.19
+1)Made the brands page working and fixed the link in the product details page.
+2)Made the shop page to dynamically assign css class and hide and show certain things dynamically.
+3)For now the change in query strings in the url requires a manually reload of pages.
+4)Fixed the cart.
+5)Fixed the cart table and updated the database file.
+6)Fixed the cart_disp query to remove the total_price part.

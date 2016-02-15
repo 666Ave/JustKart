@@ -39,7 +39,7 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr ng-repeat="pro in cart_items">
+								<tr ng-repeat="pro in cart_items track by $index">
 									<td class="cart_product" >
 										<a href="product-details.html#/?pid={{pro.product_id}}"><img src="images/products/{{ pro.product_image }}" alt="{{ pro.product_title }}"></a>
 									</td>
@@ -52,11 +52,11 @@
 									</td>
 									<td class="cart_quantity">
 										<div class="cart_quantity_button">
-											<input class="cart_quantity_input" type="number" name="product_qty" value="{{pro.quantity}}" ng-model="pQty" min="1" max="10" />
+											<input class="cart_quantity_input" string-to-number type="number" name="product_qty" value="{{pro.quantity}}" ng-model="pro.quantity" min="1" max="10" />
 										</div>
 									</td>
 									<td class="cart_total">
-										<p class="cart_total_price">{{ ((pro.product_price|num)*pQty )| currency :"₹" :0}}</p>
+										<p class="cart_total_price">{{  pro.product_price *pro.quantity | currency :"₹" :0 }}</p>
 									</td>
 									<td class="cart_delete">
 										<button ng-click="cartDelete(pro.product_id);" class="btn btn-fefault cart"><i class="fa fa-times"></i></button>
@@ -77,30 +77,28 @@
 					<div class="row">
 						<div class="col-sm-6">
 							<div class="chose_area">
-								<ul class="user_option">
-									<li>
-										<input type="checkbox">
-										<label>Use Coupon Code</label>
-									</li>
-									<li>
-										<input type="checkbox">
-										<label>Use Gift Voucher</label>
-									</li>
-								</ul>
-								<ul class="user_info">
-									<li class="single_field zip-field">
-										<label>Zip Code:</label>
-										<input type="text">
-									</li>
-								</ul>
+								<form>
+									<ul class="user_option">
+										<li>
+											<input type="checkbox">
+											<label>Use Coupon Code</label>
+										</li>
+									</ul>
+									<ul class="user_info">
+										<li class="single_field zip-field">
+											<label>Coupon Code:</label>
+											<input type="text">
+										</li>
+									</ul>
+								</form>
 							</div>
 						</div>
 						<div class="col-sm-6">
 							<div class="total_area">
 								<ul>
-									<li>Cart Sub Total <span>{{ cart_total | currency :"₹" :0}}</span></li>
-									<li>Shipping Cost <span>Free</span></li>
-									<li>Total <span>{{ cart_total | currency :"₹" :0}}</span></li>
+									<li>Cart Sub Total <span>{{ (total_s() | num) | currency :"₹" :0 }}</span></li>
+									<li>Shipping Cost <span>500</span></li>
+									<li>Total <span>{{ (total_p() | num) | currency :"₹" :0 }}</span></li>
 								</ul>
 								<a class="btn btn-default check_out" href="">Check Out</a>
 							</div>
@@ -117,6 +115,7 @@
         <script src="scripts/js/angular.min.js"></script>
 		<script src="scripts/js/angular-cookies.min.js"></script>
         <script src="scripts/app.js"></script>
+		<script src="scripts/directives/sTOn.js"></script>
 		<script src="scripts/services/authFact.js"></script>
 		<script src="scripts/controllers/cartCtrl.js"></script>
 		<script src="scripts/controllers/loginCtrl.js"></script>

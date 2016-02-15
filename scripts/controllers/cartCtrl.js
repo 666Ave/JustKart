@@ -1,9 +1,13 @@
-app.controller('cartCtrl',function($scope,$http,$window,$cookies,authFact){
+app.controller('cartCtrl',function($scope,$http,$window,$cookies,$filter,authFact){
 	$scope.pQty=1;
+	$scope.total = [];
+	$scope.cart_length=0;
+	
 	if($cookies.get('userID'))
 		$scope.userID = $cookies.get('userID');
 	else
 		$scope.userID = 0;
+	
 	$scope.cartAdd = function (proID,Pqty) {
 		$http.get("api/cart_add.php",{params:{add_cart:proID,qty:$scope.pQty,uID:$scope.userID}})
 			.success(function(response) {
@@ -36,14 +40,29 @@ app.controller('cartCtrl',function($scope,$http,$window,$cookies,authFact){
         .success(function(response) {
 			if(response) {
 				$scope.cart_items = response;
-				$scope.cart_total = $scope.cart_items.total_price;
-				delete $scope.cart_items['total_price'];
+				console.log($scope.cart_items);
+				$scope.cart_length = Object.keys($scope.cart_items).length;
+				for(var i=0; i<$scope.cart_length; i++)
+					$scope.total[i] = $scope.cart_items[i].product_price;
 			}
         })
         .error(function(response){
             console.log('error occured3');
         });
 	
+	$scope.total_s = function(){
+		$scope.t=0;
+		for(var i=0; i<$scope.cart_length; i++)
+			$scope.t += $filter('num')($scope.total[i]);
+		return $scope.t;
+	};
+	
+	$scope.total_p = function(){
+		$scope.t = $scope.total_s();
+		$scope.t += 500;
+		return $scope.t;
+	};
+
 	$scope.cartDelete= function (proID) {
 		$http.get("api/cart_delete.php",{params:{delete_cart:proID,uID:$scope.userID}})
 			.success(function(response) {
