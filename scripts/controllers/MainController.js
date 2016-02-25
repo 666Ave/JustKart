@@ -1,5 +1,6 @@
 app.controller('MainController',function($scope,$http,proinfo){
 	var self = this;
+	$scope.date = new Date();
     $http.get("api/getCat.php")
         .success(function(response) {
             $scope.category = response;

@@ -40,7 +40,6 @@ app.controller('cartCtrl',function($scope,$http,$window,$cookies,$filter,authFac
         .success(function(response) {
 			if(response) {
 				$scope.cart_items = response;
-				console.log($scope.cart_items);
 				$scope.cart_length = Object.keys($scope.cart_items).length;
 				for(var i=0; i<$scope.cart_length; i++)
 					$scope.total[i] = $scope.cart_items[i].product_price;

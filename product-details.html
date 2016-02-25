@@ -79,9 +79,8 @@
 									</div>
 										<div class="col-sm-7" ng-controller="cartCtrl">
 											<div class="product-information"><!--/product-information-->
-												<img src="images/product-details/new.jpg" class="newarrival" alt="" />
 												<h2>{{product[0].product_title}}</h2>
-												<p>Web ID: {{product[0].product_id}}
+												<p>
 												<img src="images/product-details/rating.png" alt="" />
 												</p>
 												<span>
@@ -97,7 +96,6 @@
 												<p><b>Availability:</b> In Stock</p>
 												<p><b>Condition:</b> New</p>
 												<p><b>Brand:</b> {{pBrand}}</p>
-												<a href=""><img src="images/product-details/share.png" class="share img-responsive"  alt="" /></a>
 											</div><!--/product-information-->
 										</div>
 									</div><!--/product-details-->
@@ -394,6 +392,8 @@
 		<script src="scripts/js/jquery.js"></script>			
         <script src="scripts/js/angular.min.js"></script>
 		<script src="scripts/js/angular-cookies.min.js"></script>
+		<script src="scripts/js/angularjs-geolocation.min.js"></script>
+		<script src="scripts/js/ui-bootstrap-tpls-1.1.2.min.js"></script>
         <script src="scripts/app.js"></script>
 		<script src="scripts/services/proinfo.js"></script>
 		<script src="scripts/services/authFact.js"></script>
@@ -401,5 +401,6 @@
 		<script src="scripts/controllers/proCtrl.js"></script>
 		<script src="scripts/controllers/cartCtrl.js"></script>
 		<script src="scripts/controllers/loginCtrl.js"></script>
+		<script src="scripts/controllers/locCtrl.js"></script>
     </body>
 </html>

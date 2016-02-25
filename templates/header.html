@@ -2,12 +2,26 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-8">
-                        <div class="current-location">
+                        <div class="current-location" ng-controller="locCtrl">
+							<script type="text/ng-template" id="location.html">
+								<div class="modal-header">
+									<h3 class="modal-title">Current Location : {{ location }}</h3>
+								</div>
+								<div class="modal-body">
+									<span ng-show="error">{{ error }} so please specify the station name<br/></span>
+									<span ng-hide="error">To <b>Change Location</b> enter your station name<br/></span>
+									<input type="text" ng-model="input" placeholder="For ex. Vasai" size="20"/>
+								</div>
+								<div class="modal-footer">
+									<button class="btn btn-primary" ng-click="ok()">OK</button>
+									<button class="btn btn-primary" ng-click="cancel()">Cancel</button>
+								</div>
+							</script>
                             <ul class="nav nav-pills">
-                                <li><a href="#"><i class="fa fa-map-marker"></i>Vasai</a></li>
+                                <li><a href="#" ng-click="open()"><i class="fa fa-map-marker"></i>{{ location }}</a></li>
                             </ul>
                         </div>
-                                <!--
+			      <!--
 						<div class="btn-group pull-right">
 							<div class="btn-group">
 								<button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">

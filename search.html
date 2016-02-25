@@ -44,7 +44,7 @@
 										<h2>Brands</h2>
 										<div class="brands-name">
 											<ul class="nav nav-pills nav-stacked" ng-repeat="brand in brands" ng-if="$index < 6">
-												<li><a href="#"> <span class="pull-right">{{ brand.brand_id }}</span>{{ brand.brand_title }}</a></li>
+												<li><a href="/shop.html#/?catname={{ category[0].cat_title }}&brandname={{ brand.brand_title }}&brandid={{ brand.brand_id }}"> <span class="pull-right">{{ brand.brand_id }}</span>{{ brand.brand_title }}</a></li>
 											</ul>
 										</div>
 									</div><!--/brands_products-->
@@ -107,6 +107,8 @@
 		<script src="scripts/js/jquery.js"></script>			
         <script src="scripts/js/angular.min.js"></script>
 		<script src="scripts/js/angular-cookies.min.js"></script>
+		<script src="scripts/js/angularjs-geolocation.min.js"></script>
+		<script src="scripts/js/ui-bootstrap-tpls-1.1.2.min.js"></script>
         <script src="scripts/app.js"></script>
 		<script src="scripts/services/proinfo.js"></script>
 		<script src="scripts/services/authFact.js"></script>
@@ -114,7 +116,7 @@
 		<script src="scripts/controllers/searchCtrl.js"></script>
 		<script src="scripts/controllers/cartCtrl.js"></script>
 		<script src="scripts/controllers/loginCtrl.js"></script>
-        <script src="scripts/js/price-range.js"></script>
-		<script src="scripts/js/main.js"></script>
+		<script src="scripts/controllers/locCtrl.js"></script>
+        <script src="scripts/js/price-range.js"></script>		
     </body>
 </html>

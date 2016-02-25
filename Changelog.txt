@@ -137,3 +137,13 @@
 4)Fixed the cart.
 5)Fixed the cart table and updated the database file.
 6)Fixed the cart_disp query to remove the total_price part.
+
+	Version 1.4.8.2016.02.
+1)Got the location to display based on the coords if the user allowed his location to be traced.
+2)Replaced the bootstrap js file with ui bootstrap for angular.
+3)Got the location to display based on station name given by the user.
+4)Fixed the brand links in both the shop and search pages.
+5)Cleaned all the unecessary things on the product-details pages.
+6)If location is disabled then the modal will pop up to ask fo the location.
+7)Added the bootstrap js again for the carousel.
+8)Display the current year for the copyright.

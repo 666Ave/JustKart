@@ -1,10 +1,25 @@
 var app = angular
-    .module('Myapp',['ngCookies']);
+    .module('Myapp',['ngCookies','geolocation','ui.bootstrap']);
 
 app.filter('num', function() {
     return function(input) {
        return parseInt(input, 10);
     }
+});
+
+
+app.controller('LocModalInstanceCtrl', function ($scope, $uibModalInstance, location,error) {
+	$scope.input="";
+  	$scope.location = location;
+	$scope.error = error;
+	
+	$scope.ok = function () {
+	$uibModalInstance.close($scope.input);
+	};
+
+	$scope.cancel = function () {
+	$uibModalInstance.dismiss('cancel');
+	};
 });
 
 /*.config(function($stateProvider, $urlRouterProvider){
