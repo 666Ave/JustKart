@@ -138,7 +138,7 @@
 5)Fixed the cart table and updated the database file.
 6)Fixed the cart_disp query to remove the total_price part.
 
-	Version 1.4.8.2016.02.
+	Version 1.4.8.2016.03.02
 1)Got the location to display based on the coords if the user allowed his location to be traced.
 2)Replaced the bootstrap js file with ui bootstrap for angular.
 3)Got the location to display based on station name given by the user.
@@ -147,3 +147,12 @@
 6)If location is disabled then the modal will pop up to ask fo the location.
 7)Added the bootstrap js again for the carousel.
 8)Display the current year for the copyright.
+
+	Version 1.4.9.2016.03.16
+1)Modified the products table to include a datetime field.
+2)Modified the insert_products.php to add current timestamp into the db.
+3)Created recentCtrl.js controller and getRecent.php to get products added within 10 days.
+4)The index page's recently launched products module is functioning.
+5)The recent Launched relies on the launch_date filed instead of the time-added field now.
+6)Included the angular-animate.min.js file in all pages.
+7)The recently viewed module works.

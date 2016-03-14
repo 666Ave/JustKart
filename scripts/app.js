@@ -1,5 +1,5 @@
 var app = angular
-    .module('Myapp',['ngCookies','geolocation','ui.bootstrap']);
+    .module('Myapp',['ngCookies','geolocation','ui.bootstrap','ngAnimate']);
 
 app.filter('num', function() {
     return function(input) {

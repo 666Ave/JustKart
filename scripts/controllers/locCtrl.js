@@ -7,7 +7,6 @@ app.controller('locCtrl',function($scope,$http,$uibModal,$window,$cookies,$log,g
 				.success(function(response) {
 					if(response) {
 						$scope.location = response['results'][3]['address_components'][1].long_name;
-						console.log($scope.location);
 					}
 				})
 				.error(function(response){

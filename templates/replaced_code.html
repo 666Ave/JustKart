@@ -107,6 +107,115 @@
     </div>
 <!--/category-products-->
 
+<div class="category-tab" ng-controller="recentCtrl"><!--category-tab-->
+	<div class="col-sm-12">
+		<h2 class="title text-center">New Launches</h2>
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="#tshirt" data-toggle="tab">Mobiles</a></li>
+			<li><a href="#blazers" data-toggle="tab">Laptops</a></li>
+			<li><a href="#sunglass" data-toggle="tab">Bikes</a></li>
+			<li><a href="#kids" data-toggle="tab">Shoes</a></li>
+			<li><a href="#poloshirt" data-toggle="tab">Fashion</a></li>
+		</ul>
+	</div>
+	<div class="tab-content">
+		<div class="tab-pane fade active in" id="tshirt">
+			<div class="col-sm-3" ng-repeat="pro in products" ng-if="$index<4">
+				<div class="product-image-wrapper" >
+					<div class="single-products">
+						<div class="productinfo text-center">
+							<a class="product-image" href="product-details.html#/?pid={{pro.product_id}}">
+								<img src="images/products/{{pro.product_image}}" alt="{{pro.product_image}}"/>
+							</a>
+							<h2>{{ pro.product_price | currency :"₹" :0}}</h2>
+							<a href="product-details.html#/?pid={{pro.product_id}}" class="product-title">
+								<p>{{ pro.product_title}}</p>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div> 
+		</div>
+	</div>
+</div><!--/category-tab-->
+
+.category-tab {
+  overflow: hidden;
+}
+
+.category-tab ul {
+  background: #40403E;
+  border-bottom: 1px solid #FE980F;
+  list-style: none outside none;
+  margin: 0 0 30px;
+  padding: 0;
+  width: 100%;
+}
+
+.category-tab ul li a {
+  border: 0 none;
+  border-radius: 0;
+  color: #B3AFA8;
+  display: block;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.category-tab ul  li  a:hover{
+	background:#FE980F;
+	color:#fff;
+}
+
+.nav-tabs  li.active  a, .nav-tabs  li.active  a:hover, .nav-tabs  li.active  a:focus {
+  -moz-border-bottom-colors: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  background-color: #FE980F;
+  border:0px;
+  color: #FFFFFF;
+  cursor: default;
+  margin-right:0;
+  margin-left:0;
+}
+
+.nav-tabs  li  a {
+  border: 1px solid rgba(0, 0, 0, 0);
+  border-radius: 4px 4px 0 0;
+  line-height: 1.42857;
+  margin-right:0;
+}
+
+<div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
+										<div class="carousel-inner">
+											<div ng-class="carouselClass($index)" ng-repeat="">
+												<div class="col-sm-4" ng-repeat="pro in products" ng-if="$index<3">
+													<div class="product-image-wrapper" >
+														<div class="single-products">
+															<div class="productinfo text-center">
+																<a class="product-image" href="product-details.html#/?pid={{pro.product_id}}">
+																	<img src="images/products/{{pro.product_image}}" alt="{{pro.product_image}}"/>
+																</a>
+																<h2>{{ pro.product_price | currency :"₹" :0}}</h2>
+																<a href="product-details.html#/?pid={{pro.product_id}}" class="product-title">
+																	<p>{{ pro.product_title}}</p>
+																</a>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										 <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
+											<i class="fa fa-angle-left"></i>
+										  </a>
+										  <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
+											<i class="fa fa-angle-right"></i>
+										  </a>			
+									</div>
+
+
 .product-overlay {
 -  background:#FE980F;
 -  top: 0;

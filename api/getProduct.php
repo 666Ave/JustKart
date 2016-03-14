@@ -1,6 +1,6 @@
 <?php
     include 'conn.php';
-    $get_products = "SELECT * FROM products order by RAND() LIMIT 0,6";
+    $get_products = "SELECT * FROM products order by RAND()";
     $run_products = mysqli_query($link,$get_products);
     if($run_products) {
         if(mysqli_num_rows($run_products)>0){

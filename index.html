@@ -117,136 +117,36 @@
 								</div>
 							</div><!--features_items-->
 
-							<div class="category-tab"><!--category-tab-->
-								<div class="col-sm-12">
-									<h2 class="title text-center">New Launches</h2>
-									<ul class="nav nav-tabs">
-										<li class="active"><a href="#tshirt" data-toggle="tab">Mobiles</a></li>
-										<li><a href="#blazers" data-toggle="tab">Laptops</a></li>
-										<li><a href="#sunglass" data-toggle="tab">Bikes</a></li>
-										<li><a href="#kids" data-toggle="tab">Shoes</a></li>
-										<li><a href="#poloshirt" data-toggle="tab">Fashion</a></li>
-									</ul>
-								</div>
-								<div class="tab-content">
-									<div class="tab-pane fade active in" id="tshirt">
-										<div class="col-sm-3" ng-repeat="pro in products" ng-if="$index<4">
-											<div class="product-image-wrapper" >
-												<div class="single-products">
-													<div class="productinfo text-center">
-														<a class="product-image" href="product-details.html#/?pid={{pro.product_id}}">
-															<img src="images/products/{{pro.product_image}}" alt="{{pro.product_image}}"/>
-														</a>
-														<h2>{{ pro.product_price | currency :"₹" :0}}</h2>
-														<a href="product-details.html#/?pid={{pro.product_id}}" class="product-title">
-															<p>{{ pro.product_title}}</p>
-														</a>
-													</div>
-
-												</div>
-											</div>
-										</div> 
-									</div>
-								</div>
-							</div><!--/category-tab-->
-
-							<div class="recommended_items"><!--recommended_items-->
-								<h2 class="title text-center">recently viewed items</h2>
-
-								<div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
-									<div class="carousel-inner">
-										<div class="item active">	
-											<div class="col-sm-4">
-												<div class="product-image-wrapper">
-													<div class="single-products">
-														<div class="productinfo text-center">
-															<img src="images/home/recommend1.jpg" alt="" />
-															<h2>₹56</h2>
-															<p>Easy Polo Black Edition</p>
-															<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-														</div>
-
-													</div>
-												</div>
-											</div>
-											<div class="col-sm-4">
-												<div class="product-image-wrapper">
-													<div class="single-products">
-														<div class="productinfo text-center">
-															<img src="images/home/recommend2.jpg" alt="" />
-															<h2>₹56</h2>
-															<p>Easy Polo Black Edition</p>
-															<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-														</div>
-
-													</div>
-												</div>
-											</div>
-											<div class="col-sm-4">
-												<div class="product-image-wrapper">
-													<div class="single-products">
-														<div class="productinfo text-center">
-															<img src="images/home/recommend3.jpg" alt="" />
-															<h2>₹56</h2>
-															<p>Easy Polo Black Edition</p>
-															<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-														</div>
-
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="item">	
-											<div class="col-sm-4">
-												<div class="product-image-wrapper">
-													<div class="single-products">
-														<div class="productinfo text-center">
-															<img src="images/home/recommend1.jpg" alt="" />
-															<h2>₹56</h2>
-															<p>Easy Polo Black Edition</p>
-															<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-														</div>
-
-													</div>
-												</div>
-											</div>
-											<div class="col-sm-4">
-												<div class="product-image-wrapper">
-													<div class="single-products">
-														<div class="productinfo text-center">
-															<img src="images/home/recommend2.jpg" alt="" />
-															<h2>₹56</h2>
-															<p>Easy Polo Black Edition</p>
-															<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-														</div>
-
-													</div>
-												</div>
-											</div>
-											<div class="col-sm-4">
-												<div class="product-image-wrapper">
-													<div class="single-products">
-														<div class="productinfo text-center">
-															<img src="images/home/recommend3.jpg" alt="" />
-															<h2>₹56</h2>
-															<p>Easy Polo Black Edition</p>
-															<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-														</div>
-
-													</div>
-												</div>
+							<div class="recent-launches" ng-controller="recentLaunchCtrl"><!--recent launches-->
+								<h2 class="title text-center">New Launches</h2>
+								<div class="col-sm-3" ng-repeat="pro in recent" ng-if="$index<4">
+									<div class="product-image-wrapper" >
+										<div class="single-products">
+											<div class="productinfo text-center">
+												<a class="product-image" href="product-details.html#/?pid={{pro.product_id}}">
+													<img src="images/products/{{pro.product_image}}" alt="{{pro.product_image}}"/>
+												</a>
+												<a href="product-details.html#/?pid={{pro.product_id}}" class="product-title">
+													<p>{{ pro.product_title}}</p>
+												</a>
 											</div>
 										</div>
 									</div>
-									 <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
-										<i class="fa fa-angle-left"></i>
-									  </a>
-									  <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
-										<i class="fa fa-angle-right"></i>
-									  </a>			
+								</div> 
+							</div><!--/recent launches-->
+							<span ng-controller="recentviewedCtrl" ng-hide="nologin==false"><!--recently viewed-->
+								<div class="recentviewed">
+									<h2 class="title text-center">recently viewed items</h2>
+									<uib-carousel id="recentviewed-carousel" no-transition="false" active="active" interval="5000">
+										<uib-slide ng-repeat="slide in slides track by slide[0]['product_id']" index="slide.id">
+											<img height="200" width="200" ng-src="images/products/{{slide[0]['product_image']}}" style="margin:auto;">
+											<div class="carousel-caption">
+												<a href="product-details.html#/?pid={{slide[0]['product_id']}}"  class="recent-product-title"><p>{{slide[0]['product_title']}}</p></a>
+											</div>
+									  	</uib-slide>
+									</uib-carousel>
 								</div>
-							</div><!--/recommended_items-->
-
+							</span><!--/recently viewed-->
 						</div>
 					</div>
 				</div>
@@ -261,6 +161,7 @@
 		<script src="scripts/js/angular-cookies.min.js"></script>
 		<script src="scripts/js/angularjs-geolocation.min.js"></script>
 		<script src="scripts/js/ui-bootstrap-tpls-1.1.2.min.js"></script>
+		<script src="scripts/js/angular-animate.min.js"></script>
         <script src="scripts/app.js"></script>
 		<script src="scripts/services/proinfo.js"></script>
 		<script src="scripts/services/authFact.js"></script>
@@ -269,6 +170,8 @@
 		<script src="scripts/controllers/cartCtrl.js"></script>
 		<script src="scripts/controllers/loginCtrl.js"></script>
 		<script src="scripts/controllers/locCtrl.js"></script>
+		<script src="scripts/controllers/recentLaunchCtrl.js"></script>
+		<script src="scripts/controllers/recentviewedCtrl.js"></script>
         <script src="scripts/js/jquery.scrollUp.min.js"></script>
 		<script src="scripts/js/bootstrap.min.js"></script>
         <script src="scripts/js/price-range.js"></script>

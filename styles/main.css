@@ -921,59 +921,15 @@ h2.title {
 	color:#FE980F;
 }
 
-.category-tab {
+.recent-launches {
   overflow: hidden;
 }
 
-.category-tab ul {
-  background: #40403E;
-  border-bottom: 1px solid #FE980F;
-  list-style: none outside none;
-  margin: 0 0 30px;
-  padding: 0;
-  width: 100%;
-}
-
-.category-tab ul li a {
-  border: 0 none;
-  border-radius: 0;
-  color: #B3AFA8;
-  display: block;
-  font-family: 'Roboto', sans-serif;
-  font-size: 14px;
-  text-transform: uppercase;
-}
-
-.category-tab ul  li  a:hover{
-	background:#FE980F;
-	color:#fff;
-}
-
-.nav-tabs  li.active  a, .nav-tabs  li.active  a:hover, .nav-tabs  li.active  a:focus {
-  -moz-border-bottom-colors: none;
-  -moz-border-left-colors: none;
-  -moz-border-right-colors: none;
-  -moz-border-top-colors: none;
-  background-color: #FE980F;
-  border:0px;
-  color: #FFFFFF;
-  cursor: default;
-  margin-right:0;
-  margin-left:0;
-}
-
-.nav-tabs  li  a {
-  border: 1px solid rgba(0, 0, 0, 0);
-  border-radius: 4px 4px 0 0;
-  line-height: 1.42857;
-  margin-right:0;
-}
-
-.recommended_items {
+.recentviewed {
   overflow: hidden;
 }
 
-#recommended-item-carousel .carousel-inner .item {
+#recentviewed-carousel .carousel-inner .item {
   padding-left: 0;
 }
 

@@ -2,20 +2,17 @@
 	header('Content-type: application/json');
 	$status = array(
 		'type'=>'success',
-		'message'=>'Thank you for contact us. As early as possible  we will contact you '
+		'message'=>'Thank you for subscribing to us.'
 	);
 
-    $name       = @trim(stripslashes($_POST['name'])); 
-    $email      = @trim(stripslashes($_POST['email'])); 
-    $subject    = @trim(stripslashes($_POST['subject'])); 
-    $message    = @trim(stripslashes($_POST['message'])); 
+    $email_to = "Admin@JustKart.com";//@trim(stripslashes($_POST['email'])); 
+    $subject    = "Subscribtion to our newsletter"; 
+	$headers = "From: avian.silveira@gmail.com";
+    $body = "Thank you for subscribing to us '".$email_to."'. We are happy to give you news about our latest offers and products.";
 
-    $email_from = $email;
-    $email_to = 'avian.silveira@gmail.com';//replace with your email
-
-    $body = 'Name: ' . $name . "\n\n" . 'Email: ' . $email . "\n\n" . 'Subject: ' . $subject . "\n\n" . 'Message: ' . $message;
-
-    $success = @mail($email_to, $subject, $body, 'From: <'.$email_from.'>');
-
-    echo json_encode($status);
-    die;
+    $success = @mail($email_to, $subject, $body,$headers);
+	if($success)
+    	echo json_encode($status);
+	else
+		echo "Failed";
+?>
