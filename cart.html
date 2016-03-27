@@ -50,11 +50,9 @@
 									<td class="cart_price">
 										<p>{{ pro.product_price | currency :"₹" :0}}</p>
 									</td>
-									<td class="cart_quantity">
-										<div class="cart_quantity_button">
-											<input class="cart_quantity_input" string-to-number type="number" name="product_qty" value="{{pro.quantity}}" ng-model="pro.quantity" min="1" max="10" />
-										</div>
-									</td>
+									<div class="cart_quantity_button">
+                                        <p class="cart_quantity_input">{{pro.quantity}}<p/>
+                                    </div>
 									<td class="cart_total">
 										<p class="cart_total_price">{{  pro.product_price *pro.quantity | currency :"₹" :0 }}</p>
 									</td>
@@ -100,7 +98,7 @@
 									<li>Shipping Cost <span>500</span></li>
 									<li>Total <span>{{ (total_p() | num) | currency :"₹" :0 }}</span></li>
 								</ul>
-								<a class="btn btn-default check_out" href="">Check Out</a>
+								<button ng-click="checkOut();" class="btn btn-default check_out">Check Out</button>
 							</div>
 						</div>
 					</div>
@@ -120,6 +118,8 @@
         <script src="scripts/app.js"></script>
 		<script src="scripts/directives/sTOn.js"></script>
 		<script src="scripts/services/authFact.js"></script>
+        <script src="scripts/services/proinfo.js"></script>
+        <script src="scripts/controllers/MainController.js"></script>
 		<script src="scripts/controllers/cartCtrl.js"></script>
 		<script src="scripts/controllers/loginCtrl.js"></script>
 		<script src="scripts/controllers/locCtrl.js"></script>

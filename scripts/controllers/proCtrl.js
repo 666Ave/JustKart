@@ -19,7 +19,7 @@ app.controller('proCtrl',function($scope,$http,$location,proinfo){
 			}
 		})
 		.error(function(response){
-			console.log('error occured');
+			console.log('error occured ');
 		});
 	
 });

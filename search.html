@@ -63,30 +63,31 @@
 
 							<div class="col-sm-9 padding-right">
 								<div class="features_items" ng-init="total = 0"><!--features_items-->
-									<h2 class="title text-center">Features Items</h2>
-									<div ng-repeat="pro in searchProd track by $index">
-										<div class="col-sm-4">
-											<div class="product-image-wrapper">
-												<div class="single-products">
-														<div class="productinfo text-center" ng-init="$parent.total = $parent.total + 1">
-																<a class="product-image" href="product-details.html#/?pid={{pro.product_id}}">
-																	<img src="images/products/{{pro.product_image}}" alt="{{pro.product_image}}"/>
-																</a>
-															<h2>{{ pro.product_price | currency :"₹" :0}}</h2>
-															<a href="product-details.html#/?pid={{pro.product_id}}" class="product-title">
-																<p>{{ pro.product_title}}</p>
-															</a>
-														</div>
-												</div>
-												<div class="choose">
-													<ul class="nav nav-pills nav-justified">
-														<li><a href="home"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-														<li><a href="home"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-													</ul>
-												</div>
-											</div>
-										</div>
-									</div>
+                                    <div class="row">
+                                        <h2 class="title text-center">Features Items</h2>
+                                        <div ng-repeat="pro in searchProd track by $index">
+                                            <div class="col-sm-4">
+                                                <div class="product-image-wrapper">
+                                                    <div class="single-products">
+                                                            <div class="productinfo text-center" ng-init="$parent.total = $parent.total + 1">
+                                                                    <a class="product-image" href="product-details.html#/?pid={{pro.product_id}}">
+                                                                        <img src="images/products/{{pro.product_image}}" alt="{{pro.product_image}}"/>
+                                                                    </a>
+                                                                <h2>{{ pro.product_price | currency :"₹" :0}}</h2>
+                                                                <a href="product-details.html#/?pid={{pro.product_id}}" class="product-title">
+                                                                    <p>{{ pro.product_title}}</p>
+                                                                </a>
+                                                            </div>
+                                                    </div>
+                                                    <div class="choose">
+                                                        <ul class="nav nav-pills nav-justified">
+                                                            <li><a href="home"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 									<ul class="pagination">
 										<li class="active"><a href="">1</a></li>
 										<li><a href="">2</a></li>

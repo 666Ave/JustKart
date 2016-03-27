@@ -156,3 +156,14 @@
 5)The recent Launched relies on the launch_date filed instead of the time-added field now.
 6)Included the angular-animate.min.js file in all pages.
 7)The recently viewed module works.
+
+	Version 1.5.0.2016.03.
+1)Added an alert that tells you to log in when add to cart is clicked if not logged in.
+2)Removed the add to compare option on all pages.
+3)Made the tabs look like OG and removed tags and company profile.
+4)Fixed some missing files issues in the cart page.
+5)Pasted the cart details from the cart page to the checkout page.
+6)Trimed out unnecessary things from the checkout page.
+7)Added the payment options.
+8)The checkout page is ready.
+9)Changed the order page slightly.

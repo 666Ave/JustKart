@@ -4,7 +4,7 @@
 		$_SESSION['recent'] = []; 
 		echo null;
 	}
-	/* Code for deleting session
+	/*Code for deleting session
 	unset($_SESSION);
 	session_destroy();
 	//Code for deleting session */ 

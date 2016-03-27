@@ -13,6 +13,7 @@
 		$data['message'] = 'Success!';
 		$data['user'] = $row['Name'];
 		$data['uid'] = $row['User_ID'];
+        $data['uaddress'] = $row['Address'];
 	}
 	else {
 		$data['success'] = false;

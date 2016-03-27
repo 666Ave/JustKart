@@ -9,6 +9,10 @@ app.controller('cartCtrl',function($scope,$http,$window,$cookies,$filter,authFac
 		$scope.userID = 0;
 	
 	$scope.cartAdd = function (proID,Pqty) {
+		if(!$cookies.get('userID')){
+			$window.alert("Please log in first");
+			$window.location.href = '/login.html';
+		}
 		$http.get("api/cart_add.php",{params:{add_cart:proID,qty:$scope.pQty,uID:$scope.userID}})
 			.success(function(response) {
 				if(!response.success) {
@@ -73,5 +77,9 @@ app.controller('cartCtrl',function($scope,$http,$window,$cookies,$filter,authFac
 			.error(function(response){
 				console.log('error occured3');
 			});
+	};
+    
+    $scope.checkOut= function () {
+		$window.location.href = '/checkout.html';
 	};
 });

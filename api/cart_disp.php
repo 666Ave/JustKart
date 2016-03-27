@@ -19,8 +19,8 @@
 						'product_cat' => $row2['product_cat'],
 						'product_brand' => $row2['product_brand'],
 						'product_title' => $row2['product_title'],
-						'product_price' => $row2['product_price'],
-						'product_descrp' => $row2['product_descrp'],
+                        'product_price' => $row2['product_price'],
+			 			'product_descrp' => $row2['product_descrp'],
 						'product_image' => $row2['product_image'],
 						'product_keywords' => $row2['product_keywords'],
 						'quantity' => $row['qty']
