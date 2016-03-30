@@ -16,55 +16,93 @@
     <body ng-app="Myapp">
         <div id="header" ng-include src="'templates/header.html'"><!--header-->
         </div><!--/header-->
-        <span ng-hide="oconfirm==false">
-            <section id="cart_items">
-				<div class="container">
-					<div class="breadcrumbs">
-						<ol class="breadcrumb">
-						  <li><a href="/">Home</a></li>
-						  <li class="active">Orders</li>
-						</ol>
-					</div>
-					<div class="table-responsive cart_info">
-						<table class="table table-condensed" ng-controller="cartCtrl">
-							<thead>
-								<tr class="cart_menu">
-									<td class="image">Item</td>
-									<td class="description">Description</td>
-									<td class="price">Price</td>
-									<td class="quantity">Quantity</td>
-									<td class="total">Total</td>
-									<td></td>
-								</tr>
-							</thead>
-							<tbody>
-								<tr ng-repeat="pro in cart_items track by $index">
-									<td class="cart_product" >
-										<a href="product-details.html#/?pid={{pro.product_id}}"><img src="images/products/{{ pro.product_image }}" alt="{{ pro.product_title }}"></a>
-									</td>
-									<td class="cart_description">
-										<h4><a href="product-details.html#/?pid={{pro.product_id}}">{{ pro.product_title }}</a></h4>
-										<p>Web ID: {{ pro.product_id }}</p>
-									</td>
-									<td class="cart_price">
-										<p>{{ pro.product_price | currency :"₹" :0}}</p>
-									</td>
-									<div class="cart_quantity_button">
-                                        <p class="cart_quantity_input">{{pro.quantity}}<p/>
-                                    </div>
-									<td class="cart_total">
-										<p class="cart_total_price">{{  pro.product_price *pro.quantity | currency :"₹" :0 }}</p>
-									</td>
-									<td class="cart_delete">
-										<button ng-click="cartDelete(pro.product_id);" class="btn btn-fefault cart"><i class="fa fa-times"></i></button>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</section> <!--/#cart_items-->
-        </span>
+        <div ng-controller="orderCtrl">
+            <div ng-hide="oconfirm==='false'">
+                <section id="cart_items">
+                    <div class="container">
+                        <div class="breadcrumbs">
+                            <ol class="breadcrumb">
+                              <li><a href="/">Home</a></li>
+                              <li class="active">Orders</li>
+                            </ol>
+                        </div>
+                        <div class="table-responsive cart_info">
+                            <table class="table table-condensed" ng-controller="cartCtrl">
+                                <thead>
+                                    <tr class="cart_menu">
+                                        <td class="image">Item</td>
+                                        <td class="description">Description</td>
+                                        <td class="price">Price</td>
+                                        <td class="quantity">Quantity</td>
+                                        <td class="total">Total</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="pro in cart_items track by $index">
+                                        <td class="cart_product" >
+                                            <a href="product-details.html#/?pid={{pro.product_id}}"><img src="images/products/{{ pro.product_image }}" alt="{{ pro.product_title }}"></a>
+                                        </td>
+                                        <td class="cart_description">
+                                            <h4><a href="product-details.html#/?pid={{pro.product_id}}">{{ pro.product_title }}</a></h4>
+                                            <p>Web ID: {{ pro.product_id }}</p>
+                                        </td>
+                                        <td class="cart_price">
+                                            <p>{{ pro.product_price | currency :"₹" :0}}</p>
+                                        </td>
+                                        <td class="cart_quantity">
+                                            <div class="cart_quantity_button">
+                                                <p class="cart_quantity_input">{{pro.quantity}}<p/>
+                                            </div>
+                                        </td>
+                                        <td class="cart_total">
+                                            <p class="cart_total_price">{{  pro.product_price *pro.quantity | currency :"₹" :0 }}</p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="order_msg">
+                            <h3>Order Successfull !</h3>
+                            <button ng-click="OrderConfirm()" class="btn btn-default check_out">Back To Home</button>
+                        </div>
+                    </div>
+                </section> <!--/#cart_items-->
+            </div>
+            <div ng-hide="oconfirm==='true'">
+                <div class="prev_orders">
+                    <section id="cart_items">
+                        <div class="container">
+                            <h2>Past Orders</h2>
+                            <div class="table-responsive cart_info">
+                                <table class="table table-condensed">
+                                    <thead>
+                                        <tr class="cart_menu">
+                                            <td class="image">Item</td>
+                                            <td class="description">Description</td>
+                                            <td class="details">Details</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="pro in order_items track by $index">
+                                            <td class="cart_product" >
+                                                <a href="product-details.html#/?pid={{pro.product_id}}"><img src="images/products/{{ pro.product_image }}" alt="{{ pro.product_title }}"></a>
+                                            </td>
+                                            <td class="cart_description">
+                                                <h4><a href="product-details.html#/?pid={{pro.product_id}}">{{ pro.product_title }}</a></h4>
+                                                <p>Web ID: {{ pro.product_id }}</p>
+                                            </td>
+                                            <td class="cart_details">
+                                                <a href="product-details.html#/?pid={{pro.product_id}}" class="btn btn-default check_out">Details</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </section> <!--/#cart_items-->
+                </div>
+            </div>
+        </div>
         <div id="footer" ng-include src="'templates/footer.html'"><!--Footer-->		
         </div><!--/Footer-->
 

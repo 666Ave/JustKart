@@ -1,4 +1,4 @@
-jQuery(function($) {'use strict',
+jQuery/*(function($) {'use strict',
 
 	var form = $('.contact-form');
 	form.submit(function () {'use strict',
@@ -11,7 +11,7 @@ jQuery(function($) {'use strict',
 		return false;
 	});
 
-});
+});*/
 
 // Google Map Customization
 (function(){
@@ -20,10 +20,10 @@ jQuery(function($) {'use strict',
 
 	map = new GMaps({
 		el: '#gmap',
-		lat: 43.1580159,
-		lng: -77.6030777,
+		lat: 19.351790,
+        lng: 72.8255868,
 		scrollwheel:false,
-		zoom: 14,
+		zoom: 15,
 		zoomControl : false,
 		panControl : false,
 		streetViewControl : false,
@@ -32,11 +32,9 @@ jQuery(function($) {'use strict',
 		clickable: false
 	});
 
-	var image = 'images/map-icon.png';
 	map.addMarker({
-		lat: 43.1580159,
-		lng: -77.6030777,
-		// icon: image,
+		lat: 19.351790,
+        lng: 72.8255868,
 		animation: google.maps.Animation.DROP,
 		verticalAlign: 'bottom',
 		horizontalAlign: 'center',

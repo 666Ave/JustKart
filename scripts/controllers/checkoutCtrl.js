@@ -30,6 +30,6 @@ app.controller('checkoutCtrl',function($scope,$http,$cookies,$window){
     });
     
     $scope.checkout = function(){
-        $window.location.href="/orders.html#/?order=confirmed";
+        $window.location.href="/orders.html#/?order=true";
     }
 });

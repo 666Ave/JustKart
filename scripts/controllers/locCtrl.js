@@ -1,4 +1,4 @@
-app.controller('locCtrl',function($scope,$http,$uibModal,$window,$cookies,$log,geolocation){
+app.controller('locCtrl',function($scope,$http,$uibModal,$window,$cookies,$log,geolocation,proinfo){
 	if(!$cookies.get('chLoc')) {
 		geolocation.getLocation().then(function(data){
 			$scope.coords = {lat:data.coords.latitude, long:data.coords.longitude};			
@@ -7,6 +7,7 @@ app.controller('locCtrl',function($scope,$http,$uibModal,$window,$cookies,$log,g
 				.success(function(response) {
 					if(response) {
 						$scope.location = response['results'][3]['address_components'][1].long_name;
+                        $cookies.put('Loc',$scope.location);
 					}
 				})
 				.error(function(response){
@@ -20,6 +21,7 @@ app.controller('locCtrl',function($scope,$http,$uibModal,$window,$cookies,$log,g
 			.success(function(response) {
 				if(response) {
 					$scope.location = response['results'][0]['address_components'][0].long_name;
+                    $cookies.put('Loc',$scope.location);
 				}
 			})
 			.error(function(response){

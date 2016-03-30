@@ -1,4 +1,4 @@
-app.controller('MainController',function($scope,$http,proinfo){
+app.controller('MainController',function($scope,$http,$cookies,proinfo){
 	var self = this;
 	$scope.date = new Date();
     $http.get("api/getCat.php")
@@ -10,16 +10,7 @@ app.controller('MainController',function($scope,$http,proinfo){
             console.log('error occured1');
         });
     
-    $http.get("api/getBrand.php")
-        .success(function(response) {
-            $scope.brands = response;
-			proinfo.storeBrands($scope.brands);
-        })
-        .error(function(response){
-            console.log('error occured2');
-        });
-    
-    $http.get("api/getProduct.php")
+    $http.get("api/getProduct.php",{params:{loc:$cookies.get('Loc')}})
         .success(function(response) {
             $scope.products = response;
         })

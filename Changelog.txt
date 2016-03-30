@@ -157,7 +157,7 @@
 6)Included the angular-animate.min.js file in all pages.
 7)The recently viewed module works.
 
-	Version 1.5.0.2016.03.
+	Version 1.5.0.2016.03.28
 1)Added an alert that tells you to log in when add to cart is clicked if not logged in.
 2)Removed the add to compare option on all pages.
 3)Made the tabs look like OG and removed tags and company profile.
@@ -167,3 +167,12 @@
 7)Added the payment options.
 8)The checkout page is ready.
 9)Changed the order page slightly.
+
+    Version 1.5.1.2016.03.31
+1)The orders page is created.
+2)The orders page displays different views depending on whether you just checkedout or just viewing past orders.
+3)Added new field in the products table and a new table shops and linked both with a foreign key.
+4)Updated the DB file.
+5)With the use of a cookie and changes in the getProduct.php file the products are displayed location wise.
+6)The product-details cleaned up and formatted some things.
+7)Made the Policies pages and filled them with data.
