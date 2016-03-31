@@ -75,9 +75,7 @@
                                     <div class="col-sm-7" ng-controller="cartCtrl">
                                         <div class="product-information"><!--/product-information-->
                                             <h2>{{product[0].product_title}}</h2>
-                                            <p>
-                                            <img src="images/product-details/rating.png" alt="" />
-                                            </p>
+                                            <p><i class="fa fa-star"></i>{{ tot_rating | currency :"":1 }} out of {{ ratings.max }} , based on {{ tot_comments }} comments</p>
                                             <span>
                                                 <span>{{product[0].product_price | currency :"₹":0}}</span>
                                                 <label>Quantity:</label>
@@ -99,53 +97,10 @@
                                         <div class="col-sm-12">
                                             <h2 class="title text-center">Product Description</h2>
                                             <div id="details" > 
-                                                <div class="col-sm-3">
-                                                    <div class="product-image-wrapper">
-                                                        <div class="single-products">
-                                                            <div class="productinfo text-center">
-                                                                <img src="images/home/gallery1.jpg" alt="" />
-                                                                <h2>$56</h2>
-                                                                <p>Easy Polo Black Edition</p>
-                                                                <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <div class="product-image-wrapper">
-                                                        <div class="single-products">
-                                                            <div class="productinfo text-center">
-                                                                <img src="images/home/gallery2.jpg" alt="" />
-                                                                <h2>$56</h2>
-                                                                <p>Easy Polo Black Edition</p>
-                                                                <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <div class="product-image-wrapper">
-                                                        <div class="single-products">
-                                                            <div class="productinfo text-center">
-                                                                <img src="images/home/gallery3.jpg" alt="" />
-                                                                <h2>$56</h2>
-                                                                <p>Easy Polo Black Edition</p>
-                                                                <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <div class="product-image-wrapper">
-                                                        <div class="single-products">
-                                                            <div class="productinfo text-center">
-                                                                <img src="images/home/gallery4.jpg" alt="" />
-                                                                <h2>$56</h2>
-                                                                <p>Easy Polo Black Edition</p>
-                                                                <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                <div class="col-sm-12">
+                                                    <ul>
+                                                        <li ng-repeat="descrp in pro_descp"><i class="fa fa-tag"></i>{{descrp}}</li>
+                                                    </ul>
                                                 </div>
                                             </div>
                                         </div>
@@ -153,24 +108,34 @@
                                             <h2 class="title text-center">Reviews</h2>
                                             <div id="reviews" >
                                                 <div class="col-sm-12">
-                                                    <ul>
-                                                        <li><a href=""><i class="fa fa-user"></i>EUGEN</a></li>
-                                                        <li><a href=""><i class="fa fa-clock-o"></i>12:41 PM</a></li>
-                                                        <li><a href=""><i class="fa fa-calendar-o"></i>31 DEC 2014</a></li>
-                                                    </ul>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                                                    <div ng-repeat="r in reviews">
+                                                        <ul>
+                                                            <li><i class="fa fa-user"></i>{{ r.user_name }}</li>
+                                                            <li><i class="fa fa-clock-o"></i>{{ r.review_date*1000 | date:'hh:mm a'}}</li>
+                                                            <li><i class="fa fa-calendar-o"></i>{{ r.review_date*1000 | date:'dd EEE yyyy' : UTC}}</li>
+                                                            <li><i class="fa fa-star"></i>{{ r.rating }}</li>
+                                                        </ul>
+                                                        <p>{{ r.review_content }}</p>
+                                                        <hr/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="review">
+                                                <div class="col-sm-12">
                                                     <p><b>Write Your Review</b></p>
-
                                                     <form action="#">
                                                         <textarea name="" ></textarea>
-                                                        <b>Rating: </b> <img src="images/product-details/rating.png" alt="" />
+                                                        <b>Rating: </b> <span>{{ratings.current}} out of {{ratings.max}}
+                                                            <div star-rating rating-value="ratings.current" max="ratings.max" on-rating-selected="getSelectedRating(rating)">
+                                                            </div>
+                                                        </span>      
                                                         <button type="button" class="btn btn-default pull-right">
                                                             Submit
                                                         </button>
                                                     </form>
                                                 </div>
                                             </div>
-                                         </div>
+                                        </div>
                                     </div>
                                 </div><!--product-description-->
                                 <div class="recommended_items"><!--recommended_items-->
@@ -264,9 +229,9 @@
                                 </div><!--/recommended_items-->
                             </div>
                         </div>
-                    </div>
-				</section>
-			</div>
+                     </div>
+                </section>
+            </div>
 		</div>
         <div id="footer" ng-include src="'templates/footer.html'"><!--Footer-->		
         </div><!--/Footer-->
@@ -279,6 +244,7 @@
         <script src="scripts/app.js"></script>
 		<script src="scripts/services/proinfo.js"></script>
 		<script src="scripts/services/authFact.js"></script>
+        <script src="scripts/directives/starRating.js"></script>
         <script src="scripts/controllers/MainController.js"></script>
 		<script src="scripts/controllers/proCtrl.js"></script>
 		<script src="scripts/controllers/cartCtrl.js"></script>

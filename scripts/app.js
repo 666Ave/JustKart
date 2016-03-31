@@ -7,7 +7,6 @@ app.filter('num', function() {
     }
 });
 
-
 app.controller('LocModalInstanceCtrl', function ($scope, $uibModalInstance, location,error) {
 	$scope.input="";
   	$scope.location = location;

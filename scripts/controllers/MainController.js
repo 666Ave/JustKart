@@ -13,6 +13,7 @@ app.controller('MainController',function($scope,$http,$cookies,proinfo){
     $http.get("api/getProduct.php",{params:{loc:$cookies.get('Loc')}})
         .success(function(response) {
             $scope.products = response;
+            console.log($cookies.get('Loc'));
         })
         .error(function(response){
             console.log('error occured3');

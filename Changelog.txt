@@ -176,3 +176,13 @@
 5)With the use of a cookie and changes in the getProduct.php file the products are displayed location wise.
 6)The product-details cleaned up and formatted some things.
 7)Made the Policies pages and filled them with data.
+
+    Version 1.5.2.2016.04.01
+1)Created a string array of the product descrption.
+2)The products-details page now displays the products descrption.
+3)The reviews part is working.
+4)Added a line breaker after every comment.
+5)Added a star rating directive and implemented it on the product-details page.
+6)Added a rating field to the reviews table.
+7)Displayed ratings on each review and the total average rating along based on total comments.
+8)Updated the DB file.

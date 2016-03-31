@@ -1102,6 +1102,15 @@ h2.title {
   margin-top: 0;
 }
 
+.product-information p {
+  font-size: 16px;
+}
+
+.product-information p i{
+  margin-right: 5px;
+  color: #FE980F;
+}
+
 .product-information span {
   display: inline-block;
   margin-bottom: 8px;
@@ -1136,6 +1145,29 @@ h2.title {
   margin-right: 5px;
 }
 
+.rating{
+  color: #696763;
+  margin: 0;
+  padding: 0;
+}
+
+ul.rating {
+  display: inline-block;
+}
+
+.rating li {
+  list-style-type: none;
+  display: inline-block;
+  padding: 1px;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.review .rating .filled {
+    color: #FE980F;
+}
+
 .cart {
   background: #F5F5ED;
   border: 0 none;
@@ -1152,19 +1184,6 @@ h2.title {
   color: #FFFFFF;
 }
 
-
-.shop-details-tab {
-  border: 1px solid #F7F7F0;
-  margin-bottom: 75px;
-  margin-left: 15px;
-  margin-right: 15px;
-  padding-bottom: 10px;
-}
-.shop-details-tab .col-sm-12 {
-	padding-left: 0;
-	padding-right: 0;
-}
-
 #reviews ul {
   background: #FFFFFF;
   border: 0 none;
@@ -1173,24 +1192,20 @@ h2.title {
   padding: 0;
 }
 
-#reviews  ul  li {
-	display:inline-block;
-}
-
-#reviews ul li a {
+#reviews ul li {
+  display:inline-block;
   color: #696763;
-  display: block;
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
   padding-right: 15px;
 }
 
-#reviews ul li a i{
+#reviews ul li i{
 	color:#FE980F;
 	padding-right:8px;
 }
 
-#reviews ul li a:hover{
+#reviews ul li:hover{
 	background:#fff;
 	color:#FE980F;
 }
@@ -1199,7 +1214,7 @@ h2.title {
 	color:#363432;
 }
 
-#reviews textarea {
+.review textarea {
   background: #F0F0E9;
   border: medium none;
   color: #A6A6A1;
@@ -1213,7 +1228,7 @@ h2.title {
   width: 99.5%;
 }
 
-#reviews button {
+.review button {
   background: #FE980F;
   border: 0 none;
   border-radius: 0;
@@ -1222,7 +1237,7 @@ h2.title {
   font-size: 14px;
 }
 
-#reviews button:hover{
+.review button:hover{
 	background:#F7F7F0;
 	color:#696763;
 }

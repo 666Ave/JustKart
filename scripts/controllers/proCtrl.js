@@ -1,5 +1,17 @@
-app.controller('proCtrl',function($scope,$http,$location,proinfo){
-	var self=this;
+app.controller('proCtrl',function($scope,$http,$location,$filter,proinfo){
+	var self=this; 
+    
+    $scope.rating = 0;
+    $scope.tot_rating = 0;
+    $scope.tot_comments = 0;
+    $scope.ratings = {
+        current: 3,
+        max: 5
+    };
+    $scope.getSelectedRating = function (rating) {
+        console.log(rating);
+    }
+    
 	$http.get("api/getProductByID.php",{params:{pid:$location.search().pid}})
 		.success(function(response) {
 			$scope.product = response;
@@ -17,9 +29,22 @@ app.controller('proCtrl',function($scope,$http,$location,proinfo){
 					break;
 				}
 			}
+            $scope.pro_descp = $scope.product[0].product_descrp.split("~");
 		})
 		.error(function(response){
 			console.log('error occured ');
 		});
 	
+    $http.get("api/getReviews.php",{params:{pid:$location.search().pid}})
+		.success(function(response) {
+			$scope.reviews = response;
+            $scope.tot_comments = $scope.reviews.length;
+            for(var i=0; i<$scope.tot_comments; i++){
+                $scope.tot_rating +=$filter('num')($scope.reviews[i].rating);
+            }
+            $scope.tot_rating /=$scope.tot_comments;
+		})
+		.error(function(response){
+			console.log('error occured ');
+		});
 });
