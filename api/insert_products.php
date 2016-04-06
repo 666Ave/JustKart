@@ -8,7 +8,8 @@
         $product_desc = $_POST['product_desc'];
 		$time_added = date("Y-m-d h:i:s a");
         $product_keywords = $_POST['product_keywords'];
-
+        $shop_id = $_POST['shop_id'];
+        $launch_date = $_POST['launch_date'];
         $product_image = $_FILES['product_image']['name'];
         $product_image_tmp = $_FILES['product_image']['tmp_name'];
         $product_image_location = "../images/products/$product_image";

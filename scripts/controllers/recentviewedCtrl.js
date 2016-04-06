@@ -6,7 +6,6 @@ app.controller('recentviewedCtrl',function($scope,$http){
     $http.get("api/getRecentViewed.php")
         .success(function(response) {
             $scope.slides = response;
-		console.log(response);
         })
         .error(function(response){
             console.log('error occured3');
