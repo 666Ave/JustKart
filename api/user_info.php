@@ -10,10 +10,14 @@
 	if($run_user) {
 		$data['user'] = true;
         $row = mysqli_fetch_assoc($run_user);
-        $data['Name'] = $row['Name'];
+        $data['fName'] = $row['fName'];
+        $data['lName'] = $row['lName'];
         $data['Address'] = $row['Address'];
         $data['Pin_code'] = $row['Pin_code'];
         $data['Mobile_no'] = $row['Mobile_no'];
+        $data['email'] = $row['Email_address'];
+        $data['gender'] = $row['Gender'];
+        $data['uname'] = $row['UName'];
 	}
 	else{
         $data['user'] = false;

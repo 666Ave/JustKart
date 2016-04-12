@@ -4,7 +4,7 @@
 	$UName = $_POST['Lname'];
 	$Password = $_POST['Lpassword'];
 
-	$check_login = "SELECT * FROM user where UName='$UName' AND Password='$Password'";
+	$check_login = "SELECT * FROM user where UName='$UName' AND Password='$Password' AND Active=1";
 	$run_login = mysqli_query($link,$check_login);
 
 	if(mysqli_num_rows($run_login)>0) {

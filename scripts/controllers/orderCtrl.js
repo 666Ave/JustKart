@@ -6,6 +6,11 @@ app.controller('orderCtrl',function($scope,$http,$cookies,$window,$location){
     else
         $scope.userID = 0;
     
+    if(!$cookies.get('userID')){
+        $window.alert("Please log in first");
+        $window.location.href="login.html";
+    }
+    
    $http.get("api/order_disp.php",{params:{uID:$scope.userID}})
         .success(function(response) {
             if(response) {

@@ -10,6 +10,15 @@ app.controller('MainController',function($scope,$http,$cookies,proinfo){
             console.log('error occured1');
         });
     
+    $http.get("api/getBrand.php")
+        .success(function(response) {
+            $scope.brand = response;
+			proinfo.storeBrands($scope.brand);
+        })
+        .error(function(response){
+            console.log('error occured1');
+        });
+    
     $http.get("api/getProduct.php",{params:{loc:$cookies.get('Loc')}})
         .success(function(response) {
             $scope.products = response;

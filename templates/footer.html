@@ -117,8 +117,8 @@
 						</div>
 					</div>
 					<div class="col-sm-3 col-sm-offset-3">
-						<div class="single-widget">
-							<form action="#" class="searchform">
+						<div class="single-widget" ng-controller="contactCtrl">
+							<form ng-submit="postEmail()" class="searchform">
 								<input type="text" placeholder="Your email address" />
 								<button type="submit" class="btn btn-default"><i class="fa fa-arrow-circle-o-right"></i></button>
 								<p>Get the best offers & deals <br />straight to your mailbox</p>

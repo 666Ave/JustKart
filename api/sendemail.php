@@ -12,7 +12,7 @@
 
     $success = @mail($email_to, $subject, $body,$headers);
 	if($success)
-    	echo json_encode($status);
+    	echo json_encode($status['message']);
 	else
 		echo "Failed";
 ?>

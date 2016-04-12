@@ -675,6 +675,18 @@ ul.sub-menu {
   z-index:3;
 }
 
+.left-sidebar .list-heading{
+  color: #FE980F;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  margin: 10px auto 10px;
+  text-align: center;
+  text-transform: uppercase;
+  position: relative;
+  z-index:3;
+}
+
 .left-sidebar h2:after, h2.title:after{
 	content: " ";
 	position: absolute;
@@ -1031,43 +1043,6 @@ h2.title {
   width: 100%;
 }
 
-.view-product h3 {
-  background: #FE980F;
-  bottom: 0;
-  color: #FFFFFF;
-  font-family: 'Roboto', sans-serif;
-  font-size: 14px;
-  font-weight: 700;
-  margin-bottom: 0;
-  padding: 8px 20px;
-  position: absolute;
-  right: 0;
-}
-
-#similar-product .carousel-inner .item{
-	padding-left:0px;
-}
-
-#similar-product .carousel-inner .item img {
-  display: inline-block;
-  margin-left: 15px;
-}
-
-.item-control {
-  position: absolute;
-  top: 35%;
-}
-.item-control i {
-  background: #FE980F;
-  color: #FFFFFF;
-  font-size: 20px;
-  padding: 5px 10px;
-}
-
-.item-control i:hover{
-	background:#ccccc6;
-}
-
 .product-information {
   border: 1px solid #F7F7F0;
   overflow: hidden;
@@ -1162,6 +1137,10 @@ h2.title {
 #reviews ul li i{
 	color:#FE980F;
 	padding-right:8px;
+}
+
+#reviews ul li a:hover{
+	text-decoration: underline;
 }
 
 #reviews ul li:hover{
@@ -1367,6 +1346,36 @@ ul.rating {
 	width: 50px;
 }
 
+
+/*************************
+*******Account page CSS******
+**************************/
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:focus {
+    color: #FFF;
+    background-color: #FE980F;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.4); 
+    -moz-box-shadow: 0px 2px 5px rgba(0,0,0,0.4); 
+    -webkit-box-shadow: 0px 2px 5px rgba(0,0,0,0.4); 
+    -o-box-shadow: 0px 2px 5px rgba(0,0,0,0.4);
+}
+
+.nav-pills > li.active > a:hover {
+    background-color: #fec00f;
+}
+
+.list-stack ul li a{
+    color: #696763;
+}
+
+ select {
+  background:#F0F0E9;
+  border: 0 none;
+  margin-bottom:10px;
+  padding: 10px;
+  width: 17%;
+  font-weight: 300
+}
 
 /*************************
 *******Cart CSS******

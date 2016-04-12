@@ -10,6 +10,7 @@ app.controller('checkoutCtrl',function($scope,$http,$cookies,$window){
         .success(function(response) {
             if(response.user) {
                 $scope.UInfo = response;
+                $scope.UInfo.Name = $scope.UInfo.fName+" "+$scope.UInfo.lName;
                 $scope.url = "http://maps.googleapis.com/maps/api/geocode/json?address="+$cookies.get('chLoc')+"&sensor=false";
                 $http.get($scope.url)
                     .success(function(response) {

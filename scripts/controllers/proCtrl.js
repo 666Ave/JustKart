@@ -86,7 +86,6 @@ app.controller('proCtrl',function($scope,$http,$location,$window,$cookies,$filte
 		.success(function(response) {
 			$scope.similar = response;
             $scope.similars.push($scope.similar);
-            console.log($scope.similars);
 		})
 		.error(function(response){
 			console.log('error occured ');

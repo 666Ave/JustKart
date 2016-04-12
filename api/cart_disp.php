@@ -3,7 +3,7 @@
 
 	$uid = $_GET['uID'];
 
-    $get_cart = "SELECT * FROM cart where User_ID ='$uid'";
+    $get_cart = "SELECT * FROM cart where User_ID ='$uid' AND expired=0";
     $run_cart = mysqli_query($link,$get_cart);
     if($run_cart) {
         if(mysqli_num_rows($run_cart)>0){

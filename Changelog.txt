@@ -187,7 +187,7 @@
 7)Displayed ratings on each review and the total average rating along based on total comments.
 8)Updated the DB file.
 
-    Version 1.5.3.2016.04.
+    Version 1.5.3.2016.04.05
 1)Got the review title to display.
 2)Made the post review form and logic.
 3)Made the api for posting reviews.
@@ -195,3 +195,14 @@
 5)Updated the insert_products page to include new fields.
 6)Made the similar products module.
 7)Implemented a carousel for the similar products.
+
+    Version 1.5.4.2016.04.13
+1)Fixed the error of the brands name not appearing on the product page.
+2)Fixed the send email part in the footer and the contact form on the contact page.
+3)Created the my account page.
+4)Got the links and everything working.
+5)The my account page is working.
+6)Made changes to the cart table such that it retains the previous items.
+7)Deleted userIP api.
+8)Updated the user module like the cart table.
+9)Added the deactivate function in the user panel module.

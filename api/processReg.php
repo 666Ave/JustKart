@@ -7,7 +7,7 @@
 	$Email = $_POST['Remail'];
 	$PinCode = $_POST['Rpincode'];
 
-	$get_reg = "insert INTO user(UName,Email_address,Password,Pin_code,Name) values ('$UName','$Email','$Password','$PinCode','$Name')";
+	$get_reg = "insert INTO user(UName,Email_address,Password,Pin_code,Name,Active) values ('$UName','$Email','$Password','$PinCode','$Name',1)";
 	$run_reg = mysqli_query($link,$get_reg);
 
 	if($run_reg) {

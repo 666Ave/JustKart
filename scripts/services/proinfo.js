@@ -2,8 +2,6 @@ app.factory('proinfo',function(){
 	var proinfo = {};
 	proinfo.brands = [];
 	proinfo.cats = [];
-	proinfo.brand = "hey";
-	proinfo.cat = "yo";
 
 	proinfo.storeBrands = function(newObj){
 		proinfo.brands = newObj;
