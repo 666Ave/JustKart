@@ -1,6 +1,7 @@
-app.controller('proCtrl',function($scope,$http,$location,$window,$cookies,$filter,proinfo){
+app.controller('proCtrl',function($scope,$http,$location,$window,$cookies,$filter){
 	var self=this; 
     
+    $scope.notReviewed = true;
     $scope.similars = [];
     $scope.commentData = {};
     $scope.commentData.rating = 1;
@@ -30,7 +31,24 @@ app.controller('proCtrl',function($scope,$http,$location,$window,$cookies,$filte
             $window.alert("Please write a title for the review before posting.");
             return 0;
         }
-        $http({
+        if(!$scope.notReviewed){ 
+            $http({
+				method: 'POST',
+				url: 'api/processReview.php',
+				data: $.param($scope.commentData),
+				headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+			})
+				.success(function(data) {
+                    if(data.success){
+					   $window.location.reload();
+                    }
+                    else{
+                        $window.alert("Error while posting comment Please try again.");
+                    }
+				}); 
+        }
+        else{
+            $http({
 				method: 'POST',
 				url: 'api/postComment.php',
 				data: $.param($scope.commentData),
@@ -43,26 +61,32 @@ app.controller('proCtrl',function($scope,$http,$location,$window,$cookies,$filte
                     else{
                         $window.alert("Error while posting comment Please try again.");
                     }
-				});
+				});   
+        }
     }
     
 	$http.get("api/getProductByID.php",{params:{pid:$location.search().pid}})
 		.success(function(response) {
 			$scope.product = response;
-			self.pBrand=proinfo.getBrands();	//get the brands
-			for(var i=0; i<self.pBrand.length; i++) {
-				if(self.pBrand[i].brand_id == $scope.product[0].product_brand){
-					$scope.pBrand=self.pBrand[i].brand_title;//get the brand title
-					break;
-				}
-			}
-			self.pCat=proinfo.getCats();	//get the categories
-			for(var i=0; i<self.pCat.length; i++) {
-				if(self.pCat[i].cat_id == $scope.product[0].product_cat){
-					$scope.pCat=self.pCat[i].cat_title;	//get the category title
-					break;
-				}
-			}
+            $scope.product[0].catName = "";
+            $scope.product[0].brandName = "";
+			$http.get("api/getCatByID.php",{params:{catid:$scope.product[0].product_cat}})
+                .success(function(data) {
+                    $scope.product[0].catName = data;
+                    $scope.catLink=$scope.product[0].catName.split(' ').join('_');
+                })
+                .error(function(response){
+                    console.log('error occured1');
+                });
+
+            $http.get("api/getBrandByID.php",{params:{brandid:$scope.product[0].product_brand}})
+                .success(function(data2) {
+                    $scope.product[0].brandName = data2;
+                    $scope.brandLink=$scope.product[0].brandName.split(' ').join('_');
+                })
+                .error(function(response){
+                    console.log('error occured1');
+                });
             $scope.pro_descp = $scope.product[0].product_descrp.split("~");
 		})
 		.error(function(response){
@@ -75,6 +99,12 @@ app.controller('proCtrl',function($scope,$http,$location,$window,$cookies,$filte
             $scope.tot_comments = $scope.reviews.length;
             for(var i=0; i<$scope.tot_comments; i++){
                 $scope.tot_rating +=$filter('num')($scope.reviews[i].rating);
+                if($scope.reviews[i].user_ID == $scope.commentData.userID){
+                    $scope.notReviewed = false;
+                    $scope.ratings.current = $scope.reviews[i].rating;
+                    $scope.commentData.content = $scope.reviews[i].review_content;
+                    $scope.commentData.title = $scope.reviews[i].review_title;
+                }
             }
             $scope.tot_rating /=$scope.tot_comments;
 		})

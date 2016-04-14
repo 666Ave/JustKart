@@ -20,43 +20,6 @@
 		<div  ng-controller="MainController" >
 			<div id="header" ng-include src="'templates/header.html'"><!--header-->
 			</div><!--/header-->
-			<section id="slider"><!--slider-->
-				<div class="container">
-					<div class="row">
-						<div class="col-sm-12" ng-controller="carouselCtrl">
-							<div id="slider-carousel" class="carousel slide" data-ride="carousel">
-								<ol class="carousel-indicators">
-									<li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
-									<li data-target="#slider-carousel" data-slide-to="1"></li>
-									<li data-target="#slider-carousel" data-slide-to="2"></li>
-								</ol>
-
-								<div class="carousel-inner">
-									<div class="{{d.active}}" ng-repeat="d in Data">
-										<div class="col-sm-6">
-											<h1>Just<span>K</span>art</h1>
-											<h2>{{d.title}}</h2>
-											<p>{{d.tagline}} </p>
-										</div>
-										<div class="col-sm-6">
-											<img ng-src="{{d.img1}}" class="girl img-responsive" alt="" />
-										</div>
-									</div>
-								</div>
-
-								<a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
-									<i class="fa fa-angle-left"></i>
-								</a>
-								<a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
-									<i class="fa fa-angle-right"></i>
-								</a>
-							</div>
-
-						</div>
-					</div>
-				</div>
-			</section><!--/slider-->
-
 			<section>
 				<div class="container">
 					<div class="row">
@@ -76,18 +39,10 @@
 										</div>
 									</div>
 								</div><!--/category-products-->
-								<div class="price-range"><!--price-range-->
-									<h2>Price Range</h2>
-									<div class="well text-center">
-										 <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600" data-slider-step="5" data-slider-value="[0,600]" id="sl2" ><br />
-										 <b class="pull-left">₹ 0</b> <b class="pull-right">₹ 600</b>
-									</div>
-								</div><!--/price-range-->
-
-							<div class="shipping text-center"><!--shipping-->
-								<img src="images/home/shipping.jpg" alt="" />
-							</div><!--/shipping-->
-					</div>
+							     <div class="shipping text-center"><!--shipping-->
+								    <img src="images/home/shipping.jpg" alt="" />
+                                </div><!--/shipping-->
+					       </div>
 						</div>
 						<div class="col-sm-9 padding-right">
 							<div class="features_items"><!--features_items-->
@@ -105,11 +60,6 @@
 															<p>{{ pro.product_title}}</p>
 														</a>
 													</div>
-											</div>
-											<div class="choose">
-												<ul class="nav nav-pills nav-justified">
-													<li><a href="home"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-												</ul>
 											</div>
 										</div>
 									</div>
@@ -165,7 +115,6 @@
 		<script src="scripts/services/proinfo.js"></script>
 		<script src="scripts/services/authFact.js"></script>
         <script src="scripts/controllers/MainController.js"></script>
-		<script src="scripts/controllers/carouselCtrl.js"></script>
 		<script src="scripts/controllers/cartCtrl.js"></script>
 		<script src="scripts/controllers/loginCtrl.js"></script>
 		<script src="scripts/controllers/locCtrl.js"></script>
@@ -174,7 +123,6 @@
 		<script src="scripts/controllers/recentviewedCtrl.js"></script>
         <script src="scripts/js/jquery.scrollUp.min.js"></script>
 		<script src="scripts/js/bootstrap.min.js"></script>
-        <script src="scripts/js/price-range.js"></script>
         <script src="scripts/js/jquery.prettyPhoto.js"></script>
         <script src="scripts/js/main.js"></script>
     </body>

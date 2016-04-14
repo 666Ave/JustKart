@@ -11,7 +11,7 @@
 		$row = mysqli_fetch_assoc($run_login);
 		$data['success'] = true;
 		$data['message'] = 'Success!';
-		$data['user'] = $row['Name'];
+		$data['user'] = $row['fName']." ".$row['lName'];
 		$data['uid'] = $row['User_ID'];
         $data['uaddress'] = $row['Address'];
 	}

@@ -100,23 +100,6 @@ a#scrollUp i{
 	margin-right:3px;
 }
 
-
-.contactinfo ul li:first-child{
-    margin-left: -15px;
-}
-
-.contactinfo ul li a{
-  font-size: 12px;
-  color: #696763;
-  font-family: 'Roboto', sans-serif;
-}
-
-
-.contactinfo ul li a:hover{
-	background:inherit;
-}
-
-
 .social-icons ul li a {
   border: 0 none;
   border-radius: 0;
@@ -176,39 +159,6 @@ a#scrollUp i{
 
 .header-bottom .container .row .col-sm-5 {
 	padding-right:0;
-}
-
-.usa {
-  border-radius: 0;
-  color: #B4B1AB;
-  font-size: 12px;
-  margin-right: 20px;
-  padding: 2px 15px;
-  margin-top: 10px;
-}
-
-.usa:hover {
-	background:#FE980F;
-	color:#fff;
-	border-color:#FE980F;
-}
-
-.usa:active, .usa.active {
-  background: none repeat scroll 0 0 #FE980F;
-  box-shadow: inherit;
-  outline: 0 none;
-}
-
-.btn-group.open .dropdown-toggle {
-  background: rgba(0, 0, 0, 0);
-  box-shadow: none;
-}
-
-.dropdown-menu  li  a:hover, .dropdown-menu  li  a:focus {
-  background-color: #FE980F;
-  color: #FFFFFF;
-  font-family: 'Roboto', sans-serif;
-  text-decoration: none;
 }
 
 .navbar-collapse.collapse{
@@ -578,81 +528,6 @@ ul.sub-menu {
 ******* Home ******
 **************************/
 
-
-#slider {
-  padding-top: 20px;
-  padding-bottom: 45px;
-}
-
-.carousel-indicators li {
-  background: #C4C4BE;
-}
-
-.carousel-indicators li.active {
-	  background: #FE980F;
-}
-
-.item {
-  padding-left: 100px;
-}
-
-
-.pricing {
-  position: absolute;
-  right: 40%;
-  top: 52%;
-}
-
-.girl {
-  margin-left: 0;
-}
-
-.item h1 {
-  color: #B4B1AB;
-  font-family: abel;
-  font-size: 48px;
-  margin-top: 115px;
-}
-
-.item h1 span {
-	color:#FE980F;
-}
-
-.item h2 {
-  color: #363432;
-  font-family: 'Roboto', sans-serif;
-  font-size: 28px;
-  font-weight: 700;
-  margin-bottom: 22px;
-  margin-top: 10px;
-}
-
-.item  p {
-	color:#363432;
-	font-size:16px;
-	font-weight:300;
-	font-family: 'Roboto', sans-serif;
-}
-
-.item button:hover {
-  background: #FE980F;
-}
-
-.control-carousel {
-  position: absolute;
-  top: 50%;
-  font-size: 60px;
-  color: #C2C2C1;
-}
-
-.control-carousel:hover{
-  color: #FE980F ;
-}
-
-.right {
-  right: 0;
-}
-
 .left-sidebar   {
     padding-top: 10px;   
 }
@@ -745,6 +620,10 @@ h2.title:before{
   text-transform: uppercase;
 }
 
+.category-products .panel-default .panel-heading .panel-title a:hover {
+  color: #FE980F;
+}
+
 .panel-group .panel-heading + .panel-collapse .panel-body {
   border-top: 0 none;
 }
@@ -806,41 +685,6 @@ h2.title:before{
   position: relative;
 }
 
-
-.price-range{
-  margin-top:30px;
-}
-
-.well {
-  background-color: #FFFFFF;
-  border: 1px solid #F7F7F0;
-  border-radius: 4px;
-  box-shadow: none;
-  margin-bottom: 20px;
-  min-height: 20px;
-  padding: 35px;
-}
-
-
-.tooltip-inner {
-  background-color: #FE980F;
-  border-radius: 4px;
-  color: #FFFFFF;
-  max-width: 200px;
-  padding: 3px 8px;
-  text-align: center;
-  text-decoration: none;
-}
-
-.tooltip.top .tooltip-arrow {
-  border-top-color: #FE980F;
-  border-width: 5px 5px 0;
-  bottom: 0;
-  left: 50%;
-  margin-left: -5px;
-}
-
-
 .padding-right {
   padding-right: 0;
 }
@@ -858,6 +702,7 @@ h2.title {
   margin: 0 15px;
   text-transform: uppercase;
   margin-bottom: 30px;
+  margin-top: 10px;
   position: relative;
 }
 
@@ -912,28 +757,6 @@ h2.title {
   border: 2px solid #FE980F;
 }
 
-.choose {
-  border-top: 1px solid #F7F7F0;
-}
-
-.choose ul li a {
-  color: #B3AFA8;
-    
-  font-family: 'Roboto', sans-serif;
-  font-size: 13px;
-  padding-left: 0;
-  padding-right: 0;
-}
-
-.choose ul li a i{
-	margin-right:5px;
-}
-
-.choose ul li a:hover{
-	background:none;
-	color:#FE980F;
-}
-
 .recent-launches {
   overflow: hidden;
 }
@@ -946,19 +769,9 @@ h2.title {
   overflow: hidden;
 }
 
-
 /*************************
 *******Shop/Search CSS******
 **************************/
-
-
-#advertisement {
-  padding-bottom: 45px;
-}
-
-#advertisement img {
-  width: 100%;
-}
 
 .pagination {
   display: inline-block;
@@ -1004,7 +817,9 @@ h2.title {
 	color:#fff;
 }
 
-
+#search_results {
+    margin-top: 10px;
+}
 
 /*************************
 *******Product Details CSS******
@@ -1013,12 +828,6 @@ h2.title {
 .product-details{
 	overflow:hidden;
 }
-
-
-#similar-product {
-  margin-top: 40px;
-}
-
 
 #reviews {
   padding-left: 25px;
@@ -1030,8 +839,6 @@ h2.title {
   overflow: hidden;
   margin-top: 10px;
 }
-
-
 
 .view-product {
   position: relative;
@@ -1788,8 +1595,23 @@ heigth:179px;
   margin-bottom: 30px;
 }
 
+.details {
+  background: #F5F5ED;
+  border: 0 none;
+  border-radius: 0;
+  color: #696763;
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.details:hover {
+  background: #FE980F;
+  color: #FFFFFF;
+}
+
 /*************************
-******* Contact CSS ********
+******* Contact/About CSS ********
 **************************/
 
 .contact-map {
@@ -1894,3 +1716,58 @@ heigth:179px;
 .contact-info .social-networks ul li a:hover{
   color: #FE980F;
 }
+
+.about_image {
+    width: 100%;
+    background: #55e6c5;
+    z-index: 1;
+    }
+
+.about_content {
+    height: 200px;
+    width:100%;
+    background: white;
+    z-index: 2;
+}
+.about_content h2 {
+    font-size: 40px;
+    color: #363432;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    margin: 30px 60px;
+}
+
+.about_content h2 span{
+    color: #FE980F;
+}
+
+.about_content h4 {
+    font-size: 30px;
+    color: #696763;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    margin: 30px 60px;
+}
+
+.about_content p {
+    font-size:20px;
+    color: #696763;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    margin: 30px 60px;
+}
+
+#about_wall_1 {
+    background: url(../images/Logo.png) no-repeat center center fixed;
+    height: 600px;
+}
+#about_wall_2 {
+    background: url(../images/about-us/pic2.jpg) no-repeat center center fixed;
+    height: 800px;
+}
+#about_wall_3 {
+    background: url(../images/about-us/pic3.png) no-repeat center center fixed;
+    height: 800px;
+}
+
+#content_1 {position: relative;}

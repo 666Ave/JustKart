@@ -83,25 +83,31 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-2">
-						<div class="single-widget">
+						<div class="single-widget" ng-controller="locCtrl">
 							<h2>Service</h2>
 							<ul class="nav nav-pills nav-stacked">
-								<li><a href="help.html">Online Help</a></li>
+								<li><a href="about_us.html">About Us</a></li>
 								<li><a href="contact_us.html">Contact Us</a></li>
 								<li><a href="orders.html#/?order=false">Order Status</a></li>
-								<li><a href="location.html">Change Location</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-sm-2">
-						<div class="single-widget">
-							<h2>Quick Shop</h2>
-							<ul class="nav nav-pills nav-stacked">
-								<li><a href="shop.html#/?catname=Mobiles&catid=3">Mobiles</a></li>
-								<li><a href="shop.html#/?catname=Home&catid=4">Furniture</a></li>
-								<li><a href="shop.html#/?catname=Fashion&catid=5">Fashion</a></li>
-								<li><a href="shop.html#/?catname=TV&catid=1">TVs</a></li>
-								<li><a href="shop.html#/?catname=Kids_Care&catid=7">Kids Care</a></li>
+								<li>
+                                    <script type="text/ng-template" id="location.html">
+                                        <div class="modal-header">
+                                            <h3 class="modal-title">Current Location : {{ location }}</h3>
+                                        </div>
+                                        <div class="modal-body">
+                                            <span ng-show="error">{{ error }} so please specify the station name<br/></span>
+                                            <span ng-hide="error">To <b>Change Location</b> enter your station name<br/></span>
+                                            <input type="text" ng-model="input" placeholder="For ex. Vasai" size="20"/>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button class="btn btn-primary" ng-click="ok()">OK</button>
+                                            <button class="btn btn-primary" ng-click="cancel()">Cancel</button>
+                                        </div>
+                                    </script>
+                                    <ul class="nav nav-pills">
+                                        <li><a href="" ng-click="open()">Change Location</a></li>
+                                    </ul>
+                                </li>
 							</ul>
 						</div>
 					</div>
@@ -116,7 +122,7 @@
 							</ul>
 						</div>
 					</div>
-					<div class="col-sm-3 col-sm-offset-3">
+					<div class="col-sm-3 col-sm-offset-5">
 						<div class="single-widget" ng-controller="contactCtrl">
 							<form ng-submit="postEmail()" class="searchform">
 								<input type="text" placeholder="Your email address" />
@@ -124,8 +130,7 @@
 								<p>Get the best offers & deals <br />straight to your mailbox</p>
 							</form>
 						</div>
-					</div>
-					
+					</div>		
 				</div>
 			</div>
 		</div>

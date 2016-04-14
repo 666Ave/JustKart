@@ -17,7 +17,8 @@
 					$product[] = array(
 						'product_id' => $row2['product_id'],
 						'product_title' => $row2['product_title'],
-						'product_image' => $row2['product_image']
+						'product_image' => $row2['product_image'],
+                        'order_status' => $row['status']
 					);
 					$products = array_merge($products,$product);
 				}

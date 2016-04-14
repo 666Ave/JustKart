@@ -206,3 +206,15 @@
 7)Deleted userIP api.
 8)Updated the user module like the cart table.
 9)Added the deactivate function in the user panel module.
+10)Updated the db file.
+
+    Version 1.5.5.2016.04.15
+1)Update the reviews module such that it allows the user to update his review rather than add another one.
+2)Made the order status field on the orders page.
+3)Made the change location link to change location module.
+4)Fixed all the links to product and shop pages.
+5)Fixed issues in the search and shop pages and removed the side bar from both.
+6)Removed the carousel from the index page and trasfered its content on the about us page.
+7)Added parallex effect on the about page.
+8)Edited the logos to change the colour from blue to orange.
+9)Removed the wishlist and price range module from all pages.

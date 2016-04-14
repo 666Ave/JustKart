@@ -12,6 +12,7 @@
             $row2 = mysqli_fetch_assoc($run_user);
 			$reviews[] = array(
 				'review_title' => $row['review_title'],
+                'user_ID' => $uid,
 				'user_name' => $row2['fName']." ".$row2['lName'],
 				'review_content' => $row['review_content'],
 				'review_date' => strtotime($row['review_date']),

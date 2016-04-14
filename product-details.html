@@ -25,8 +25,8 @@
 								<div class="breadcrumbs">
 									<ol class="breadcrumb">
 										<li><a href="/">Home</a></li>
-										<li><a href="/shop.html#/?catname={{pCat}}&catid={{product[0].product_cat}}">{{pCat}}</a></li>
-										<li><a href="/shop.html#/?catname={{pCat}}&brandname={{pBrand}}&brandid={{product[0].product_brand}}">{{pBrand}}</a></li>
+										<li><a href="/shop.html#/?catname={{catLink}}&catid={{product[0].product_cat}}">{{product[0].catName}}</a></li>
+										<li><a href="/shop.html#/?catname={{catLink}}&brandname={{brandLink}}&brandid={{product[0].product_brand}}">{{product[0].brandName}}</a></li>
 										<li class="active">{{product[0].product_title}}</li>
 									</ol>
 								</div>
@@ -58,9 +58,7 @@
                                                     Add to cart
                                                 </button>
                                             </span>
-                                            <p><b>Availability:</b> In Stock</p>
-                                            <p><b>Condition:</b> New</p>
-                                            <p><b>Brand:</b> {{pBrand}}</p>
+                                            <p><b>Brand:</b> {{product[0].brandName}}</p>
                                         </div><!--/product-information-->
                                     </div>
 								</div><!--/product-details-->
@@ -81,24 +79,27 @@
                                             <div id="reviews" >
                                                 <div class="col-sm-12">
                                                     <div ng-repeat="r in reviews">
-                                                        <ul>
-                                                            <li><i class="fa fa-user"></i>{{ r.user_name }}</li>
-                                                            <li><i class="fa fa-clock-o"></i>{{ r.review_date*1000 | date:'hh:mm a'}}</li>
-                                                            <li><i class="fa fa-calendar-o"></i>{{ r.review_date*1000 | date:'dd EEE yyyy' : UTC}}</li>
-                                                            <li><i class="fa fa-star"></i>{{ r.rating }}</li>
-                                                        </ul>
-                                                        <h4>{{ r.review_title }}</h4>
-                                                        <p>{{ r.review_content }}</p>
-                                                        <hr/>
+                                                        <span ng-if="r.user_ID!=commentData.userID">
+                                                            <ul>
+                                                                <li><i class="fa fa-user"></i>{{ r.user_name }}</li>
+                                                                <li><i class="fa fa-clock-o"></i>{{ r.review_date*1000 | date:'hh:mm a'}}</li>
+                                                                <li><i class="fa fa-calendar-o"></i>{{ r.review_date*1000 | date:'dd EEE yyyy' : UTC}}</li>
+                                                                <li><i class="fa fa-star"></i>{{ r.rating }}</li>
+                                                            </ul>
+                                                            <h4>{{ r.review_title }}</h4>
+                                                            <p>{{ r.review_content }}</p>
+                                                            <hr/>
+                                                        </span>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="review">
                                                 <div class="col-sm-12">
-                                                    <p><b>Write Your Review</b></p>
+                                                    <span ng-hide="!notReviewed"><p><b>Write Your Review</b></p></span>
+                                                    <span ng-hide="notReviewed"><p><b>Edit Your Review</b></p></span>
                                                     <form name="comment" ng-submit="postComment()">
                                                         <input type="text" name="Title" ng-model="commentData.title" placeholder="Title"/>
-                                                        <textarea name="Content" placeholder="Content" ng-model="commentData.content"></textarea>
+                                                        <textarea name="Content" placeholder="Content" ng-model="commentData.content">{{commentData.content}}</textarea>
                                                         <b>Rating: </b> <span>{{ratings.current}} out of {{ratings.max}}
                                                             <div star-rating rating-value="ratings.current" max="ratings.max" on-rating-selected="getSelectedRating(rating)">
                                                             </div>
