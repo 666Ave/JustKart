@@ -70,6 +70,7 @@ app.controller('proCtrl',function($scope,$http,$location,$window,$cookies,$filte
 			$scope.product = response;
             $scope.product[0].catName = "";
             $scope.product[0].brandName = "";
+            $scope.product[0].shopName = "";
 			$http.get("api/getCatByID.php",{params:{catid:$scope.product[0].product_cat}})
                 .success(function(data) {
                     $scope.product[0].catName = data;
@@ -80,9 +81,17 @@ app.controller('proCtrl',function($scope,$http,$location,$window,$cookies,$filte
                 });
 
             $http.get("api/getBrandByID.php",{params:{brandid:$scope.product[0].product_brand}})
-                .success(function(data2) {
-                    $scope.product[0].brandName = data2;
+                .success(function(data) {
+                    $scope.product[0].brandName = data;
                     $scope.brandLink=$scope.product[0].brandName.split(' ').join('_');
+                })
+                .error(function(response){
+                    console.log('error occured1');
+                });
+            $http.get("api/getShopByID.php",{params:{shopid:$scope.product[0].shop_id}})
+                .success(function(data) {
+                    $scope.product[0].shopName = data;
+                    $scope.shopLink=$scope.product[0].shopName.split(' ').join('_');
                 })
                 .error(function(response){
                     console.log('error occured1');

@@ -218,3 +218,14 @@
 7)Added parallex effect on the about page.
 8)Edited the logos to change the colour from blue to orange.
 9)Removed the wishlist and price range module from all pages.
+
+    Version 1.5.6.2016.04.16
+1)Cleaned the images folder and deleted the shipping image from the index page.
+2)Named the shop name and links for the shop and brand on the product details page.
+3)Wrote logic to dynamically display the shop view on the shop page if the shop link is clicked.
+4)Designed the shop page.
+5)Fixed the bug when the user had to manually reload to get the location to change.
+6)When the user logs in after being directed from the product-details page , he goes back to the same product's page.
+7)Change the getting location logic to a much stable logic.
+8)The login now directs you to different locations depending on the type of user.
+9)Copied the insert_products page from the admin_area fodler to the root and renamed it to seller.html.

@@ -1,5 +1,8 @@
-app.controller('MainController',function($scope,$http,$cookies,proinfo){
+app.controller('MainController',function($scope,$http,$cookies,$window,proinfo){
 	var self = this;
+    $scope.home = false;
+    if($window.location.pathname == "/index.html")
+        $scope.home = true;
 	$scope.date = new Date();
     $http.get("api/getCat.php")
         .success(function(response) {
@@ -25,6 +28,5 @@ app.controller('MainController',function($scope,$http,$cookies,proinfo){
         })
         .error(function(response){
             console.log('error occured3');
-        });
-
+        }); 
 });

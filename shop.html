@@ -17,7 +17,7 @@
 
     <body ng-app="Myapp">             
 		<div ng-controller="MainController">
-			<div ng-controller="proCatCtrl">
+			<div ng-controller="shopCtrl">
 				<div id="header" ng-include src="'templates/header.html'"><!--header-->
 				</div><!--/header-->
 				<section>
@@ -25,11 +25,19 @@
 						<div class="row">
 							<div class="col-sm-12">
 								<div class="breadcrumbs">
-									<ol class="breadcrumb">
-										<li><a href="/">Home</a></li>
-										<li ng-class="{'active': activey == 'true'}"><span ng-hide="activey == 'true'"><a href="" ng-click="reload()">{{cat}}</a></span><span ng-show="activey == 'true'">{{cat}}</span></li>
-                                        <li class="active"><span ng-hide="activey == 'true'">{{brandLink}}</span></li>
-									</ol>
+                                    <span ng-show="shop==0">
+                                        <ol class="breadcrumb">
+                                            <li><a href="/">Home</a></li>
+                                            <li ng-class="{'active': activey == 'true'}"><span ng-hide="activey == 'true'"><a href="" ng-click="reload()">{{cat}}</a></span><span ng-show="activey == 'true'">{{cat}}</span></li>
+                                            <li class="active"><span ng-hide="activey == 'true'">{{brandLink}}</span></li>
+                                        </ol>
+                                    </span>
+                                    <span ng-show="shop==1">
+                                        <ol class="breadcrumb">
+                                            <li><a href="/">Home</a></li>
+                                            <li class="active">{{shopname}}</li>
+                                        </ol>
+                                    </span>
 								</div>
 							</div>
 						</div>
@@ -39,34 +47,72 @@
 					<div class="container">
 						<div class="row">
 							<div class="col-sm-12">
-								<div class="features_items"><!--features_items-->
-                                    <div class="row">
-                                        <h2 class="title text-center">Featured Items</h2>
-                                        <div ng-repeat="pro in product">
-                                            <div class="col-sm-4">
-                                                <div class="product-image-wrapper">
-                                                    <div class="single-products">
-                                                        <div class="productinfo text-center">
-                                                                <a class="product-image" href="product-details.html#/?pid={{pro.product_id}}">
-                                                                    <img src="images/products/{{pro.product_image}}" alt="{{pro.product_image}}"/>
+                                <span ng-show="shop==0">
+                                    <div class="features_items"><!--featured_items-->
+                                        <div class="row">
+                                            <h2 class="title text-center">Featured Items</h2>
+                                            <div ng-repeat="pro in product">
+                                                <div class="col-sm-4">
+                                                    <div class="product-image-wrapper">
+                                                        <div class="single-products">
+                                                            <div class="productinfo text-center">
+                                                                    <a class="product-image" href="product-details.html#/?pid={{pro.product_id}}">
+                                                                        <img src="images/products/{{pro.product_image}}" alt="{{pro.product_image}}"/>
+                                                                    </a>
+                                                                <h2>{{ pro.product_price | currency :"₹" :0}}</h2>
+                                                                <a href="product-details.html#/?pid={{pro.product_id}}" class="product-title">
+                                                                    <p>{{ pro.product_title}}</p>
                                                                 </a>
-                                                            <h2>{{ pro.product_price | currency :"₹" :0}}</h2>
-                                                            <a href="product-details.html#/?pid={{pro.product_id}}" class="product-title">
-                                                                <p>{{ pro.product_title}}</p>
-                                                            </a>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <ul ng-hide="product.length<10" class="pagination">
-                                        <li class="active"><a href="">1</a></li>
-                                        <li><a href="">2</a></li>
-                                        <li><a href="">3</a></li>
-                                        <li><a href="">&raquo;</a></li>
-                                    </ul>
-								</div><!--features_items-->
+                                        <ul ng-hide="product.length<10" class="pagination">
+                                            <li class="active"><a href="">1</a></li>
+                                            <li><a href="">2</a></li>
+                                            <li><a href="">3</a></li>
+                                            <li><a href="">&raquo;</a></li>
+                                        </ul>
+                                    </div><!--featured_items-->
+                                </span>
+                                <span ng-show="shop==1">
+                                    <div class="shop_view"><!--shop_view-->
+                                        <div class="row">
+                                            <h2 class="title text-center">Shop</h2>
+                                            <div class="col-sm-12">
+                                                <div class="col-sm-6">
+                                                    <img src="images/shops/{{shop_image}}" alt="{{shop_image}}"/>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <h1>{{ shopname }}</h1>
+                                                    <p><b>Location :</b> {{ area_name }}</p>
+                                                    <p><b>Owner :</b> {{ owner_name }}</p>
+                                                    <p><b>Rating :</b> <i></i> {{ rating }} out of 5 , based on {{ reviews }} reviews</p>
+                                                </div>
+                                            </div>
+                                            <h2 class="title text-center">Products</h2>
+                                            <div ng-repeat="pro in shops">
+                                                <div class="col-sm-4">
+                                                    <div class="product-image-wrapper">
+                                                        <div class="single-products">
+                                                            <div class="productinfo text-center">
+                                                                    <a class="product-image" href="product-details.html#/?pid={{pro.product_id}}">
+                                                                        <img src="images/products/{{pro.product_image}}" alt="{{pro.product_image}}"/>
+                                                                    </a>
+                                                                <h2>{{ pro.product_price | currency :"₹" :0}}</h2>
+                                                                <a href="product-details.html#/?pid={{pro.product_id}}" class="product-title">
+                                                                    <p>{{ pro.product_title}}</p>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!--/shop_view-->
+                                </span> 
 							</div>
 						</div>
 					</div>
@@ -87,7 +133,7 @@
 		<script src="scripts/services/proinfo.js"></script>
         <script src="scripts/controllers/MainController.js"></script>
 		<script src="scripts/services/authFact.js"></script>
-		<script src="scripts/controllers/proCatCtrl.js"></script>
+		<script src="scripts/controllers/shopCtrl.js"></script>
 		<script src="scripts/controllers/cartCtrl.js"></script>
 		<script src="scripts/controllers/loginCtrl.js"></script>
 		<script src="scripts/controllers/locCtrl.js"></script>

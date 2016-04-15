@@ -5,26 +5,34 @@ app.controller('cartCtrl',function($scope,$http,$window,$cookies,$filter,authFac
 	
 	if($cookies.get('userID'))
 		$scope.userID = $cookies.get('userID');
-	else
-		$scope.userID = 0;
+    else
+        $scope.userID = 0;
+    
+    if($window.location.pathname == "/cart.html"){
+        $window.alert("Please log in first");
+        $window.location.href = '/login.html';
+    }
 	
 	$scope.cartAdd = function (proID,Pqty) {
 		if(!$cookies.get('userID')){
 			$window.alert("Please log in first");
+            $cookies.put('curr',$window.location.pathname+$window.location.hash);
 			$window.location.href = '/login.html';
 		}
-		$http.get("api/cart_add.php",{params:{add_cart:proID,qty:$scope.pQty,uID:$scope.userID}})
-			.success(function(response) {
-				if(!response.success) {
-					$window.alert("Product successfully added to cart");
-					$window.location.reload();
-				}
-				else
-					$window.alert("Product already present in cart");
-			})
-			.error(function(response){
-				console.log("Error");
-			});
+        else{
+            $http.get("api/cart_add.php",{params:{add_cart:proID,qty:$scope.pQty,uID:$scope.userID}})
+                .success(function(response) {
+                    if(!response.success) {
+                        $window.alert("Product successfully added to cart");
+                        $window.location.reload();
+                    }
+                    else
+                        $window.alert("Product already present in cart");
+                })
+                .error(function(response){
+                    console.log("Error");
+                });
+        }
 	};
 	
 	$scope.PageLoad = function () {

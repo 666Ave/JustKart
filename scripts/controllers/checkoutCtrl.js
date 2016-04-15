@@ -1,5 +1,10 @@
 app.controller('checkoutCtrl',function($scope,$http,$cookies,$window){
     
+    if($window.location.pathname == "/checkout.html"){
+        $window.alert("Please log in first");
+        $window.location.href = '/login.html';
+    }
+    
     $scope.emiPeriod={};
     if($cookies.get('userID'))
 		$scope.userID = $cookies.get('userID');

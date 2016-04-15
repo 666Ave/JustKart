@@ -1,4 +1,5 @@
 app.controller('locCtrl',function($scope,$http,$uibModal,$window,$cookies,$log,geolocation,proinfo){
+ 
 	if(!$cookies.get('chLoc')) {
 		geolocation.getLocation().then(function(data){
 			$scope.coords = {lat:data.coords.latitude, long:data.coords.longitude};			
@@ -15,25 +16,14 @@ app.controller('locCtrl',function($scope,$http,$uibModal,$window,$cookies,$log,g
 				})
 		});
 	}
-	else{
-		$scope.url = "http://maps.googleapis.com/maps/api/geocode/json?address="+$cookies.get('chLoc')+"&sensor=false";
-		$http.get($scope.url)
-			.success(function(response) {
-				if(response) {
-					$scope.location = response['results'][0]['address_components'][0].long_name;
-                    $cookies.put('Loc',$scope.location);
-				}
-			})
-			.error(function(response){
-				console.log('error occured3');
-			})
-	}
+    else
+        $scope.location = $cookies.get('Loc');
 
 	$scope.$on('error', function(event, args) {
 		$scope.error = args;
 		$scope.open();
 		console.log($scope.error);
-	})
+	});
 
   $scope.open = function () {
 
@@ -56,7 +46,8 @@ app.controller('locCtrl',function($scope,$http,$uibModal,$window,$cookies,$log,g
 		$http.get($scope.url)
 			.success(function(response) {
 				if(response) {
-					$cookies.put('chLoc',response['results'][0]['address_components'][0].long_name);
+					$cookies.put('Loc',response['results'][0]['address_components'][0].long_name);
+                    $cookies.put('chLoc',1);
 					$window.location.reload();
 				}
 			})

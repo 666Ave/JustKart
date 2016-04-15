@@ -14,6 +14,7 @@
 		$data['user'] = $row['fName']." ".$row['lName'];
 		$data['uid'] = $row['User_ID'];
         $data['uaddress'] = $row['Address'];
+        $data['type'] = $row['type'];
 	}
 	else {
 		$data['success'] = false;

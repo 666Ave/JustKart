@@ -9,6 +9,7 @@
         while($row = mysqli_fetch_assoc($run_products)) {
 			$products[] = array(
 				'product_id' => $row['product_id'],
+                'shop_id' => $row['shop_id'],
 				'product_cat' => $row['product_cat'],
 				'product_brand' => $row['product_brand'],
 				'product_title' => $row['product_title'],

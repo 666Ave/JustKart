@@ -11,7 +11,6 @@
         <link href="styles/font-awesome.min.css" rel="stylesheet">
         <link href="styles/animate.css" rel="stylesheet">
         <link href="styles/main.css" rel="stylesheet">
-        <link href="styles/responsive.css" rel="stylesheet">
     </head><!--/head-->
     <body ng-app="Myapp">
 		<div ng-controller="MainController">
@@ -52,13 +51,11 @@
                                                 <span>{{product[0].product_price | currency :"₹":0}}</span>
                                                 <label>Quantity:</label>
                                                 <input type="number" ng-model="pQty"
-   min="1" max="10" name="product_qty"/>
-                                                <button type="button" ng-click="cartAdd(product[0].product_id,this.product_qty.value);" class="btn btn-fefault cart">
-                                                    <i class="fa fa-shopping-cart"></i>
-                                                    Add to cart
-                                                </button>
+   min="1" max="3" name="product_qty"/>
+                                                <button type="button" ng-click="cartAdd(product[0].product_id,this.product_qty.value);" class="btn btn-fefault cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
                                             </span>
-                                            <p><b>Brand:</b> {{product[0].brandName}}</p>
+                                            <p><b>Brand:</b> <a href="/shop.html#/?catname={{catLink}}&brandname={{brandLink}}&brandid={{product[0].product_brand}}">{{product[0].brandName}}</a></p>
+                                            <p><b>Shop:</b> <a href="/shop.html#/?shopname={{shopLink}}&shopid={{product[0].shop_id}}">{{product[0].shopName}}</a></p>
                                         </div><!--/product-information-->
                                     </div>
 								</div><!--/product-details-->

@@ -10,10 +10,8 @@
         <link href="styles/bootstrap.min.css" rel="stylesheet">
         <link href="styles/font-awesome.min.css" rel="stylesheet">
         <link href="styles/prettyPhoto.css" rel="stylesheet">
-        <link href="styles/price-range.css" rel="stylesheet">
         <link href="styles/animate.css" rel="stylesheet">
         <link href="styles/main.css" rel="stylesheet">
-        <link href="styles/responsive.css" rel="stylesheet">
     </head><!--/head-->
 
     <body ng-app="Myapp"> 
@@ -39,9 +37,6 @@
 										</div>
 									</div>
 								</div><!--/category-products-->
-							     <div class="shipping text-center"><!--shipping-->
-								    <img src="images/home/shipping.jpg" alt="" />
-                                </div><!--/shipping-->
 					       </div>
 						</div>
 						<div class="col-sm-9 padding-right">
@@ -124,6 +119,11 @@
         <script src="scripts/js/jquery.scrollUp.min.js"></script>
 		<script src="scripts/js/bootstrap.min.js"></script>
         <script src="scripts/js/jquery.prettyPhoto.js"></script>
+        <script type="text/javascript" charset="utf-8">
+            $(document).ready(function(){
+                $("a[rel^='prettyPhoto']").prettyPhoto(); //PrettyPhoto    
+            });
+        </script>
         <script src="scripts/js/main.js"></script>
     </body>
 </html>
