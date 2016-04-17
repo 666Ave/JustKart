@@ -97,26 +97,23 @@
                                                     <form name="comment" ng-submit="postComment()">
                                                         <input type="text" name="Title" ng-model="commentData.title" placeholder="Title"/>
                                                         <textarea name="Content" placeholder="Content" ng-model="commentData.content">{{commentData.content}}</textarea>
-                                                        <b>Rating: </b> <span>{{ratings.current}} out of {{ratings.max}}
-                                                            <div star-rating rating-value="ratings.current" max="ratings.max" on-rating-selected="getSelectedRating(rating)">
-                                                            </div>
-                                                        </span>
-                                                        <button type="submit" class="btn btn-default pull-right">
-                                                            Submit
-                                                        </button>
+                                                        <b>Rating: </b> <span ng-show="overStar == null">{{commentData.rating}}</span> <span ng-hide="overStar == null">{{overStar}}</span> out of {{max}}
+                                                        <uib-rating ng-model="commentData.rating" max="max" read-only="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three','four','five']" aria-labelledby="default-rating" class="rating"></uib-rating>
+                                                        <span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}" ng-show="overStar && !isReadonly">{{percent}}%</span>
+                                                        <button type="submit" class="btn btn-default pull-right">Submit</button>
                                                     </form>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div><!--product-description-->
-                                <div class="similar_items"><!--similar_items-->
+                                <div ng-hide="similars[0].length == 0" class="similar_items"><!--similar_items-->
                                     <h2 class="title text-center">similar items</h2>
                                     <uib-carousel id="similar-item-carousel" no-transition="false" active="active" interval="5000">
 										<uib-slide ng-repeat="simi in similars track by simi[0]['product_id']" index="simi.id">
 											<img height="200" width="200" ng-src="images/products/{{simi[0]['product_image']}}" style="margin:auto;">
 											<div class="carousel-caption">
-                                                <a href="product-details.html#/?pid={{simi[0]['product_id']}}"  class="recent-product-title"><p>{{simi[0]['product_title']}}</p></a>
+                                                <a href="" ng-click="reload(simi[0]['product_id'])"  class="recent-product-title"><p>{{simi[0]['product_title']}}</p></a>
 											</div>
 									  	</uib-slide>
 									</uib-carousel>
@@ -135,10 +132,11 @@
 		<script src="scripts/js/angularjs-geolocation.min.js"></script>
 		<script src="scripts/js/ui-bootstrap-tpls-1.1.2.min.js"></script>
 		<script src="scripts/js/angular-animate.min.js"></script>
+        <script src="scripts/js/tinymce/ui.tinymce.min.js"></script>
+        <script src="scripts/js/angular-file-model.js"></script>
         <script src="scripts/app.js"></script>
 		<script src="scripts/services/proinfo.js"></script>
 		<script src="scripts/services/authFact.js"></script>
-        <script src="scripts/directives/starRating.js"></script>
         <script src="scripts/controllers/MainController.js"></script>
 		<script src="scripts/controllers/proCtrl.js"></script>
 		<script src="scripts/controllers/cartCtrl.js"></script>

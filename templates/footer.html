@@ -88,7 +88,7 @@
 							<ul class="nav nav-pills nav-stacked">
 								<li><a href="about_us.html">About Us</a></li>
 								<li><a href="contact_us.html">Contact Us</a></li>
-								<li><a href="orders.html#/?order=false">Order Status</a></li>
+								<li ng-controller="loginCtrl"><a ng-if="User == true" href="orders.html#/?order=false">Order Status</a></li>
 								<li>
                                     <script type="text/ng-template" id="location.html">
                                         <div class="modal-header">

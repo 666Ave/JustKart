@@ -1,15 +1,27 @@
 app.controller('loginCtrl',function($scope,$http,$window,authFact,$cookies){
 	$scope.loginData = {};
 	$scope.regData = {};
+    $scope.Admin = false;
+    $scope.Seller = false;
+    $scope.User = false;
     $scope.userType = "What kind of user you want to be?";
 	var userObj = authFact.getUserName();
 	$scope.user = userObj;
-	if($scope.user)
+	
+    if($scope.user)
 		$scope.Lstring = "Logout";
 	else {
 		$scope.Lstring = "Login";
 		$scope.user = "Account";
 	}
+    
+    if($cookies.get('userType') == "admin")
+        $scope.Admin = true;
+    else if($cookies.get('userType') == "seller")
+        $scope.Seller = true;
+    else
+        $scope.User = true;
+        
 	$scope.processLogin = function(isValid) {
 		if (isValid) {
 			$http({
@@ -29,6 +41,7 @@ app.controller('loginCtrl',function($scope,$http,$window,authFact,$cookies){
 						$scope.message = data.message;
 						$cookies.put('userID',data.uid);
 						$cookies.put('userObj',data.user);
+                        $cookies.put('userType',data.type);
 						$window.alert($scope.message);
                         if($cookies.get('curr') && data.type == "normal"){
                             $scope.curr = $cookies.get('curr');
@@ -38,8 +51,10 @@ app.controller('loginCtrl',function($scope,$http,$window,authFact,$cookies){
                         else{
                             if(data.type == "normal")
                                 $window.location.href = '/';
-                            else if(data.type == "seller")
+                            else if(data.type == "seller"){
+                                $cookies.put('shopID',data.shop_id);
                                 $window.location.href = '/seller.html';
+                            }
                             else
                                 $window.location.href = '/Admin_area/insert_product.html';
                         }   
@@ -60,9 +75,18 @@ app.controller('loginCtrl',function($scope,$http,$window,authFact,$cookies){
                 })
                     .success(function(data) {
                         if (!data.success) {
+                            var cookies = $cookies.getAll();
+                            angular.forEach(cookies, function (v, k) {
+                                $cookies.remove(k);
+                            });
                             $scope.message = data.message;
+                            $window.alert($scope.message);
                         } 
                         else {
+                            var cookies = $cookies.getAll();
+                            angular.forEach(cookies, function (v, k) {
+                                $cookies.remove(k);
+                            });
                             $scope.message = data.message;
                             $window.alert($scope.message);
                             $window.location.reload();

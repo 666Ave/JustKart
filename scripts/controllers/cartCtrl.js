@@ -8,9 +8,19 @@ app.controller('cartCtrl',function($scope,$http,$window,$cookies,$filter,authFac
     else
         $scope.userID = 0;
     
-    if($window.location.pathname == "/cart.html"){
+    if($window.location.pathname == "/cart.html" && !$cookies.get('userID')){
         $window.alert("Please log in first");
         $window.location.href = '/login.html';
+    }
+    
+    if($window.location.pathname == "/cart.html" && $cookies.get('userType') == "seller"){
+        $window.alert("You're here to sell not buy!");
+        $window.location.href = '/seller.html';
+    }
+    
+    if($window.location.pathname == "/cart.html" && $cookies.get('userType') == "admin"){
+        $window.alert("Please you're an admin ... behave yourself!");
+        $window.location.href = '/Admin_area/admin.html'
     }
 	
 	$scope.cartAdd = function (proID,Pqty) {
@@ -19,6 +29,14 @@ app.controller('cartCtrl',function($scope,$http,$window,$cookies,$filter,authFac
             $cookies.put('curr',$window.location.pathname+$window.location.hash);
 			$window.location.href = '/login.html';
 		}
+        else if($cookies.get('userType') == "seller"){
+            $window.alert("You're here to sell not buy!");
+            return 0;
+        }
+        else if($cookies.get('userType') == "admin"){
+            $window.alert("Please you're an admin ... behave yourself!");
+            return 0;
+        }
         else{
             $http.get("api/cart_add.php",{params:{add_cart:proID,qty:$scope.pQty,uID:$scope.userID}})
                 .success(function(response) {

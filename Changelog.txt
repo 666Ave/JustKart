@@ -229,3 +229,13 @@
 7)Change the getting location logic to a much stable logic.
 8)The login now directs you to different locations depending on the type of user.
 9)Copied the insert_products page from the admin_area fodler to the root and renamed it to seller.html.
+
+    Version 1.5.7.2016.04.17
+1)Fixed the registration bugs.
+2)Replaced the rating with ui-bootstrap's rating.
+3)Now sellers and admins can neither add to cart nor post reviews.
+4)The shop page changes titles according to the items being displayed.
+5)Fixed the bugs of the cart and checkout pages.
+6)Created a working seller panel.
+7)Edited the comfort home image to crop the black part.
+8)Fixed the dependacies issues on all the pages.

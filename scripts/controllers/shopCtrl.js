@@ -1,6 +1,7 @@
 app.controller('shopCtrl',function($scope,$http,$location,$window){
 	$scope.activey = 'true';
     $scope.shop = 0;
+    $scope.title = "Products | JustKart";
 	if($location.search().catid)
 		$http.get("api/getCatPro.php",{params:{catid:$location.search().catid}})
 			.success(function(response) {
@@ -25,6 +26,7 @@ app.controller('shopCtrl',function($scope,$http,$location,$window){
 			.error(function(response){
 				console.log('error occured3');
 			});
+    
 	$scope.reload = function(){
         $window.location.href = "shop.html#/?catname="+$scope.catLink+"&catid="+$scope.product[0].product_cat
 		$window.location.reload();
@@ -32,6 +34,7 @@ app.controller('shopCtrl',function($scope,$http,$location,$window){
     
     if($location.search().shopid){
         $scope.shop = 1;
+        $scope.title = "Shop | JustKart";
 		$http.get("api/getShop.php",{params:{shopid:$location.search().shopid}})
 			.success(function(response) {
 				$scope.shops = response;
@@ -41,7 +44,7 @@ app.controller('shopCtrl',function($scope,$http,$location,$window){
                 $scope.rating = $scope.shops.rating;
                 $scope.reviews = $scope.shops.reviews;
                 delete $scope.shops.shop_image;
-+				delete $scope.shops.area_name;
+				delete $scope.shops.area_name;
                 delete $scope.shops.owner_name;
                 delete $scope.shops.reviews;
                 delete $scope.shops.rating;

@@ -15,6 +15,8 @@
 		$data['uid'] = $row['User_ID'];
         $data['uaddress'] = $row['Address'];
         $data['type'] = $row['type'];
+        if($data['type'] == "seller")
+            $data['shop_id'] = $row['shop_id'];
 	}
 	else {
 		$data['success'] = false;

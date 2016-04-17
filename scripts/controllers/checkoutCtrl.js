@@ -1,8 +1,18 @@
 app.controller('checkoutCtrl',function($scope,$http,$cookies,$window){
     
-    if($window.location.pathname == "/checkout.html"){
+    if($window.location.pathname == "/checkout.html" && !$cookies.get('userID')){
         $window.alert("Please log in first");
         $window.location.href = '/login.html';
+    }
+    
+    if($cookies.get('userType') == "seller"){
+        $window.alert("You're here to sell not buy!");
+        $window.location.href = '/seller.html';
+    }
+    
+    if($cookies.get('userType') == "admin"){
+        $window.alert("Please you're an admin ... behave yourself!");
+        $window.location.href = '/Admin_area/admin.html'
     }
     
     $scope.emiPeriod={};

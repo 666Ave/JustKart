@@ -4,23 +4,23 @@ app.controller('proCtrl',function($scope,$http,$location,$window,$cookies,$filte
     $scope.notReviewed = true;
     $scope.similars = [];
     $scope.commentData = {};
-    $scope.commentData.rating = 1;
     $scope.commentData.userID = $cookies.get('userID');
-    $scope.commentData.pID = $location.search().pid;
-    $scope.rating = 0;
+    $scope.commentData.pID = $location.search().pid;  
     $scope.tot_rating = 0;
-    $scope.tot_comments = 0;
-    $scope.ratings = {
-        current: 1,
-        max: 5
+    $scope.tot_comments = 0;  
+    $scope.commentData.rating = 1;
+    $scope.max = 5;
+    $scope.isReadonly = false;
+
+    $scope.hoveringOver = function(value) {
+        $scope.overStar = value;
+        $scope.percent = 100 * (value / $scope.max);
     };
-    $scope.getSelectedRating = function (rating) {
-        $scope.commentData.rating = rating;
-    }
     
     $scope.postComment = function() {
         if(!$cookies.get('userID')){
 			$window.alert("Please log in first");
+            $cookies.put('curr',$window.location.pathname+$window.location.hash);
 			$window.location.href = '/login.html';
 		}
         if(!$scope.commentData.content){
@@ -29,6 +29,14 @@ app.controller('proCtrl',function($scope,$http,$location,$window,$cookies,$filte
         }
         if(!$scope.commentData.title){
             $window.alert("Please write a title for the review before posting.");
+            return 0;
+        }
+        if($cookies.get('userType') == "seller"){
+            $window.alert("Sellers cant post reviews.");
+            return 0;
+        }
+        if($cookies.get('userType') == "admin"){
+            $window.alert("Admins have better other work to do.");
             return 0;
         }
         if(!$scope.notReviewed){ 
@@ -110,7 +118,7 @@ app.controller('proCtrl',function($scope,$http,$location,$window,$cookies,$filte
                 $scope.tot_rating +=$filter('num')($scope.reviews[i].rating);
                 if($scope.reviews[i].user_ID == $scope.commentData.userID){
                     $scope.notReviewed = false;
-                    $scope.ratings.current = $scope.reviews[i].rating;
+                    $scope.commentData.rating = $scope.reviews[i].rating;
                     $scope.commentData.content = $scope.reviews[i].review_content;
                     $scope.commentData.title = $scope.reviews[i].review_title;
                 }
@@ -128,5 +136,10 @@ app.controller('proCtrl',function($scope,$http,$location,$window,$cookies,$filte
 		})
 		.error(function(response){
 			console.log('error occured ');
-		});  
+		});
+    
+    $scope.reload = function(data) {
+        $window.location.href = "/product-details.html#/?pid="+data;
+        $window.location.reload();
+    }
 });

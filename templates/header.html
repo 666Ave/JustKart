@@ -67,13 +67,19 @@
 							<ul class="nav navbar-nav collapse navbar-collapse">
                                 <li><a href="about_us.html"><i class="fa fa-hashtag"></i> About Us</a></li>
 								<li><a href="contact_us.html"><i class="fa fa-coffee"></i> Contact Us</a></li>
-								<li class="dropdown"><a href="myaccount.html"><i class="fa fa-user"></i> {{user}}</a>
+								<li class="dropdown">
+                                    <a ng-if="Admin == false" href="myaccount.html"><i class="fa fa-user"></i> {{user}}</a>
+                                    <a ng-if="Admin == true" href="/Admin_area/insert_product.html"><i class="fa fa-user"></i> {{user}}</a>
                                     <ul role="menu" class="sub-menu">
 										<li><a href="" ng-click="Log(Lstring)"><i class="fa fa-lock"></i>{{Lstring}}</a></li>
-                                        <li><a href="orders.html#/?order=false"><i class="fa fa-cart-plus"></i> Orders</a></li>
+                                        <li ng-if="User == true"><a href="orders.html#/?order=false"><i class="fa fa-cart-plus"></i> Orders</a></li>
                                     </ul>
                                 </li>
-								<li><a href="cart.html" class="cart_qty"><i class="fa fa-shopping-cart"></i> Cart<span>{{ Cart_total }}</span></a></li>
+								<li>
+                                    <a ng-if="User == true" href="cart.html" class="cart_qty"><i class="fa fa-shopping-cart"></i> Cart<span>{{ Cart_total }}</span></a>
+                                    <a ng-if="Seller == true" href="seller.html"><i class="fa fa-user-secret"></i> Seller Panel</a>
+                                    <a ng-if="Admin == true" href="Admin_area/admin.html"><i class="fa fa-wrench"></i> Admin Panel</a>
+                                </li>
 							</ul>
 						</div>
 					</div>

@@ -1,4 +1,4 @@
-app.controller('InsertCtrl',function($scope,$http){
+app.controller('AdminCtrl',function($scope,$http){
     $http.get("../api/getCat.php")
         .success(function(response) {
             $scope.category = response;
