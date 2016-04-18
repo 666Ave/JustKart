@@ -56,7 +56,7 @@ app.controller('loginCtrl',function($scope,$http,$window,authFact,$cookies){
                                 $window.location.href = '/seller.html';
                             }
                             else
-                                $window.location.href = '/Admin_area/insert_product.html';
+                                $window.location.href = '/admin.html';
                         }   
 					}
 				});	

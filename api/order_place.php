@@ -12,7 +12,7 @@
                 $pro_id = $row['pro_id'];
 				$put_order = "insert INTO orders(pro_id,User_ID) values ('$pro_id','$uid')";
                 $run_order = mysqli_query($link,$put_order);
-                $delete_products = "delete from cart where User_ID='$uid' AND pro_id='$pro_id'";
+                $delete_products = "update cart set expired = 1 where User_ID='$uid' AND pro_id='$pro_id'";
 	            $run_delete = mysqli_query($link,$delete_products);
 			}
 			echo ("Success");

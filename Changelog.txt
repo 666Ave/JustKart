@@ -239,3 +239,12 @@
 6)Created a working seller panel.
 7)Edited the comfort home image to crop the black part.
 8)Fixed the dependacies issues on all the pages.
+
+    Version 1.5.8.2016.04.18
+1)Added an active field to the products table.
+2)Fixed a session issue.
+3)Updated the DB file.
+4)Moved the insert_products .html to root and renamed it as admin.html.
+5)Removed empty folders.
+6)Deleted the blog file.
+7)Working Admin Panel.

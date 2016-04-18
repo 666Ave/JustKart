@@ -75,6 +75,10 @@ app.controller('proCtrl',function($scope,$http,$location,$window,$cookies,$filte
     
 	$http.get("api/getProductByID.php",{params:{pid:$location.search().pid}})
 		.success(function(response) {
+            if(response[0].Inactive == 1){
+                $window.alert("Sorry this product no longer exists.");
+                $window.location.href = "/";
+            }
 			$scope.product = response;
             $scope.product[0].catName = "";
             $scope.product[0].brandName = "";
@@ -96,6 +100,7 @@ app.controller('proCtrl',function($scope,$http,$location,$window,$cookies,$filte
                 .error(function(response){
                     console.log('error occured1');
                 });
+        
             $http.get("api/getShopByID.php",{params:{shopid:$scope.product[0].shop_id}})
                 .success(function(data) {
                     $scope.product[0].shopName = data;

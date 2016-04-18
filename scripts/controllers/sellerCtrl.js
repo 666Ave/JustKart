@@ -56,6 +56,19 @@ app.controller('sellerCtrl',function($scope,$http,$cookies,$window,$filter){
             console.log('error occured2');
         });
     
+    $http.get("/api/getShop.php",{params:{shopid:$cookies.get('shopID')}})
+        .success(function(response) {
+            $scope.products = response;
+            delete $scope.products.area_name;
+            delete $scope.products.owner_name;
+            delete $scope.products.rating;
+            delete $scope.products.reviews;
+            delete $scope.products.shop_image;
+        })
+        .error(function(response){
+            console.log('error occured2');
+        });
+    
     $scope.postPro = function(){
         if($cookies.get('userType') != "seller"){
             $window.alert("You're not a seller ... please leave!");
@@ -118,6 +131,17 @@ app.controller('sellerCtrl',function($scope,$http,$cookies,$window,$filter){
                         $window.location.reload();
 					}
 				});
+    };
+    
+    $scope.removePro = function(data){
+        $http.get("/api/removeProduct.php",{params:{proid:data}})
+            .success(function(response) {
+                $window.alert(response);
+                $window.location.reload();
+            })
+            .error(function(response){
+                console.log('error occured2');
+            });   
     };
     
 });

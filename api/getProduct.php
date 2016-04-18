@@ -8,7 +8,7 @@
         if(mysqli_num_rows($run_shop)>0){
             while($row = mysqli_fetch_assoc($run_shop)) {
                 $shop_id = $row['shop_id'];
-                $get_products = "SELECT * FROM products where shop_id='$shop_id' order by RAND()";
+                $get_products = "SELECT * FROM products where shop_id='$shop_id' and Inactive!=1 order by RAND()";
                 $run_products = mysqli_query($link,$get_products);
                 if($run_products) {
                     if(mysqli_num_rows($run_products)>0){

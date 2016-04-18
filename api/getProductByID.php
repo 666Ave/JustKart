@@ -2,7 +2,7 @@
 	session_start();
     include 'conn.php';
     $pid=$_GET['pid'];
-    $get_products = "SELECT * FROM products where product_id='$pid'";
+    $get_products = "SELECT * FROM products where product_id='$pid' and Inactive!=1";
     $run_products = mysqli_query($link,$get_products);
     if($run_products) {
         $products = array();
@@ -16,28 +16,34 @@
 				'product_price' => $row['product_price'],
 				'product_descrp' => $row['product_descrp'],
 				'product_image' => $row['product_image'],
-				'product_keywords' => $row['product_keywords']
+				'product_keywords' => $row['product_keywords'],
+                'Inactive' => $row['Inactive']
 			);
 		}
 		//For storing recently viewed items
-		if(!$_SESSION['recent']){ 
-			$temp[] = $products;
-			$_SESSION['recent'] = $temp;
-		}
-		else{
-			$ch = 0;
-			$temp = $_SESSION['recent'];
-			for($i=0; $i<sizeof($temp); $i++) {
-				if($temp[$i][0]['product_id'] == $products[0]['product_id']){
-				 	$ch = 1;
-					break;
-				}
-			}
-			if($ch!==1){
-				array_push($temp,$products);
-				$_SESSION['recent'] = $temp;
-			}
-		}//end of the storing items
+        if($products!=null){
+            if(!isset($_SESSION['recent'])){ 
+                $temp = array();
+                array_push($temp,$products);
+                $_SESSION['recent'] = $temp;
+            }
+            else{
+                $ch = 0;
+                $temp = $_SESSION['recent'];
+                for($i=0; $i<sizeof($temp); $i++) {
+                    if($temp[$i][0]['product_id'] == $products[0]['product_id']){
+                        $ch = 1;
+                        break;
+                    }
+                }
+                if($ch!==1){
+                    array_push($temp,$products);
+                    $_SESSION['recent'] = $temp;
+                }
+            }//end of the storing items
+        }
+        else
+            $products[0]['Inactive'] =1;
 		
         header('Content-type: application/json');
         echo json_encode($products);

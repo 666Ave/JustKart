@@ -2,7 +2,7 @@
     include 'conn.php';
 
 	$time_now = date("Y-m-d h:i:s a");
-    $get_recent = "SELECT * FROM products where DATEDIFF('$time_now',launch_date) < 10 order by RAND()";
+    $get_recent = "SELECT * FROM products where DATEDIFF('$time_now',launch_date) < 20 and Inactive!=1 order by RAND()";
     $run_recent = mysqli_query($link,$get_recent);
     if($run_recent) {
         if(mysqli_num_rows($run_recent)>0){

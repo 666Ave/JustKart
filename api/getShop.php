@@ -9,7 +9,7 @@
     if($run_shop) {
         if(mysqli_num_rows($run_shop)>0){
             $row0 = mysqli_fetch_assoc($run_shop);
-            $get_products = "SELECT * FROM products where shop_id='$sid'";
+            $get_products = "SELECT * FROM products where shop_id='$sid' and Inactive!=1";
             $run_products = mysqli_query($link,$get_products);
             if($run_products) {
                 if(mysqli_num_rows($run_products)>0){

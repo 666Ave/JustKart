@@ -2,13 +2,13 @@
     include 'conn.php';
 
 	$pid = $_GET['pid'];
-    $get_product = "SELECT * FROM products where product_id='$pid'";
+    $get_product = "SELECT * FROM products where product_id='$pid' and Inactive!=1";
     $run_product = mysqli_query($link,$get_product);
     if($run_product) {
         $row = mysqli_fetch_assoc($run_product);
         $product_brand =$row['product_brand'];
         $product_keywords =$row['product_keywords'];
-        $get_products = "SELECT * FROM products where product_brand='$product_brand' AND product_id!='$pid'";
+        $get_products = "SELECT * FROM products where product_brand='$product_brand' AND product_id!='$pid' and Inactive!=1";
         $run_products = mysqli_query($link,$get_products);
         if($run_products){
 			$products = array();

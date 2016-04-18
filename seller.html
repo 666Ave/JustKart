@@ -19,6 +19,18 @@
 			</div><!--/header-->
             <div class="container">
                 <div class="row">
+                    <div class="col-sm-12">
+                        <div class="breadcrumbs">
+                            <ol class="breadcrumb">
+                                <li><a href="/">Home</a></li>
+                                <li class="active">Seller Panel</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
                     <div class="col-md-12">
                         <uib-tabset class="seller_tabs" active="active">
                             <uib-tab index="0" heading="Insert Products" active="active">
@@ -112,7 +124,28 @@
                                     </form>
                                 </div>
                             </uib-tab>
-                            <uib-tab index="2" heading="Your Shop">
+                            <uib-tab index="2" heading="Your Products">
+                                <div class="seller_form">
+                                    <h2 class="title text-center">Your Products</h2>
+                                    <div class="col-sm-3" ng-repeat="pro in products">
+                                        <div class="product-image-wrapper" >
+                                            <div class="single-products">
+                                                <div class="productinfo text-center">
+                                                    <a class="product-image" href="product-details.html#/?pid={{pro.product_id}}">
+                                                        <img src="images/products/{{pro.product_image}}" alt="{{pro.product_image}}"/>
+                                                    </a>
+                                                    <a href="product-details.html#/?pid={{pro.product_id}}" class="product-title">
+                                                        <p>{{ pro.product_title}}</p>
+                                                    </a>
+                                                    <button type="button" ng-click="removePro(pro.product_id);" class="btn btn-sm btn-danger"><i class="fa fa-eye-slash"></i>Remove product</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                </div>
+                            </uib-tab>
+                            <uib-tab index="3" heading="Your Shop">
+                                <h2 class="title text-center">Your Shop</h2>
                                 <div class="col-sm-6">
                                     <img src="/images/shops/{{ shop[0].shop_image }}">
                                 </div>

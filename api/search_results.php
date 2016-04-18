@@ -1,7 +1,7 @@
 <?php
     include 'conn.php';
 	$search_query = $_GET['user_query'];
-	$get_products = "SELECT * FROM products where product_keywords like '%$search_query%'";
+	$get_products = "SELECT * FROM products where product_keywords like '%$search_query%' and Inactive!=1";
 	$run_products = mysqli_query($link,$get_products);
 	if($run_products) {
 		if(mysqli_num_rows($run_products)>0){

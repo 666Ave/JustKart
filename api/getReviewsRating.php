@@ -12,7 +12,7 @@
             $run_user = mysqli_query($link,$get_user);
             $row2 = mysqli_fetch_assoc($run_user);
             
-            $get_product = "SELECT * FROM products where product_id='$pid'";
+            $get_product = "SELECT * FROM products where product_id='$pid' and Inactive!=1";
             $run_product = mysqli_query($link,$get_product);
             $row3 = mysqli_fetch_assoc($run_product);
             

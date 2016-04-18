@@ -712,9 +712,22 @@ h2.title {
   color: #696763;
 }
 
+.productinfo a img{
+  height: 200px;
+  width: 200px;
+}
+
 .productinfo img{
-  height:200;
-  width:200;
+  height: 200px;
+  width: 200px;
+}
+
+.productinfo button{
+  margin-bottom: 10px;
+}
+
+.productinfo button i{
+  margin-right: 5px;
 }
 
 .productinfo{
@@ -722,8 +735,6 @@ h2.title {
 }
 
 .single-products:hover {
-  display:block;
-  height:100%;
   border: 2px solid #FE980F;
 }
 
