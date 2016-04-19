@@ -44,7 +44,7 @@
                                                                 </a>
                                                             <h2>{{ pro.product_price | currency :"₹" :0}}</h2>
                                                             <a href="product-details.html#/?pid={{pro.product_id}}" class="product-title">
-                                                                <p>{{ pro.product_title}}</p>
+                                                                <p>{{ pro.product_title| limitTo: 30 }}{{ pro.product_title.length > 30 ? '...' : ''}}</p>
                                                             </a>
                                                         </div>
                                                     </div>
@@ -53,12 +53,6 @@
                                         </div>
                                         <p class="text-center">No Such Product. Back to <a href="/">Home</a></p>
                                     </div>
-									<ul ng-hide="searchProd.length<10" class="pagination">
-										<li class="active"><a href="">1</a></li>
-										<li><a href="">2</a></li>
-										<li><a href="">3</a></li>
-										<li><a href="">&raquo;</a></li>
-									</ul>
 								</div><!--features_items-->
 							</div>
 						</div>

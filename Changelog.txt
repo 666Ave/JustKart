@@ -248,3 +248,10 @@
 5)Removed empty folders.
 6)Deleted the blog file.
 7)Working Admin Panel.
+
+    Version 1.5.9.2016.04.19
+1)Made the create shop tab work.
+2)If the user is new and has no shop then he will only first see create shop and once created he wil then see the other tabs.
+3)Added some things in the about us page.
+4)FIxed the inserting products error when not puting launch date.
+5)Updated the db file.

@@ -734,7 +734,7 @@ h2.title {
  position:relative;
 }
 
-.single-products:hover {
+.productinfo img:hover {
   border: 2px solid #FE980F;
 }
 
@@ -818,6 +818,10 @@ h2.title {
 .shop_view p {
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
+}
+
+.shop_view i{
+  color: #FE980F;
 }
 
 #search_results {
@@ -1750,6 +1754,10 @@ h2.title {
     margin: 30px 60px;
 }
 
+.about_content h4 i {
+    color: #FE980F;
+}
+
 .about_content p {
     font-size:20px;
     color: #696763;
@@ -1768,7 +1776,19 @@ h2.title {
 }
 #about_wall_3 {
     background: url(../images/about-us/pic3.png) no-repeat center center fixed;
-    height: 800px;
+    height: 1000px;
+}
+#about_wall_4 {
+    background: url(../images/about-us/pic4.png) no-repeat center center fixed;
+    height: 285px;
+}
+#about_wall_5 {
+    background: url(../images/about-us/pic5.jpg) no-repeat center center fixed;
+    height: 350px;
+}
+#about_wall_6 {
+    background: url(../images/about-us/pic6.jpg) no-repeat center center fixed;
+    height: 500px;
 }
 
 #content_1 {position: relative;}
@@ -1869,12 +1889,4 @@ h2.title {
 .seller_form .date_launch{
     display: inline-block; 
     min-height: 290px;
-}
-
-.seller_tabs a {
-    color: #696763;
-}
-
-.seller_tabs a:hover {
-  color: #FE980F;
 }

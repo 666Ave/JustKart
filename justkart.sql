@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 18, 2016 at 02:03 PM
+-- Generation Time: Apr 19, 2016 at 05:23 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `brands` (
   `brand_id` int(100) NOT NULL AUTO_INCREMENT COMMENT 'Brand ID',
   `brand_title` text NOT NULL COMMENT 'Title of the brand',
   PRIMARY KEY (`brand_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
 
 --
 -- Dumping data for table `brands`
@@ -50,7 +50,17 @@ INSERT INTO `brands` (`brand_id`, `brand_title`) VALUES
 (11, 'Hero'),
 (12, 'Kamachi'),
 (13, 'Lenovo'),
-(14, 'Mi');
+(14, 'Mi'),
+(15, 'Tommy Hilfinger'),
+(16, 'Jack & Jones'),
+(17, 'Libas'),
+(18, 'Roadster'),
+(19, 'Mamy Poko Pants'),
+(20, 'Jimi and Jammy'),
+(21, 'GERONIMO STILTON'),
+(22, 'Zixing'),
+(23, 'Suzuki'),
+(24, 'LS2');
 
 -- --------------------------------------------------------
 
@@ -156,7 +166,7 @@ CREATE TABLE IF NOT EXISTS `products` (
   KEY `fkprocat` (`product_cat`),
   KEY `fkprobrand` (`product_brand`),
   KEY `fk_shop_PID` (`shop_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=24 ;
 
 --
 -- Dumping data for table `products`
@@ -174,7 +184,17 @@ INSERT INTO `products` (`product_id`, `product_cat`, `product_brand`, `product_t
 (9, 10, 11, 'Hero Green & Black Next 26T 18 Speed Sprint Bicycle', 6530, ' Brand : Hero Product Type : Bicycle Features : Light in weight Moves swiftly over dirt and debris Others : Comfortable seat Easy on legs and ankles SUPC: SDL240540072 ', 'Hero-Green.jpg', 2, '0000-00-00 00:00:00', NULL, 'Hero cycles, green & black', 0),
 (10, 10, 12, 'Kamachi 6 in 1 Manual Treadmill', 15995, ' Training for the game of life - This is a heavy product and might take longer than usual to get delivered ~ Compact & foldable ~ Product Type: Manual Treadmill ~ Easy to store ', 'Kamachi-6-in-1.jpg', 2, '2016-02-23 06:53:31', NULL, 'Kamachi , Manual Treadmill', 0),
 (11, 3, 2, 'Samsung S6 32 GB', 40000, '  1 year brand warranty~ 12.95 cm (5.1) Full HD Super AMOLED Display~ Quad-core 1.5 GHz Cortex-A53 & Quad-core 2.1 GHz Cortex-A57 Processor~ 32 GB ROM / 3 GB RAM~ 16 MP Rear / 5 MP Front~ Android OS, v5.0.2 Lollipop~ Non-removable Li-Ion 2550 mAh battery~ Barometer, heart rate, SpO2 Senor~ SUPC: SDL634417341~ ', 'S6.jpg', 1, '2016-03-31 22:13:31', '2016-01-20', 'samsung,android,S6 ', 0),
-(13, 3, 13, 'Lenovo Vibe K5 Plus', 8500, '<p>Display : 5.5 inch display ~</p>\n<p>Ram : 2 GB ~</p>\n<p>Storage : 16 GB ~</p>', 'lenovo_vibe_k5_plus.jpeg', 2, '2016-04-17 06:24:56', '2016-04-07', 'Lenovo , K5 Plus , android , phone , 5.1.1', 0);
+(13, 3, 13, 'Lenovo Vibe K5 Plus', 8500, 'Display : 5.5 inch display ~\nRam : 2 GB ~\nStorage : 16 GB ~\n', 'lenovo_vibe_k5_plus.jpeg', 1, '2016-04-17 06:24:56', '2016-04-07', 'Lenovo , K5 Plus , android , phone , 5.1.1', 0),
+(14, 5, 15, 'Mens shirt casuals', 999, 'For Men only ~\nSize 42 ~\nSuper easy to Wear~\nComfortable and cozy~\nSexy Design with great styling~', 'mens_causauls.jpg', 3, '2016-04-18 23:07:50', NULL, 'Mens, shirt ,casuals, size 42', 0),
+(15, 5, 16, 'Mens Jeans', 2750, 'For Men only ~\nSize 38 ~\nJack & jones~\nSuper easy to Wear~\nComfortable and cozy~\nSexy Design with great styling~', 'mens_jeans.jpg', 3, '2016-04-18 23:08:08', NULL, 'Mens, jeans ,jack and jones, size 42', 0),
+(16, 6, 17, 'Ladies dress', 1299, 'For Women only ~\nBy the top brand of Libas~\nSmooth texture~\nSuper easy to Wear~\nComfortable and cozy~\nSexy Design with great styling~', 'ladies_dress.jpg', 3, '2016-04-18 23:10:43', NULL, 'ladies, dress ,black and white, libas', 0),
+(17, 6, 18, 'Roadster ladies slipper', 799, 'For Women only ~Roadsters latest edition~glass design~Super easy to Wear~Comfortable and cozy~Sexy Design with great styling~', 'ladies_shoes.jpg', 3, '2016-04-18 23:20:31', NULL, 'ladies, slipper,grey, roadster', 0),
+(18, 7, 19, 'Mamy Poko Pants Extra Absorb L (9 - 14 kg), Large 48+4 Pcs', 699, 'Ensure your babys happiness with pant like diaper~\nAllows a sound sleep~\nPant style diapers that are easy to wear &amp; remove~\nQuantity: 52 Pcs~', 'baby_care.jpg', 3, '2016-04-18 23:24:05', '2016-04-18', 'baby, diapers, mamy poko pants', 0),
+(19, 7, 20, 'Jimi and jammy kids wear', 928, 'For kids only ~Age 8-14 yrs ~Jimi &amp; jammy~Super easy to Wear~Comfortable and cozy~Sexy Design with great styling~', 'kids_wear.jpg', 3, '2016-04-18 23:33:40', NULL, 'Jimi & jammy, kids, 8-14 yrs', 0),
+(20, 8, 21, 'Geronimo Stilton And The Kingdom Of Fantasy Se: The Phoenix Of Destiny Hardcover (English) 2015', 529, 'Synopsis:~Another book in the Kingdom of Fantasy series, Geronimo Stilton And The Kingdom Of Fantasy Se: The Phoenix Of Destiny tells of another adventure of the loveable mouse Geronimo Stilton. In Geronimo Stilton And The Kingdom Of Fantasy Se: The Phoenix Of Destiny, we Geronimo returning to the kingdom for Fantasy on the wings of the Phoenix of Destiny. His task is to help Blossom, the Queen of fairies. To add to his difficulties, however, the queen is behaving strangely, sending Geronimo on one quest after the other, each more perilous than the last. Geronimo and his friends navigate through each challenge conquering on challenge after another through this unpredictable plot.~Mazes, twists and turns, puzzles and mystifying fantastical creatures greet you at every turn in this page turner, and Grenimo&rsquo;s trademark humorous narrative keep you chuckling right to the end of Geronimo Stilton And The Kingdom Of Fantasy Se: The Phoenix Of Destiny!~About the Author:~An Italian children&rsquo;s fiction writer, Elisabeth Dami began her career as an author at the tender age of 18 when she stated working for the family publishing house under the guidance of her father, Piero Dani. She was inspired to write the Geronimo Stilton series due to her experience as a volunteer assisting sick children. The Geronimo Stilton series with its endearing characters and quirky plots is all the rage among young readers &ndash; especially targeted toward children and young adults.~', 'book.jpg', 3, '2016-04-18 23:41:36', '2016-04-14', 'Geronimo Stilton And The Kingdom Of Fantasy Se, book, children', 0),
+(21, 8, 22, 'Zixing Acoustic Guitar Combo, Black - Guitar, Strap, String Set, Picks and GigBag', 2599, 'Good quality musical & instruments  accessories!~\nType:Guitar Combo~\nBody material:Linden Wood~\nNeck material:Linden Wood~', 'Zixing-Acoustic-Guitar-Combo.jpg', 3, '2016-04-18 23:44:59', NULL, 'Zixing, Acoustic Guitar, Strap, String Set, Picks ,GigBag', 0),
+(22, 9, 23, 'Suzuki Gixxer SF', 88643, '<p>Engine: 154.9 cc~</p>\n<p>Brake: Disc~</p>\n<p>Wheels: Alloy~</p>\n<p>Start: Self~</p>', 'Suzuki-Gixxer-SF.jpg', 3, '2016-04-18 23:47:03', '2016-04-19', 'Suzuki ,Gixxer SF, bike, 150 cc, tourer', 0),
+(23, 9, 24, 'LS2 - Helmet - FF 350 Tron Matt Black Orange [Size: Large 58 cms]', 5050, '<p>tHPTT Composite Construction~</p>\n<p>Smooth Visor Lock Opening and Closing~</p>\n<p>Visor Ready for Pinlock~</p>\n<p>Liner Moisture Wicking~</p>', 'LS2-Helmet.JPG', 3, '2016-04-18 23:48:34', '2016-04-11', 'LS2 ,  Helmet , FF 350 ,Tron Matt Black Orange', 0);
 
 -- --------------------------------------------------------
 
@@ -212,21 +232,24 @@ INSERT INTO `reviews` (`review_id`, `pro_ID`, `review_title`, `review_userID`, `
 
 CREATE TABLE IF NOT EXISTS `shops` (
   `shop_id` int(255) NOT NULL AUTO_INCREMENT COMMENT 'ID of the shop',
+  `user_id` int(255) NOT NULL COMMENT 'user id of the user who owns the shop',
   `shop_name` varchar(255) NOT NULL COMMENT 'Name of the shop',
   `area_name` varchar(255) NOT NULL COMMENT 'Name of the sub-district where your shop resides.(For ex. naigoan)',
   `owner_name` varchar(255) NOT NULL COMMENT 'Name of the owner(s) of the shop.',
   `shop_image` text NOT NULL COMMENT 'name of the image file',
   `Inactive` tinyint(1) NOT NULL COMMENT 'Specifies whether the shop is active or not',
-  PRIMARY KEY (`shop_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+  PRIMARY KEY (`shop_id`),
+  KEY `fk_shop_UID` (`user_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `shops`
 --
 
-INSERT INTO `shops` (`shop_id`, `shop_name`, `area_name`, `owner_name`, `shop_image`, `Inactive`) VALUES
-(1, 'Ram Electronics', 'Vasai', 'Ram Pandit', 'Ram_Electronics.jpg', 0),
-(2, 'Comfort Home', 'Mumbai', 'Umesh Navadia', 'Comfort_home.png', 0);
+INSERT INTO `shops` (`shop_id`, `user_id`, `shop_name`, `area_name`, `owner_name`, `shop_image`, `Inactive`) VALUES
+(1, 4, 'Ram Electronics', 'Vasai', 'Ram Pandit', 'Ram_Electronics.jpg', 0),
+(2, 2, 'Comfort Home', 'Mumbai', 'Umesh Navadia', 'Comfort_home.png', 0),
+(3, 5, 'CARA', 'Naigaon', 'Akshay Zavlet', 'cara.png', 0);
 
 -- --------------------------------------------------------
 
@@ -249,7 +272,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `type` varchar(10) NOT NULL COMMENT 'Specifies the type of user.',
   `Active` tinyint(1) NOT NULL COMMENT 'Specifies whether the user is active or not',
   PRIMARY KEY (`User_ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `user`
@@ -258,7 +281,9 @@ CREATE TABLE IF NOT EXISTS `user` (
 INSERT INTO `user` (`User_ID`, `UName`, `Email_address`, `Password`, `shop_id`, `Mobile_no`, `Address`, `Pin_code`, `fName`, `lName`, `Gender`, `type`, `Active`) VALUES
 (1, 'root', '', 'a123456', NULL, '2147483647', '4/A, Old Barampur, Near st.Michael Church , Vasai (W) ', 123456, 'Admin', '', 'Male', 'admin', 1),
 (2, 'Ave', 'avian@gmail.com', 'admin6', NULL, '7875089271', 'Kiravli , Papdi, Vasai(W)', 401202, 'Ave', 'Silvi', 'Male', 'normal', 1),
-(3, 'UmeshB2', 'umesh.navadia@gmail.com', 's123456', 2, '', '', 123465, 'Umesh', '', '', 'seller', 1);
+(3, 'UmeshB2', 'umesh.navadia@gmail.com', 's123456', 2, '', '', 123465, 'Umesh', '', '', 'seller', 1),
+(4, 'aseller6', 'avian@gmail.com', 's123456', 1, '', '', 778911, 'ASeller', '', '', 'seller', 1),
+(5, 'Akshay37', 'akshay@gmail.com', 's123456', 3, '', '', 789123, 'Akshay', '', '', 'seller', 1);
 
 --
 -- Constraints for dumped tables
@@ -292,6 +317,12 @@ ALTER TABLE `products`
 ALTER TABLE `reviews`
   ADD CONSTRAINT `fk_review_PID` FOREIGN KEY (`pro_ID`) REFERENCES `products` (`product_id`),
   ADD CONSTRAINT `fk_review_UID` FOREIGN KEY (`review_userID`) REFERENCES `user` (`User_ID`);
+
+--
+-- Constraints for table `shops`
+--
+ALTER TABLE `shops`
+  ADD CONSTRAINT `fk_shop_UID` FOREIGN KEY (`user_id`) REFERENCES `user` (`User_ID`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

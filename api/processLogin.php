@@ -15,8 +15,10 @@
 		$data['uid'] = $row['User_ID'];
         $data['uaddress'] = $row['Address'];
         $data['type'] = $row['type'];
-        if($data['type'] == "seller")
+        if($data['type'] == "seller" && $row['shop_id'])
             $data['shop_id'] = $row['shop_id'];
+        else 
+            $data['shop_id'] = 0;
 	}
 	else {
 		$data['success'] = false;

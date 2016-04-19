@@ -33,7 +33,38 @@
                 <div class="row">
                     <div class="col-md-12">
                         <uib-tabset class="seller_tabs" active="active">
-                            <uib-tab index="0" heading="Insert Products" active="active">
+                            <uib-tab ng-if="noshop" index="1" heading="Create Shop" active="active">
+                                <div class="seller_form">
+                                    <h2 class="title text-center">Insert new Shop Here</h2>
+                                    <form ng-submit="postShop()">
+                                        <table>
+                                            <tr>
+                                                <td class="table_title"><b>Shop Name : </b></td>
+                                                <td class="col-sm-9"><input type="text" class="table_protitle" ng-model="shop.shop_name" required/></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="table_title"><b>Area Name : </b></td>
+                                                <td class="col-sm-9"><input type="text" class="table_protitle" ng-model="shop.area_name" required/></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="table_title"><b>Owner Name : </b></td>
+                                                <td class="col-sm-9"><input type="text" class="table_protitle" ng-model="shop.owner_name" required/></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="table_title"><b>Shop Image : </b></td>
+                                                <td>
+                                                    <input type="file" class="table_file" file-model="shop.shop_image" required/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2"><div class="table_submit"><button type="submit" class="btn btn-default cart">Add Shop!</button></div></td>
+                                            </tr>
+                                        </table>
+                                        {{shop}}
+                                    </form>
+                                </div>
+                            </uib-tab>
+                            <uib-tab ng-if="!noshop" index="2" heading="Insert Products">
                                 <div class="seller_form">
                                     <h2 class="title text-center">Insert new Product Here</h2>
                                     <form ng-submit="postPro()">
@@ -56,7 +87,7 @@
                                                     <select ng-model="product.product_brand" required>      
                                                             <option ng-repeat="brand in brands" value="{{ brand.brand_id }}">{{ brand.brand_title }}</option>
                                                     </select>
-                                                    <div><a href="#addBrand">Cant find your brand? Click here</a></div>
+                                                    <div>Cant find your brand? Click on the next tab</div>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -108,7 +139,7 @@
                                     </form>
                                 </div>
                             </uib-tab>
-                            <uib-tab index="1" heading="Insert Brands">
+                            <uib-tab ng-if="!noshop" index="3" heading="Insert Brands">
                                 <div class="seller_form">
                                     <h2 class="title text-center">Insert new Brand Here</h2>
                                     <form ng-submit="postBrand()">
@@ -124,7 +155,7 @@
                                     </form>
                                 </div>
                             </uib-tab>
-                            <uib-tab index="2" heading="Your Products">
+                            <uib-tab ng-if="!noshop" index="4" heading="Your Products">
                                 <div class="seller_form">
                                     <h2 class="title text-center">Your Products</h2>
                                     <div class="col-sm-3" ng-repeat="pro in products">
@@ -135,7 +166,7 @@
                                                         <img src="images/products/{{pro.product_image}}" alt="{{pro.product_image}}"/>
                                                     </a>
                                                     <a href="product-details.html#/?pid={{pro.product_id}}" class="product-title">
-                                                        <p>{{ pro.product_title}}</p>
+                                                        <p>{{ pro.product_title| limitTo: 30 }}{{ pro.product_title.length > 30 ? '...' : ''}}</p>
                                                     </a>
                                                     <button type="button" ng-click="removePro(pro.product_id);" class="btn btn-sm btn-danger"><i class="fa fa-eye-slash"></i>Remove product</button>
                                                 </div>
@@ -144,7 +175,7 @@
                                     </div> 
                                 </div>
                             </uib-tab>
-                            <uib-tab index="3" heading="Your Shop">
+                            <uib-tab ng-if="!noshop" index="5" heading="Your Shop">
                                 <h2 class="title text-center">Your Shop</h2>
                                 <div class="col-sm-6">
                                     <img src="/images/shops/{{ shop[0].shop_image }}">

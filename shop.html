@@ -58,7 +58,7 @@
                                                                 </a>
                                                             <h2>{{ pro.product_price | currency :"₹" :0}}</h2>
                                                             <a href="product-details.html#/?pid={{pro.product_id}}" class="product-title">
-                                                                <p>{{ pro.product_title}}</p>
+                                                                <p>{{ pro.product_title| limitTo: 30 }}{{ pro.product_title.length > 30 ? '...' : ''}}</p>
                                                             </a>
                                                         </div>
                                                     </div>
@@ -66,12 +66,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <ul ng-hide="product.length<10" class="pagination">
-                                        <li class="active"><a href="">1</a></li>
-                                        <li><a href="">2</a></li>
-                                        <li><a href="">3</a></li>
-                                        <li><a href="">&raquo;</a></li>
-                                    </ul>
                                 </div><!--featured_items-->
                             </span>
                             <span ng-show="shop==1">
@@ -86,7 +80,7 @@
                                                 <h1>{{ shopname }}</h1>
                                                 <p><b>Location :</b> {{ area_name }}</p>
                                                 <p><b>Owner :</b> {{ owner_name }}</p>
-                                                <p><b>Rating :</b> <i></i> {{ rating }} out of 5 , based on {{ reviews }} reviews</p>
+                                                <p><b>Rating :</b> <i class="fa fa-star"></i> {{ rating }} out of 5 , based on {{ reviews }} reviews</p>
                                             </div>
                                         </div>
                                         <h2 class="title text-center">Products</h2>
@@ -100,7 +94,7 @@
                                                                 </a>
                                                             <h2>{{ pro.product_price | currency :"₹" :0}}</h2>
                                                             <a href="product-details.html#/?pid={{pro.product_id}}" class="product-title">
-                                                                <p>{{ pro.product_title}}</p>
+                                                                <p>{{ pro.product_title | limitTo: 30 }}{{ pro.product_title.length > 30 ? '...' : ''}}</p>
                                                             </a>
                                                         </div>
                                                     </div>

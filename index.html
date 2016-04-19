@@ -52,7 +52,7 @@
 															</a>
 														<h2>{{ pro.product_price | currency :"₹" :0}}</h2>
 														<a href="product-details.html#/?pid={{pro.product_id}}" class="product-title">
-															<p>{{ pro.product_title}}</p>
+															<p>{{ pro.product_title | limitTo: 30 }}{{ pro.product_title.length > 30 ? '...' : ''}}</p>
 														</a>
 													</div>
 											</div>

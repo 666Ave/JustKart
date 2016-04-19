@@ -4,6 +4,9 @@ app.controller('sellerCtrl',function($scope,$http,$cookies,$window,$filter){
         maxDate: new Date(),
         showWeeks: true
     };
+    $scope.noshop = false;
+    $scope.shop = {};
+    $scope.shop.user_id = $cookies.get('userID');
     $scope.product = {};
     $scope.brand = {};
     $scope.product.dt = new Date();
@@ -30,6 +33,10 @@ app.controller('sellerCtrl',function($scope,$http,$cookies,$window,$filter){
         $window.location.href = '/';
     }
     
+    if($cookies.get('shopID') == null){
+        $window.alert("You're not a seller ... please leave!");
+    }
+    
     $http.get("/api/getCat.php")
         .success(function(response) {
             $scope.category = response;
@@ -46,28 +53,67 @@ app.controller('sellerCtrl',function($scope,$http,$cookies,$window,$filter){
             console.log('error occured2');
         });
     
-    $http.get("/api/getShops.php",{params:{sid:$cookies.get('shopID')}})
-        .success(function(response) {
-            $scope.shop = response;
-            $scope.shop[0].shop_id = $cookies.get('shopID');
-            $scope.shopLink=$scope.shop[0].shop_name.split(' ').join('_');
-        })
-        .error(function(response){
-            console.log('error occured2');
-        });
+    if($cookies.get('shopID') != 0){
+        $http.get("/api/getShops.php",{params:{sid:$cookies.get('shopID')}})
+            .success(function(response) {
+                $scope.shop = response;
+                $scope.shop[0].shop_id = $cookies.get('shopID');
+                $scope.shopLink=$scope.shop[0].shop_name.split(' ').join('_');
+            })
+            .error(function(response){
+                console.log('error occured2');
+            });
     
-    $http.get("/api/getShop.php",{params:{shopid:$cookies.get('shopID')}})
-        .success(function(response) {
-            $scope.products = response;
-            delete $scope.products.area_name;
-            delete $scope.products.owner_name;
-            delete $scope.products.rating;
-            delete $scope.products.reviews;
-            delete $scope.products.shop_image;
-        })
-        .error(function(response){
-            console.log('error occured2');
-        });
+        $http.get("/api/getShop.php",{params:{shopid:$cookies.get('shopID')}})
+            .success(function(response) {
+                $scope.products = response;
+                delete $scope.products.area_name;
+                delete $scope.products.owner_name;
+                delete $scope.products.rating;
+                delete $scope.products.reviews;
+                delete $scope.products.shop_image;
+            })
+            .error(function(response){
+                console.log('error occured2');
+            });
+    }
+    else{
+        $scope.noshop = true;
+    }
+    
+    $scope.postShop = function(){
+        if($cookies.get('userType') != "seller"){
+            $window.alert("You're not a seller ... please leave!");
+            $window.location.href = '/';
+        }
+        
+        if($scope.shop.shop_image != null)
+            $scope.shop.shop_image = $scope.shop.shop_image.name;
+        else{
+            $window.alert("Please upload the file again");
+            return 0;
+        }
+            
+        $http({
+				method: 'POST',
+				url: 'api/insert_shop.php',
+				data: $.param($scope.shop),
+				headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+			})
+				.success(function(data) {
+					if (!data.success) {
+						$window.alert(data.message);
+					} 
+					else {
+						$window.alert(data.message);
+                        var cookies = $cookies.getAll();
+                        angular.forEach(cookies, function (v, k) {
+                            $cookies.remove(k);
+                        });
+                        $window.location.href = 'login.html';
+					}
+				});
+    };
     
     $scope.postPro = function(){
         if($cookies.get('userType') != "seller"){
@@ -141,7 +187,8 @@ app.controller('sellerCtrl',function($scope,$http,$cookies,$window,$filter){
             })
             .error(function(response){
                 console.log('error occured2');
-            });   
+            })
+        ;   
     };
     
 });
