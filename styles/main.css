@@ -20,6 +20,7 @@ ul li {
 a:hover {
 outline: none;
 text-decoration:none;
+color: #FE980F;
 }
 
 a:focus {
@@ -32,6 +33,7 @@ a {
   -moz-transition: 300ms;
     -o-transition: 300ms;
     transition: 300ms;
+    color:#696763;
 }
 
 button {
@@ -73,8 +75,28 @@ a#scrollUp i{
 *******Header CSS******
 **************************/
 
-.header_top {
+.bg {
   background: none repeat scroll 0 0 #F0F0E9;
+}
+
+.fg {
+  background: none repeat scroll 0 0 #FFF;
+}
+
+.space-down {
+    margin-bottom: 20px;
+}
+
+.space-top {
+    margin-top: 20px;
+}
+
+.pad-top {
+    padding-top: 20px;
+}
+
+.pad-down {
+    padding-bottom: 20px;
 }
 
 .current-location ul li:first-child{
@@ -146,7 +168,6 @@ a#scrollUp i{
 }
 
 .header-bottom .container .row {
-  border-bottom: 1px solid #f5f5f5;
   margin-left: 0;
   margin-right: 0;
   padding-bottom: 20px;
@@ -214,8 +235,8 @@ a#scrollUp i{
 .search_box input {
   background: #F0F0E9;
   border: none;
-  display:inline-block
-  color: #B2B2B2;
+  display:inline-block;
+  color: #696763;
   font-family: 'roboto';
   font-size: 16px;
   font-weight: 300;
@@ -304,13 +325,13 @@ ul.sub-menu {
 *******Footer CSS******
 **************************/
 
-#footer {
-  background: #F0F0E9;
+#footer{
+  background: #E0E0DA;
 }
 
 
 .footer-top .container {
-  border-bottom: 1px solid #E0E0DA;
+  border-bottom: 1px solid #B4B1AB;
   padding-bottom: 20px;
 }
 
@@ -1009,7 +1030,7 @@ h2.title {
   padding-left: 10px;
   padding-top: 15px;
   resize: none;
-  width: 100%;
+  width: 97%;
 }
 
 .review button {
@@ -1083,8 +1104,8 @@ h2.title {
 
 #form {
   display: block;
-  margin-bottom: 185px;
-  margin-top: 185px;
+  margin-bottom: 20px;
+  margin-top: 20px;
   overflow: hidden;
 }
 
@@ -1158,6 +1179,9 @@ h2.title {
     margin-bottom: 50px;
 }
 
+.signup-form button {
+    margin-bottom: 20px;
+}
 
 /*************************
 *******Account page CSS******
@@ -1193,9 +1217,6 @@ h2.title {
 *******Cart CSS******
 **************************/
 
-#do_action {
-  margin-bottom: 50px;
-}
 
 .breadcrumbs {
   position: relative;
@@ -1350,19 +1371,7 @@ h2.title {
   margin-top: 0;
 }
 
-.heading h3 {
-  color: #363432;
-  font-size: 20px;
-  font-family: 'Roboto', sans-serif;
-}
-
-.heading p {
-  color: #434343;
-  font-size: 16px;
-  font-weight: 300;
-}
-
-#do_action .total_area, #do_action .chose_area {
+#do_action .total_area{
   border: 1px solid #E6E4DF;
   color: #696763;
   padding: 30px 25px 30px 0;
@@ -1593,11 +1602,19 @@ h2.title {
   margin-bottom: 30px;
 }
 
+.order_msg button {
+  margin-bottom: 20px;
+}
+
 .prev_orders h2 {
   color: #696763;
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
   margin-bottom: 30px;
+}
+
+.width-corr {
+    width: 90%;
 }
 
 .details {
@@ -1805,6 +1822,22 @@ h2.title {
 .seller_form table {
     border: 1px solid #E6E4DF;
     margin-bottom: 50px;
+}
+
+.seller_form table ul.scroll-menu {
+    height: auto;
+    max-height: 200px;
+    overflow-x: hidden;
+}
+
+#single-button {
+    background: #E6E4DF;
+    color: #696763;
+}
+
+#single-button:hover {
+    background: #FE980F;
+    color:  #FFF;
 }
 
 .seller_form .table_title {

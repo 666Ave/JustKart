@@ -1,5 +1,5 @@
 app.controller('locCtrl',function($scope,$http,$uibModal,$window,$cookies,$log,geolocation,proinfo){
- 
+    var j = 0;
 	if(!$cookies.get('chLoc')) {
 		geolocation.getLocation().then(function(data){
 			$scope.coords = {lat:data.coords.latitude, long:data.coords.longitude};			
@@ -7,7 +7,11 @@ app.controller('locCtrl',function($scope,$http,$uibModal,$window,$cookies,$log,g
 			$http.get($scope.url)
 				.success(function(response) {
 					if(response) {
-						$scope.location = response['results'][3]['address_components'][1].long_name;
+						$scope.location = response['results'][0]['address_components'];
+                        for(var i=0; i<$scope.location.length; i++)
+                            if($scope.location[i].types[0] == "sublocality_level_1")
+                                j =i;
+                        $scope.location = $scope.location[j].long_name;
                         $cookies.put('Loc',$scope.location);
 					}
 				})

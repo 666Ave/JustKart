@@ -14,10 +14,10 @@
     </head><!--/head-->
 
     <body ng-app="Myapp"> 
-		<div ng-controller="adminCtrl">
+		<div ng-controller="adminCtrl" class="bg">
 			<div id="header" ng-include src="'templates/header.html'"><!--header-->
 			</div><!--/header-->
-            <div class="container">
+            <div class="container fg">
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="breadcrumbs">
@@ -29,73 +29,75 @@
                     </div>
                 </div>
             </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <uib-tabset class="seller_tabs" active="active">
-                            <uib-tab index="0" heading="Products">
-                                <div class="seller_form">
-                                    <h2 class="title text-center">All Products</h2>
-                                    <div class="col-sm-3" ng-repeat="pro in products">
-                                        <div class="product-image-wrapper" >
-                                            <div class="single-products">
-                                                <div class="productinfo text-center">
-                                                    <a class="product-image" href="product-details.html#/?pid={{pro.product_id}}">
-                                                        <img src="images/products/{{pro.product_image}}" alt="{{pro.product_image}}"/>
-                                                    </a>
-                                                    <a href="product-details.html#/?pid={{pro.product_id}}" class="product-title">
-                                                        <p>{{ pro.product_title| limitTo: 30 }}{{ pro.product_title.length > 30 ? '...' : ''}}</p>
-                                                    </a>
-                                                    <button type="button" ng-click="removePro(pro.product_id);" class="btn btn-sm btn-danger"><i class="fa fa-eye-slash"></i>Remove product</button>
+            <section class="pad-down">
+                <div class="container fg">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <uib-tabset class="seller_tabs" active="active">
+                                <uib-tab index="0" heading="Products">
+                                    <div class="seller_form">
+                                        <h2 class="title text-center">All Products</h2>
+                                        <div class="col-sm-3" ng-repeat="pro in products">
+                                            <div class="product-image-wrapper" >
+                                                <div class="single-products">
+                                                    <div class="productinfo text-center">
+                                                        <a class="product-image" href="product-details.html#/?pid={{pro.product_id}}">
+                                                            <img src="images/products/{{pro.product_image}}" alt="{{pro.product_image}}"/>
+                                                        </a>
+                                                        <a href="product-details.html#/?pid={{pro.product_id}}" class="product-title">
+                                                            <p>{{ pro.product_title| limitTo: 30 }}{{ pro.product_title.length > 30 ? '...' : ''}}</p>
+                                                        </a>
+                                                        <button type="button" ng-click="removePro(pro.product_id);" class="btn btn-sm btn-danger"><i class="fa fa-eye-slash"></i>Remove product</button>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div> 
-                                </div>
-                            </uib-tab>
-                            <uib-tab index="1" heading="Shops">
-                                <div class="seller_form">
-                                    <h2 class="title text-center">All Shops</h2>
-                                    <div class="col-sm-3" ng-repeat="pro in shops">
-                                        <div class="product-image-wrapper" >
-                                            <div class="single-products">
-                                                <div class="productinfo text-center">
-                                                    <a class="product-image" href="shop.html#/?shopname={{pro.shopLink}}&shopid={{pro.shop_id}}">
-                                                        <img src="images/shops/{{pro.shop_image}}" alt="{{pro.shop_image}}"/>
-                                                    </a>
-                                                    <a href="shop.html#/?shopname={{pro.shopLink}}&shopid={{pro.shop_id}}" class="product-title">
-                                                        <h2>{{ pro.owner_name | limitTo: 30 }}{{ pro.owner_name.length > 30 ? '...' : ''}}</h2>
-                                                        <p>{{ pro.shop_name| limitTo: 30 }}{{ pro.shop_name.length > 30 ? '...' : ''}}</p>
-                                                    </a>
-                                                    <button type="button" ng-click="removeShop(pro.shop_id);" class="btn btn-sm btn-danger"><i class="fa fa-eye-slash"></i>Remove shop</button>
+                                        </div> 
+                                    </div>
+                                </uib-tab>
+                                <uib-tab index="1" heading="Shops">
+                                    <div class="seller_form">
+                                        <h2 class="title text-center">All Shops</h2>
+                                        <div class="col-sm-3" ng-repeat="pro in shops">
+                                            <div class="product-image-wrapper" >
+                                                <div class="single-products">
+                                                    <div class="productinfo text-center">
+                                                        <a class="product-image" href="shop.html#/?shopname={{pro.shopLink}}&shopid={{pro.shop_id}}">
+                                                            <img src="images/shops/{{pro.shop_image}}" alt="{{pro.shop_image}}"/>
+                                                        </a>
+                                                        <a href="shop.html#/?shopname={{pro.shopLink}}&shopid={{pro.shop_id}}" class="product-title">
+                                                            <h2>{{ pro.owner_name | limitTo: 30 }}{{ pro.owner_name.length > 30 ? '...' : ''}}</h2>
+                                                            <p>{{ pro.shop_name| limitTo: 30 }}{{ pro.shop_name.length > 30 ? '...' : ''}}</p>
+                                                        </a>
+                                                        <button type="button" ng-click="removeShop(pro.shop_id);" class="btn btn-sm btn-danger"><i class="fa fa-eye-slash"></i>Remove shop</button>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div> 
-                                </div>
-                            </uib-tab>
-                            <uib-tab index="2" heading="Users">
-                                <div class="seller_form">
-                                    <h2 class="title text-center">All Users</h2>
-                                    <div class="col-sm-3" ng-repeat="pro in users">
-                                        <div class="product-image-wrapper" >
-                                            <div class="single-products">
-                                                <div class="productinfo text-center">
-                                                    <img src="images/user.jpg" alt="{{user}}"/>
-                                                    <h2>Type : {{ pro.type}}</h2>
-                                                    <p>Name : {{ pro.Name| limitTo: 30 }}{{ pro.Name.length > 30 ? '...' : ''}}</p>
-                                                    <p>User Name : {{ pro.UName| limitTo: 30 }}{{ pro.UName.length > 30 ? '...' : ''}}</p>
-                                                    <button type="button" ng-click="removeUser(pro.User_id);" class="btn btn-sm btn-danger"><i class="fa fa-eye-slash"></i>Remove user</button>
+                                        </div> 
+                                    </div>
+                                </uib-tab>
+                                <uib-tab index="2" heading="Users">
+                                    <div class="seller_form">
+                                        <h2 class="title text-center">All Users</h2>
+                                        <div class="col-sm-3" ng-repeat="pro in users">
+                                            <div class="product-image-wrapper" >
+                                                <div class="single-products">
+                                                    <div class="productinfo text-center">
+                                                        <img src="images/user.jpg" alt="{{user}}"/>
+                                                        <h2>Type : {{ pro.type}}</h2>
+                                                        <p>Name : {{ pro.Name| limitTo: 30 }}{{ pro.Name.length > 30 ? '...' : ''}}</p>
+                                                        <p>User Name : {{ pro.UName| limitTo: 30 }}{{ pro.UName.length > 30 ? '...' : ''}}</p>
+                                                        <button type="button" ng-click="removeUser(pro.User_id);" class="btn btn-sm btn-danger"><i class="fa fa-eye-slash"></i>Remove user</button>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div> 
-                                </div>
-                            </uib-tab>
-                          </uib-tabset>
+                                        </div> 
+                                    </div>
+                                </uib-tab>
+                              </uib-tabset>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </section>
             <div id="footer" ng-include src="'templates/footer.html'"><!--Footer-->		
             </div><!--/Footer-->
         </div>

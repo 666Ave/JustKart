@@ -255,3 +255,13 @@
 3)Added some things in the about us page.
 4)FIxed the inserting products error when not puting launch date.
 5)Updated the db file.
+
+    Version 1.6.0.2016.05.09
+1)Fixed the location bug when it came to out of vasai places.
+2)Made the area_name into a drop_down list in create shop.
+3)Made the bootstrap buttons in the login n seller panel orange.
+4)Added validations part in the checkout page.
+5)Changed the theme of the whole site.
+6)Removed the coupon part in the cart page.
+7)Made all the input field has a class of form-control.
+8)Fixed the issue on the search page that even if there are products it would display that there are no products.

@@ -16,8 +16,8 @@
         <div id="header" ng-include src="'templates/header.html'"><!--header-->
         </div><!--/header-->
 
-        <section id="cart_items">
-            <div class="container">
+        <section id="cart_items" class="bg pad-top pad-down">
+            <div class="container fg">
                 <div class="breadcrumbs">
                     <ol class="breadcrumb">
                       <li><a href="/">Home</a></li>
@@ -118,13 +118,18 @@
                         </div>
                         <div class="tab-content">
                             <div class="tab-pane fade active in" id="cod">
-                                <p>Proceed for Cash on delivery for this product(s)?</p>
-                                <button ng-click="checkout()" class="btn btn-default check_out">Check Out</button>
+                                <div class="container">
+                                    <p>Proceed for Cash on delivery for this product(s)?</p>
+                                    <button ng-click="checkout()" class="btn btn-default check_out">Check Out</button>
+                                </div>
                             </div>
                             <div class="tab-pane fade" id="debit_card">
                                 <div class="form-two">
-                                    <form>
-                                        <input type="text" placeholder="Card Number">
+                                    <form name="debitForm">
+                                        <div class="form-group" ng-class="{ 'has-error' : debitForm.cardno.$invalid && !debitForm.cardno.$pristine}">
+                                            <input type="text" class="form-control" name="cardno" pattern="/^\d{16}$/" placeholder="Card Number" required>
+                                            <span ng-show="debitForm.cardno.$invalid && !debitForm.cardno.$pristine" class="help-block">16 digits only!</span>
+                                        </div>
                                         <label>Expiry Date</label>
                                         <select>
                                             <option>MM</option>
@@ -170,15 +175,21 @@
                                             <option>40</option>
                                             <option>41</option>
                                         </select>
-                                        <input type="text"placeholder="CVV">
+                                        <div class="form-group" ng-class="{ 'has-error' : debitForm.CVV.$invalid && !debitForm.CVV.$pristine}">
+                                            <input type="text" class="form-control" name="CVV" pattern="/^\d{3}$/" placeholder="CVV" required>
+                                            <span ng-show="debitForm.CVV.$invalid && !debitForm.CVV.$pristine" class="help-block">3 digits only!</span>
+                                        </div>
                                     </form>
                                     <button ng-click="checkout()" class="btn btn-default check_out">Check Out</button>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="credit_card">
                                 <div class="form-two">
-                                    <form>
-                                        <input type="text" placeholder="Card Number">
+                                    <form name="creditForm">
+                                        <div class="form-group" ng-class="{ 'has-error' : creditForm.cardno.$invalid && !creditForm.cardno.$pristine}">
+                                            <input type="text" class="form-control" name="cardno" pattern="/^\d{16}$/" placeholder="Card Number" required>
+                                            <span ng-show="creditForm.cardno.$invalid && !creditForm.cardno.$pristine" class="help-block">16 digits only!</span>
+                                        </div>
                                         <label>Expiry Date</label>
                                         <select>
                                             <option>MM</option>
@@ -224,83 +235,94 @@
                                             <option>40</option>
                                             <option>41</option>
                                         </select>
-                                        <input type="text"placeholder="CVV">
+                                        <div class="form-group" ng-class="{ 'has-error' : creditForm.CVV.$invalid && !creditForm.CVV.$pristine}">
+                                            <input type="text" class="form-control" name="CVV" pattern="/^\d{3}$/" placeholder="CVV" required>
+                                            <span ng-show="creditForm.CVV.$invalid && !creditForm.CVV.$pristine" class="help-block">3 digits only!</span>
+                                        </div>
                                     </form>
                                     <button ng-click="checkout()" class="btn btn-default check_out">Check Out</button>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="emi">
-                                <select>
-                                    <option>-- Select Bank --</option>
-                                    <option>Axis Bank</option>
-                                    <option>Citi Bank</option>
-                                    <option>HDFC Bank</option>
-                                    <option>HSBC Bank</option>
-                                    <option>ICICI Bank</option>
-                                    <option>IndusInd Bank</option>
-                                    <option>Kotak Bank</option>
-                                    <option>Standard Chartered Bank</option>
-                                    <option>State Bank of India</option>
-                                </select>
-                                <ul>
-                                    <li><input type="radio" name="emiPeriod" value="3" ng-model="emiPeriod"><label>3 months   {{ ((total_p()*0.13) | num)| currency :"Rs."}}/-p.m.  13%</label></li>
-                                    <li><input type="radio" name="emiPeriod" value="6" ng-model="emiPeriod"><label>6 months   {{ ((total_p()*0.13) | num)| currency :"Rs."}}/-p.m.  13%</label></li>
-                                    <li><input type="radio" name="emiPeriod" value="9" ng-model="emiPeriod"><label>9 months   {{ ((total_p()*0.14) | num)| currency :"Rs."}}/-p.m.  14%</label></li>
-                                    <li><input type="radio" name="emiPeriod" value="12" ng-model="emiPeriod"><label>12 months   {{ ((total_p()*0.14) | num)| currency :"Rs."}}/-p.m.  14%</label></li>
-                                    <li><input type="radio" name="emiPeriod" value="18" ng-model="emiPeriod"><label>18 months   {{ ((total_p()*0.15) | num)| currency :"Rs."}}/-p.m.  15%</label></li>
-                                    <li><input type="radio" name="emiPeriod" value="24" ng-model="emiPeriod"><label>24 months   {{ ((total_p()*0.15) | num)| currency :"Rs."}}/-p.m.  15%</label></li>
-                                </ul>
-                                <div class="form-two">
-                                    <form>
-                                        <input type="text" placeholder="Card Number">
-                                        <label>Expiry Date</label>
-                                        <select>
-                                            <option>MM</option>
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                            <option>6</option>
-                                            <option>7</option>
-                                            <option>8</option>
-                                            <option>9</option>
-                                            <option>10</option>
-                                            <option>11</option>
-                                            <option>12</option>
-                                        </select>
-                                        <select>
-                                            <option>YY</option>
-                                            <option>16</option>
-                                            <option>17</option>
-                                            <option>18</option>
-                                            <option>19</option>
-                                            <option>20</option>
-                                            <option>21</option>
-                                            <option>22</option>
-                                            <option>23</option>
-                                            <option>24</option>
-                                            <option>25</option>
-                                            <option>26</option>
-                                            <option>27</option>
-                                            <option>28</option>
-                                            <option>29</option>
-                                            <option>30</option>
-                                            <option>31</option>
-                                            <option>32</option>
-                                            <option>33</option>
-                                            <option>34</option>
-                                            <option>35</option>
-                                            <option>36</option>
-                                            <option>37</option>
-                                            <option>38</option>
-                                            <option>39</option>
-                                            <option>40</option>
-                                            <option>41</option>
-                                        </select>
-                                        <input type="text"placeholder="CVV">
-                                    </form>
-                                    <button ng-click="checkout()" class="btn btn-default check_out">Check Out</button>
+                                <div class="container">
+                                    <select>
+                                        <option>-- Select Bank --</option>
+                                        <option>Axis Bank</option>
+                                        <option>Citi Bank</option>
+                                        <option>HDFC Bank</option>
+                                        <option>HSBC Bank</option>
+                                        <option>ICICI Bank</option>
+                                        <option>IndusInd Bank</option>
+                                        <option>Kotak Bank</option>
+                                        <option>Standard Chartered Bank</option>
+                                        <option>State Bank of India</option>
+                                    </select>
+                                    <ul>
+                                        <li><input type="radio" name="emiPeriod" value="3" ng-model="emiPeriod"><label>3 months   {{ ((total_p()*0.13) | num)| currency :"Rs."}}/-p.m.  13%</label></li>
+                                        <li><input type="radio" name="emiPeriod" value="6" ng-model="emiPeriod"><label>6 months   {{ ((total_p()*0.13) | num)| currency :"Rs."}}/-p.m.  13%</label></li>
+                                        <li><input type="radio" name="emiPeriod" value="9" ng-model="emiPeriod"><label>9 months   {{ ((total_p()*0.14) | num)| currency :"Rs."}}/-p.m.  14%</label></li>
+                                        <li><input type="radio" name="emiPeriod" value="12" ng-model="emiPeriod"><label>12 months   {{ ((total_p()*0.14) | num)| currency :"Rs."}}/-p.m.  14%</label></li>
+                                        <li><input type="radio" name="emiPeriod" value="18" ng-model="emiPeriod"><label>18 months   {{ ((total_p()*0.15) | num)| currency :"Rs."}}/-p.m.  15%</label></li>
+                                        <li><input type="radio" name="emiPeriod" value="24" ng-model="emiPeriod"><label>24 months   {{ ((total_p()*0.15) | num)| currency :"Rs."}}/-p.m.  15%</label></li>
+                                    </ul>
+                                    <div class="form-two">
+                                        <form name="emiForm">
+                                            <div class="form-group" ng-class="{ 'has-error' : emiForm.cardno.$invalid && !emiForm.cardno.$pristine}">
+                                                <input type="text" class="form-control" name="cardno" pattern="/^\d{16}$/" placeholder="Card Number" required>
+                                                <span ng-show="emiForm.cardno.$invalid && !emiForm.cardno.$pristine" class="help-block">16 digits only!</span>
+                                            </div>
+                                            <label>Expiry Date</label>
+                                            <select>
+                                                <option>MM</option>
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                                <option>6</option>
+                                                <option>7</option>
+                                                <option>8</option>
+                                                <option>9</option>
+                                                <option>10</option>
+                                                <option>11</option>
+                                                <option>12</option>
+                                            </select>
+                                            <select>
+                                                <option>YY</option>
+                                                <option>16</option>
+                                                <option>17</option>
+                                                <option>18</option>
+                                                <option>19</option>
+                                                <option>20</option>
+                                                <option>21</option>
+                                                <option>22</option>
+                                                <option>23</option>
+                                                <option>24</option>
+                                                <option>25</option>
+                                                <option>26</option>
+                                                <option>27</option>
+                                                <option>28</option>
+                                                <option>29</option>
+                                                <option>30</option>
+                                                <option>31</option>
+                                                <option>32</option>
+                                                <option>33</option>
+                                                <option>34</option>
+                                                <option>35</option>
+                                                <option>36</option>
+                                                <option>37</option>
+                                                <option>38</option>
+                                                <option>39</option>
+                                                <option>40</option>
+                                                <option>41</option>
+                                            </select>
+                                            <div class="form-group" ng-class="{ 'has-error' : emiForm.CVV.$invalid && !emiForm.CVV.$pristine}">
+                                                <input type="text" class="form-control" name="CVV" pattern="/^\d{3}$/" placeholder="CVV" required>
+                                                <span ng-show="emiForm.CVV.$invalid && !emiForm.CVV.$pristine" class="help-block">3 digits only!</span>
+                                            </div>
+                                        </form>
+                                        <button ng-click="checkout()" class="btn btn-default check_out">Check Out</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -13,12 +13,12 @@
         <link href="styles/main.css" rel="stylesheet">
     </head><!--/head-->
     <body ng-app="Myapp">
-		<div ng-controller="MainController">
+		<div ng-controller="MainController" class="bg">
 			<div ng-controller="proCtrl">
 				<section> 
 					<div id="header" ng-include src="'templates/header.html'"><!--header-->
 					</div><!--/header-->
-					<div class="container">
+					<div class="container fg">
 						<div class="row">
 							<div class="col-sm-12">
 								<div class="breadcrumbs">
@@ -33,8 +33,8 @@
 						</div>
 					</div>
 				</section>
-				<section>
-					<div class="container">
+				<section class="pad-down">
+					<div class="container fg">
 						<div class="row">
 							<div class="col-sm-12">
 								<div class="product-details"><!--product-details-->
@@ -95,8 +95,8 @@
                                                     <span ng-hide="!notReviewed"><p><b>Write Your Review</b></p></span>
                                                     <span ng-hide="notReviewed"><p><b>Edit Your Review</b></p></span>
                                                     <form name="comment" ng-submit="postComment()">
-                                                        <input type="text" name="Title" ng-model="commentData.title" placeholder="Title"/>
-                                                        <textarea name="Content" placeholder="Content" ng-model="commentData.content">{{commentData.content}}</textarea>
+                                                        <input type="text" class="form-control" name="Title" ng-model="commentData.title" placeholder="Title"/>
+                                                        <textarea name="Content" class="form-control" placeholder="Content" ng-model="commentData.content">{{commentData.content}}</textarea>
                                                         <b>Rating: </b> <span ng-show="overStar == null">{{commentData.rating}}</span> <span ng-hide="overStar == null">{{overStar}}</span> out of {{max}}
                                                         <uib-rating ng-model="commentData.rating" max="max" read-only="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three','four','five']" aria-labelledby="default-rating" class="rating"></uib-rating>
                                                         <span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}" ng-show="overStar && !isReadonly">{{percent}}%</span>

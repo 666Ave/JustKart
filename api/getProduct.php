@@ -2,7 +2,7 @@
     include 'conn.php';
     $loc = $_GET['loc'];
     
-    $get_shop = "SELECT * FROM shops where area_name like '$loc'";
+    $get_shop = "SELECT * FROM shops where area_name like '%$loc%'";
     $run_shop = mysqli_query($link,$get_shop);
     if($run_shop) {
         if(mysqli_num_rows($run_shop)>0){

@@ -14,12 +14,12 @@
     </head><!--/head-->
 
     <body ng-app="Myapp">             
-		<div ng-controller="MainController">
+		<div ng-controller="MainController" class="bg">
 			<div ng-controller="searchCtrl">
 				<div id="header" ng-include src="'templates/header.html'"><!--header-->
 				</div><!--/header-->
-				<section ng-hide="total == 0">
-					<div class="container">
+				<section ng-if="total != 0">
+					<div class="container fg space-top">
 						<div class="row">
 							<div class="col-sm-12">
 								<p id="search_results">Showing {{ total }} results for "{{ user_query }}"</p>
@@ -27,8 +27,8 @@
 						</div>
 					</div>
 				</section>
-				<section>
-					<div class="container">
+				<section class="pad-down">
+					<div class="container fg pad-top">
 						<div class="row">
 				            <div class="col-sm-12">
 								<div class="features_items" ng-init="total = 0"><!--features_items-->
@@ -51,7 +51,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <p class="text-center">No Such Product. Back to <a href="/">Home</a></p>
+                                        <p ng-if="noPro" class="text-center">No Such Product. Back to <a href="/">Home</a></p>
                                     </div>
 								</div><!--features_items-->
 							</div>

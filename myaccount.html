@@ -13,12 +13,12 @@
         <link href="styles/main.css" rel="stylesheet">
         <link href="styles/responsive.css" rel="stylesheet">
     </head><!--/head-->
-    <body ng-app="Myapp">
+    <body ng-app="Myapp" class="bg">
         <div id="header" ng-include src="'templates/header.html'"><!--header-->
         </div><!--/header-->
 	
-	<section ng-controller="accountCtrl">            
-        <div class="container">
+	<section ng-controller="accountCtrl" class="pad-down">            
+        <div class="container fg">
             <div class="row">
                 <div class="col-md-12">
                     <div class="left-sidebar">
@@ -60,14 +60,14 @@
                                 <div class="tab-pane" id="orders" ng-controller="orderCtrl">
                                     <div class="prev_orders">
                                         <section id="cart_items">
-                                            <div class="container">
+                                            <div class="container width-corr">
                                                 <div class="table-responsive cart_info">
                                                     <table class="table table-condensed">
                                                         <thead>
                                                             <tr class="cart_menu">
                                                                 <td class="image">Item</td>
                                                                 <td class="description">Description</td>
-                                                                <td class="details">Details</td>
+                                                                <td class="detailss">Details</td>
                                                             </tr>
                                                         </thead>
                                                         <tbody>

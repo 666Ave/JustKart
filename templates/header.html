@@ -1,88 +1,86 @@
-		<div class="header_top"><!--header_top-->
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-8">
-                        <div class="current-location" ng-controller="locCtrl">
-							<script type="text/ng-template" id="location.html">
-								<div class="modal-header">
-									<h3 class="modal-title">Current Location : {{ location }}</h3>
-								</div>
-								<div class="modal-body">
-									<span ng-show="error">{{ error }} so please specify the station name<br/></span>
-									<span ng-hide="error">To <b>Change Location</b> enter your station name<br/></span>
-									<input type="text" ng-model="input" placeholder="For ex. Vasai" size="20"/>
-								</div>
-								<div class="modal-footer">
-									<button class="btn btn-primary" ng-click="ok()">OK</button>
-									<button class="btn btn-primary" ng-click="cancel()">Cancel</button>
-								</div>
-							</script>
-                            <ul class="nav nav-pills">
-                                <li><a href="" ng-click="open()"><i class="fa fa-map-marker"></i>{{ location }}</a></li>
-                            </ul>
+<div class="fg space-down">
+    <div class="container"><!--header_top-->
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="current-location" ng-controller="locCtrl">
+                    <script type="text/ng-template" id="location.html">
+                        <div class="modal-header">
+                            <h3 class="modal-title">Current Location : {{ location }}</h3>
                         </div>
-					</div>
-					<div class="col-sm-4">
-						<div class="social-icons pull-right">
-							<ul class="nav navbar-nav">
-								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-								<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-								<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div><!--/header_top-->
-		
-		<div class="header-bottom" ng-controller="loginCtrl"><!--header-bottom-->
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-3">
-						<div class="logo pull-left">
-                            <span ng-hide="home == true"><a href="index.html"><img src="images/Logo.png" alt="" height=40% width=30%/></a></span>
-                            <span ng-show="home == true"><a href="images/404/404.png" rel="prettyPhoto" title="Welcome"><img src="images/Logo.png" alt="Welcome" height=40% width=30%/></a></span>
-						</div>
-                        
-					</div>
-                    <div class="col-sm-4">
-						<div class="search_box pull-left">
-                            <form method="get" action="search.html" onsubmit="location.href=this.action+'#/?user_query='+this.user_query.value; return false;" enctype="multipart/form-data">
-				                <input type="text" name="user_query" placeholder="Search"/>
-                                <input type="image" src="/images/home/searchicon.png" name="searchButton" alt="search" class="search_button" ng-click="reloadPage()" />
-                            </form>
-						</div>
-					</div>
-					<div class="col-sm-5" ng-controller="cartCtrl">
-                        <div class="navbar-header">
-							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-								<span class="sr-only">Toggle navigation</span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</button>
-						</div>
-						<div class="mainmenu pull-right" ng-init="PageLoad()">
-							<ul class="nav navbar-nav collapse navbar-collapse">
-                                <li><a href="about_us.html"><i class="fa fa-hashtag"></i> About Us</a></li>
-								<li><a href="contact_us.html"><i class="fa fa-coffee"></i> Contact Us</a></li>
-								<li class="dropdown">
-                                    <a ng-if="Admin == false" href="myaccount.html"><i class="fa fa-user"></i> {{user}}</a>
-                                    <a ng-if="Admin == true" href="/Admin_area/insert_product.html"><i class="fa fa-user"></i> {{user}}</a>
-                                    <ul role="menu" class="sub-menu">
-										<li><a href="" ng-click="Log(Lstring)"><i class="fa fa-lock"></i>{{Lstring}}</a></li>
-                                        <li ng-if="User == true"><a href="orders.html#/?order=false"><i class="fa fa-cart-plus"></i> Orders</a></li>
-                                    </ul>
-                                </li>
-								<li>
-                                    <a ng-if="User == true" href="cart.html" class="cart_qty"><i class="fa fa-shopping-cart"></i> Cart<span>{{ Cart_total }}</span></a>
-                                    <a ng-if="Seller == true" href="seller.html"><i class="fa fa-user-secret"></i> Seller Panel</a>
-                                    <a ng-if="Admin == true" href="Admin_area/admin.html"><i class="fa fa-wrench"></i> Admin Panel</a>
-                                </li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div><!--/header-bottom-->
+                        <div class="modal-body">
+                            <span ng-show="error">{{ error }} so please specify the station name<br/></span>
+                            <span ng-hide="error">To <b>Change Location</b> enter your station name<br/></span>
+                            <input type="text" ng-model="input" placeholder="For ex. Vasai" size="20"/>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary" ng-click="ok()">OK</button>
+                            <button class="btn btn-primary" ng-click="cancel()">Cancel</button>
+                        </div>
+                    </script>
+                    <ul class="nav nav-pills">
+                        <li><a href="" ng-click="open()"><i class="fa fa-map-marker"></i>{{ location }}</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="social-icons pull-right">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div><!--/header_top-->	
+    <div class="header-bottom" ng-controller="loginCtrl"><!--header-bottom-->
+        <div class="container fg">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="logo pull-left">
+                        <a href="index.html"><img src="images/Logo.png" alt="" height=40% width=30%/></a>
+                    </div>
+
+                </div>
+                <div class="col-sm-4">
+                    <div class="search_box pull-left">
+                        <form method="get" action="search.html" onsubmit="location.href=this.action+'#/?user_query='+this.user_query.value; return false;" enctype="multipart/form-data">
+                            <input type="text" class="form-control" name="user_query" placeholder="Search"/>
+                            <input type="image" src="/images/home/searchicon.png" name="searchButton" alt="search" class="search_button" ng-click="reloadPage()" />
+                        </form>
+                    </div>
+                </div>
+                <div class="col-sm-5" ng-controller="cartCtrl">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="mainmenu pull-right" ng-init="PageLoad()">
+                        <ul class="nav navbar-nav collapse navbar-collapse">
+                            <li><a href="about_us.html"><i class="fa fa-hashtag"></i> About Us</a></li>
+                            <li><a href="contact_us.html"><i class="fa fa-coffee"></i> Contact Us</a></li>
+                            <li class="dropdown">
+                                <a ng-if="Admin == false" href="myaccount.html"><i class="fa fa-user"></i> {{user}}</a>
+                                <a ng-if="Admin == true" href="/Admin_area/insert_product.html"><i class="fa fa-user"></i> {{user}}</a>
+                                <ul role="menu" class="sub-menu">
+                                    <li><a href="" ng-click="Log(Lstring)"><i class="fa fa-lock"></i>{{Lstring}}</a></li>
+                                    <li ng-if="User == true"><a href="orders.html#/?order=false"><i class="fa fa-cart-plus"></i> Orders</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a ng-if="User == true" href="cart.html" class="cart_qty"><i class="fa fa-shopping-cart"></i> Cart<span>{{ Cart_total }}</span></a>
+                                <a ng-if="Seller == true" href="seller.html"><i class="fa fa-user-secret"></i> Seller Panel</a>
+                                <a ng-if="Admin == true" href="Admin_area/admin.html"><i class="fa fa-wrench"></i> Admin Panel</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!--/header-bottom-->
+</div>

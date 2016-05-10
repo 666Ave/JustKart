@@ -16,10 +16,10 @@
     <body ng-app="Myapp">
         <div id="header" ng-include src="'templates/header.html'"><!--header-->
         </div><!--/header-->
-        <div ng-controller="orderCtrl">
-            <div ng-hide="oconfirm==='false'">
+        <div ng-controller="orderCtrl" class="bg">
+            <div ng-hide="oconfirm==='false'" class="pad-top pad-down">
                 <section id="cart_items">
-                    <div class="container">
+                    <div class="container fg">
                         <div class="breadcrumbs">
                             <ol class="breadcrumb">
                               <li><a href="/">Home</a></li>
@@ -69,9 +69,9 @@
                 </section> <!--/#cart_items-->
             </div>
             <div ng-hide="oconfirm==='true'">
-                <div class="prev_orders">
+                <div class="prev_orders pad-top pad-down">
                     <section id="cart_items">
-                        <div class="container">
+                        <div class="container fg">
                             <h2>Past Orders</h2>
                             <div class="table-responsive cart_info">
                                 <table class="table table-condensed">

@@ -5,8 +5,14 @@ app.controller('sellerCtrl',function($scope,$http,$cookies,$window,$filter){
         showWeeks: true
     };
     $scope.noshop = false;
+    $scope.areaTitle = "Area Name";
+    $scope.area_names = ["Churchgate West", "Churchgate East", "Marine Lines West", "Marine Lines East", "Charni Road West", "Charni Road East", "Grant Road West", "Grant Road East", "Mumbai Central West", "Mumbai Central East", "Mahalaxmi West", "Mahalaxmi East", "Lower Parel West", "Lower Parel East", "Elphinstone Road West", "Elphinstone Road East", "Dadar West", "Dadar East", "Matunga Road West", "Matunga Road East", "Mahim West", "Mahim East", "Bandra West", "Bandra East", "Khar Road West", "Khar Road East", "Santacruz West", "Santacruz East", "Vile Parle West", "Vile Parle East", "Andheri West", "Andheri East", "Jogeshwari West", "Jogeshwari East", "Goregaon West", "Goregaon East", "Malad West", "Malad East", "Kandivali West", "Kandivali East", "Borivali West", "Borivali East", "Dahisar West", "Dahisar East", "Mira Road West", "Mira Road East", "Bhayandar West", "Bhayandar East", "Naigaon West", "Naigaon East", "Vasai West", "Vasai East", "NalaSopara West", "NalaSopara East", "Virar West", "Virar East"];
     $scope.shop = {};
     $scope.shop.user_id = $cookies.get('userID');
+    $scope.Area = function(data) {
+        $scope.areaTitle = data;
+        $scope.shop.area_name = data;
+    };
     $scope.product = {};
     $scope.brand = {};
     $scope.product.dt = new Date();
