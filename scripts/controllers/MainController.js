@@ -1,32 +1,38 @@
 app.controller('MainController',function($scope,$http,$cookies,$window,proinfo){
 	var self = this;
     $scope.home = false;
-    if($window.location.pathname == "/index.html")
+    if($window.location.pathname == "/JustKart/index.html"){
         $scope.home = true;
+		}
 	$scope.date = new Date();
-    $http.get("api/getCat.php")
-        .success(function(response) {
-            $scope.category = response;
+
+    $http({
+			method: 'GET',
+			url: "api/getCat.php"
+		}).then(function(response) {
+            $scope.category = response.data;
 			proinfo.storeCats($scope.category);
-        })
-        .error(function(response){
-            console.log('error occured1');
+		}, function(response){
+            console.log(response);
         });
-    
-    $http.get("api/getBrand.php")
-        .success(function(response) {
-            $scope.brand = response;
+
+    $http({
+			method: 'GET',
+			url: "api/getBrand.php"
+		}).then(function(response) {
+            $scope.brand = response.data;
 			proinfo.storeBrands($scope.brand);
-        })
-        .error(function(response){
-            console.log('error occured1');
+		}, function(response){
+            console.log('error occured2');
         });
-    
-    $http.get("api/getProduct.php",{params:{loc:$cookies.get('Loc')}})
-        .success(function(response) {
-            $scope.products = response;
-        })
-        .error(function(response){
+
+    $http({
+			method: 'GET',
+			url: "api/getProduct.php",
+			params: {loc:$cookies.get('Loc')}
+		}).then(function(response) {
+            $scope.products = response.data;
+        }, function(response){
             console.log('error occured3');
-        }); 
+        });
 });

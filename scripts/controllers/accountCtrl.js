@@ -1,4 +1,12 @@
-app.controller('accountCtrl',function($scope,$http,$window,$cookies){
+app.config(['$locationProvider', function($locationProvider) {
+	$locationProvider.html5Mode({
+enabled: true,
+requireBase: false
+});
+		$locationProvider.hashPrefix('*');
+    }])
+.controller('accountCtrl',function($scope,$http,$window,$cookies){
+
     $scope.updateProfile = {};
     $scope.updateProfile.userID = $cookies.get('userID');
     $scope.updatePassword = {};
@@ -9,33 +17,33 @@ app.controller('accountCtrl',function($scope,$http,$window,$cookies){
     $scope.updateMobile.userID = $scope.updateProfile.userID;
     $scope.deactivate = {};
     $scope.deactivate.userID = $scope.updateProfile.userID
-    
+    $scope.noreviews = false;
+
     if(!$cookies.get('userID')){
         $window.alert("Please log in first");
         $window.location.href="login.html";
     }
-    
+
 	$scope.processProfile = function(isValid) {
 		if (isValid) {
 			$http({
 				method: 'POST',
 				url: 'api/processProfile.php',
-				data: $.param($scope.updateProfile),
-				headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+				data: $scope.updateProfile
 			})
-				.success(function(data) {
-					if (!data.success) {
-						$window.alert(data.message);
-						$window.location.reload();
-					} 
-					else {
-						$window.alert(data.message);
+				.then(function(data) {
+					if (!data.data.success) {
+						$window.alert(data.data.message);
 						$window.location.reload();
 					}
-				});	
+					else {
+						$window.alert(data.data.message);
+						$window.location.reload();
+					}
+				});
 		}
     };
-    
+
     $scope.processPassword = function(isValid) {
 		if(isValid) {
             if($scope.updatePassword.oldpassword === $scope.updatePassword.password){
@@ -45,104 +53,92 @@ app.controller('accountCtrl',function($scope,$http,$window,$cookies){
                 $http({
                     method: 'POST',
                     url: 'api/processPassword.php',
-                    data: $.param($scope.updatePassword),
-                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                    data: $scope.updatePassword
                 })
-                    .success(function(data) {
-                        $window.alert(data.message);
+                    .then(function(data) {
+                        $window.alert(data.data.message);
                         $window.location.reload();
-                    });	
+                    });
             }
 		}
     };
-    
+
     $scope.processAddress = function(isValid) {
 		if(isValid) {
             $http({
                 method: 'POST',
                 url: 'api/processAddress.php',
-                data: $.param($scope.updateAddress),
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                data: $scope.updateAddress
             })
-                .success(function(data) {
-                    $window.alert(data.message);
+                .then(function(data) {
+                    $window.alert(data.data.message);
                     $window.location.reload();
-                });	
+                });
 		}
     };
-    
-    $scope.processAddress = function(isValid) {
-		if(isValid) {
-            $http({
-                method: 'POST',
-                url: 'api/processAddress.php',
-                data: $.param($scope.updateAddress),
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            })
-                .success(function(data) {
-                    $window.alert(data.message);
-                    $window.location.reload();
-                });	
-		}
-    };
-    
+
     $scope.processMob = function(isValid) {
 		if(isValid) {
             $http({
                 method: 'POST',
                 url: 'api/processMobEmail.php',
-                data: $.param($scope.updateMobile),
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                data: $scope.updateMobile
             })
-                .success(function(data) {
-                    $window.alert(data.message);
+                .then(function(data) {
+                    $window.alert(data.data.message);
                     $window.location.reload();
-                });	
+                });
 		}
     };
-    
+
     $scope.processDeact = function(isValid) {
 		if(isValid) {
             $http({
                 method: 'POST',
                 url: 'api/processDeact.php',
-                data: $.param($scope.deactivate),
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                data: $scope.deactivate
             })
-                .success(function(data) {
-                    $window.alert(data.message);
+                .then(function(data) {
+                    $window.alert(data.data.message);
                     var cookies = $cookies.getAll();
                     angular.forEach(cookies, function (v, k) {
                         $cookies.remove(k);
                     });
-                    $window.href = "/";
-                });	
+                    $window.href = "/JustKart/";
+                });
 		}
     };
-    
-    $http.get("api/user_info.php",{params:{uID:$scope.updateProfile.userID}})
-        .success(function(response) {
-            if(response.user) {
-                $scope.updateProfile.fName = response.fName;
-                $scope.updateProfile.lName = response.lName;
-                $scope.updateProfile.gender = response.gender;
-                $scope.updateAddress.address = response.Address;
-                $scope.updateAddress.pin = response.Pin_code;
-                $scope.updateMobile.mobile = response.Mobile_no;
-                $scope.updateMobile.email = response.email;
-                $scope.deactivate.uname = response.uname;
+
+    $http({
+			method: 'GET',
+			url: "api/user_info.php",
+			params: {uID:$scope.updateProfile.userID}
+		}).then(function(response) {
+            if(response.data.user) {
+                $scope.updateProfile.fName = response.data.fName;
+                $scope.updateProfile.lName = response.data.lName;
+                $scope.updateProfile.gender = response.data.gender;
+                $scope.updateAddress.address = response.data.Address;
+                $scope.updateAddress.pin = response.data.Pin_code;
+                $scope.updateMobile.mobile = response.data.Mobile_no;
+                $scope.updateMobile.email = response.data.email;
+                $scope.deactivate.uname = response.data.uname;
             }
-        })
-        .error(function(response){
+        }, function(response){
             console.log("Error");
     });
-    
-    $http.get("api/getReviewsRating.php",{params:{uid:$scope.updateProfile.userID}})
-		.success(function(response) {
-			$scope.reviews = response;
-		})
-		.error(function(response){
+
+    $http({
+			method: 'GET',
+			url: "api/getReviewsRating.php",
+			params: {uID:$scope.updateProfile.userID}
+		}).then(function(response) {
+      if(response.data.length == 0){
+        $scope.noreviews = true;
+      }
+			$scope.reviews = response.data;
+		}, function(response){
 			console.log('error occured ');
 		});
-    
+
 });

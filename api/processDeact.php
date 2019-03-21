@@ -1,9 +1,10 @@
 <?php
 	include 'conn.php';
 	$data = array();
+		$_POST = json_decode(file_get_contents("php://input"), true);
     $pass = $_POST['password'];
     $uid = $_POST['userID'];
-    
+
     $check_login = "select * from user where User_ID='$uid' && password='$pass'";
     $run_login = mysqli_query($link,$check_login);
     if($run_login){

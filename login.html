@@ -6,107 +6,126 @@
         <meta name="description" content="An express local shopping website">
         <meta name="author" content="Avian Silveira && Umesh Basniwal">
         <title>Login | JustKart</title>
-		<link rel="shortcut icon" href="/images/logo.ico" />
+		<link rel="shortcut icon" href="images/logo.ico" />
         <link href="styles/bootstrap.min.css" rel="stylesheet">
-        <link href="styles/font-awesome.min.css" rel="stylesheet">
+        <link href="styles/all.css" rel="stylesheet">
         <link href="styles/animate.css" rel="stylesheet">
         <link href="styles/main.css" rel="stylesheet">
     </head><!--/head-->
 
-    <body ng-app="Myapp" class="bg"> 
-		<div ng-controller="loginCtrl">
-			<div id="header" ng-include src="'templates/header.html'"><!--header-->
-			</div><!--/header-->
+    <body ng-app="Myapp" class="bg">
+  		<div ng-controller="loginCtrl">
+  			<div id="header" ng-include src="'templates/header.html'"><!--header-->
+  			</div><!--/header-->
 
-			<section id="form"><!--form-->
-				<div class="container fg">
-					<div class="row">
-						<div class="col-sm-4 col-sm-offset-1">
-							<div class="login-form"><!--login form-->
-								<h2>Login to your account</h2>
-								<form name="loginForm" ng-submit="processLogin(loginForm.$valid)" novalidate>
-									<div class="form-group" ng-class="{ 'has-error' : loginForm.Username.$invalid && !loginForm.Username.$pristine }">
-										<input type="text" class="form-control" name="Username" placeholder="User Name" ng-model="loginData.Lname" required>
-										<span ng-show="loginForm.Username.$invalid && !loginForm.Username.$pristine" class="help-block">Your User Name is required.</span>
-									</div>
-									<div class="form-group" ng-class="{ 'has-error' : loginForm.password.$invalid && !loginForm.password.$pristine }">
-										<input type="password" name="Loginpassword" class="form-control" placeholder="Password" ng-model="loginData.Lpassword" ng-minlength="4" ng-maxlength="8" required>
-										<span ng-show="loginForm.Loginpassword.$error.minlength" class="help-block">Password is too short.</span>
-										<span ng-show="loginForm.Loginpassword.$error.maxlength" class="help-block">Password is too long.</span>
-									</div>
-									<button type="submit" class="btn btn-default" ng-disabled="loginForm.$invalid">Login</button>
-								</form>
-							</div><!--/login form-->
-						</div>
-						<div class="col-sm-1">
-							<h2 class="or">OR</h2>
-						</div>
-						<div class="col-sm-4">
-							<div class="signup-form"><!--sign up form-->
-								<h2>New User Signup!</h2>
-								<form name="RegForm" ng-submit="processReg(RegForm.$valid)" novalidate>
-									<div class="form-group" ng-class="{ 'has-error' : RegForm.name.$invalid && !RegForm.name.$pristine }"><!--Name-->
-										<input type="text" class="form-control" name="name" placeholder="Name" ng-model="regData.Rname" required>
-										<span ng-show="RegForm.name.$invalid && !RegForm.name.$pristine" class="help-block">Your name is required.</span>
-									</div>
-									<div class="form-group" ng-class="{ 'has-error' : RegForm.Uname.$invalid && !RegForm.Uname.$pristine }"><!--User Name-->
-										<input type="text" class="form-control" name="Uname" placeholder="User Name" ng-model="regData.Rusername" required>
-										<span ng-show="RegForm.Uname.$invalid && !RegForm.Uname.$pristine" class="help-block">Your User name is required.</span>
-									</div>
-									<div class="form-group" ng-class="{ 'has-error' : RegForm.email.$invalid && !RegForm.email.$pristine }"><!--Email-->
-										<input type="email" class="form-control" name="email" placeholder="Email Address" ng-model="regData.Remail" required>
-										<span ng-show="RegForm.email.$invalid && !RegForm.email.$pristine" class="help-block">Your email is required.</span>
-									</div>
-									<div class="form-group" ng-class="{ 'has-error' : RegForm.password.$invalid && !RegForm.password.$pristine }"><!--Password-->
-										<input type="password" class="form-control" name="password" placeholder="Password" ng-model="regData.Rpassword" ng-minlength="4" ng-maxlength="8" required>
-										<span ng-show="RegForm.password.$error.minlength" class="help-block">Password is too short( min 4 ).</span>
-										<span ng-show="RegForm.password.$error.maxlength" class="help-block">Password is too long( max 8 ).</span>
-									</div>
-									<div class="form-group" ng-class="{ 'has-error' : RegForm.Conpassword.$invalid && !RegForm.Conpassword.$pristine }"><!--Confirm Password-->
-										<input type="password" class="form-control" name="Conpassword" placeholder="Confirm Password" ng-model="regData.RConpassword" required>
-										<span ng-show="RegForm.Conpassword.$invalid && !RegForm.Conpassword.$pristine" class="help-block">Password is not the same as the above password.</span>
-									</div>
-									<div class="form-group" ng-class="{ 'has-error' : RegForm.pincode.$invalid && !RegForm.pincode.$pristine }"><!--Pin Code-->
-										<input type="text" class="form-control" name="pincode" placeholder="Pin Code" ng-model="regData.Rpincode" ng-minlength="6" ng-maxlength="6" required>
-									<span ng-show="RegForm.pincode.$error.minlength" class="help-block">Pin Code should be 6 digits.</span>
-									<span ng-show="RegForm.pincode.$error.maxlength" class="help-block">Pin Code is only 6 digits!</span>
-									</div>
-                                    <div class="btn-group user_option" uib-dropdown>
-                                        <button id="btn-append-to-single-button" type="button" class="btn btn-primary" uib-dropdown-toggle>
-                                          {{ userType }}<span class="caret"></span>
-                                        </button>
-                                        <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-single-button">
-                                            <li role="menuitem"><a href="" ng-click="userSelect('normal')">Normal User</a></li>
-                                            <li role="menuitem"><a href="" ng-click="userSelect('seller')">Seller</a></li>
-                                        </ul>
-                                    </div>
-									<button type="submit" class="btn btn-default">Signup</button>
-								</form>
-							</div><!--/sign up form-->
-						</div>
-					</div>
-				</div>
-			</section><!--/form-->
-		</div>
-	
-		<div id="footer" ng-include src="'templates/footer.html'"><!--Footer-->		
-        </div><!--/Footer-->
-			
-		<script src="scripts/js/jquery.js"></script>			
-        <script src="scripts/js/angular.min.js"></script>
-		<script src="scripts/js/angular-cookies.min.js"></script>
-		<script src="scripts/js/angularjs-geolocation.min.js"></script>
-		<script src="scripts/js/ui-bootstrap-tpls-1.1.2.min.js"></script>
-		<script src="scripts/js/angular-animate.min.js"></script>
-        <script src="scripts/js/tinymce/ui.tinymce.min.js"></script>
-        <script src="scripts/js/angular-file-model.js"></script>
-        <script src="scripts/app.js"></script>
-		<script src="scripts/services/authFact.js"></script>
-        <script src="scripts/services/proinfo.js"></script>
-        <script src="scripts/controllers/MainController.js"></script>
-		<script src="scripts/controllers/cartCtrl.js"></script>
-        <script src="scripts/controllers/contactCtrl.js"></script>
-		<script src="scripts/controllers/loginCtrl.js"></script>
-		<script src="scripts/controllers/locCtrl.js"></script>
+  			<section id="form"><!--form-->
+  				<div class="container fg">
+  					<div class="row">
+  						<div class="col-sm-4 mr-auto">
+  							<div class="login-form"><!--login form-->
+  								<h2>Login to your account</h2>
+  								<form name="loginForm" ng-submit="processLogin(loginForm.$valid)" novalidate>
+  									<div class="form-group" ng-class="{ 'has-error' : loginForm.Username.$invalid && !loginForm.Username.$pristine }">
+  										<input type="text" class="form-control" name="Username" placeholder="User Name" ng-model="loginData.Lname" required>
+  										<span ng-show="loginForm.Username.$invalid && !loginForm.Username.$pristine" class="help-block">Your User Name is required.</span>
+  									</div>
+  									<div class="form-group" ng-class="{ 'has-error' : loginForm.password.$invalid && !loginForm.password.$pristine }">
+  										<input type="password" name="Loginpassword" class="form-control" placeholder="Password" ng-model="loginData.Lpassword" ng-minlength="4" ng-maxlength="8" required>
+  										<span ng-show="loginForm.Loginpassword.$error.minlength" class="help-block">Password is too short.</span>
+  										<span ng-show="loginForm.Loginpassword.$error.maxlength" class="help-block">Password is too long.</span>
+  									</div>
+  									<button type="submit" class="btn btn-default" ng-disabled="loginForm.$invalid">Login</button>
+  								</form>
+  							</div><!--/login form-->
+  						</div>
+  						<div class="col-sm-1 mr-auto">
+  							<h2 class="or">OR</h2>
+  						</div>
+  						<div class="col-sm-4">
+  							<div class="signup-form"><!--sign up form-->
+  								<h2>New User Signup!</h2>
+  								<form name="RegForm" ng-submit="processReg(RegForm.$valid)" novalidate>
+  									<div class="form-group" ng-class="{ 'has-error' : RegForm.fname.$invalid && !RegForm.fname.$pristine }"><!--fName-->
+  										<input type="text" class="form-control" name="fname" placeholder="First Name" ng-model="regData.Rfname" required>
+  										<span ng-show="RegForm.fname.$invalid && !RegForm.fname.$pristine" class="help-block">Your first name is required.</span>
+  									</div>
+                    <div class="form-group" ><!--lName-->
+  										<input type="text" class="form-control" name="lname" placeholder="Last Name" ng-model="regData.Rlname">
+  									</div>
+                    <div class="form-group"><!--Gender-->
+                      <h6 class="signup_h6">Choose Gender</h6>
+                      <select class="form-control" ng-change="genderSelect()" ng-model="gender">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Transgender">Transgender</option>
+                      </select>
+                    </div>
+  									<div class="form-group" ng-class="{ 'has-error' : RegForm.Uname.$invalid && !RegForm.Uname.$pristine }"><!--User Name-->
+  										<input type="text" class="form-control" name="Uname" placeholder="User Name" ng-model="regData.Rusername" required>
+  										<span ng-show="RegForm.Uname.$invalid && !RegForm.Uname.$pristine" class="help-block">Your User name is required.</span>
+  									</div>
+  									<div class="form-group" ng-class="{ 'has-error' : RegForm.email.$invalid && !RegForm.email.$pristine }"><!--Email-->
+  										<input type="email" class="form-control" name="email" placeholder="Email Address" ng-model="regData.Remail" required>
+  										<span ng-show="RegForm.email.$invalid && !RegForm.email.$pristine" class="help-block">Your email is required.</span>
+  									</div>
+  									<div class="form-group" ng-class="{ 'has-error' : RegForm.password.$invalid && !RegForm.password.$pristine }"><!--Password-->
+  										<input type="password" class="form-control" name="password" placeholder="Password" ng-model="regData.Rpassword" ng-minlength="4" ng-maxlength="8" required>
+  										<span ng-show="RegForm.password.$error.minlength" class="help-block">Password is too short( min 4 ).</span>
+  										<span ng-show="RegForm.password.$error.maxlength" class="help-block">Password is too long( max 8 ).</span>
+  									</div>
+  									<div class="form-group" ng-class="{ 'has-error' : RegForm.Conpassword.$invalid && !RegForm.Conpassword.$pristine }"><!--Confirm Password-->
+  										<input type="password" class="form-control" name="Conpassword" placeholder="Confirm Password" ng-model="regData.RConpassword" required>
+  										<span ng-show="RegForm.Conpassword.$invalid && !RegForm.Conpassword.$pristine" class="help-block">Password is not the same as the above password.</span>
+  									</div>
+                    <div class="form-group" ng-class="{ 'has-error' : RegForm.mobno.$invalid && !RegForm.mobno.$pristine }"><!--Mobile no-->
+  										<input type="text" class="form-control" name="mobno" placeholder="Mobile Number" ng-model="regData.Rmobno" ng-minlength="10" ng-maxlength="10" required>
+                      <span ng-show="RegForm.mobno.$error.integer">The value is not a valid integer!</span>
+                      <span ng-show="RegForm.mobno.$error.minlength" class="help-block">Mobile number should be 10 digits.</span>
+    									<span ng-show="RegForm.mobno.$error.maxlength" class="help-block">Mobile number can be only 10 digits!</span>
+  									</div>
+                    <div class="form-group">
+                      <textarea class="form-control"  name="address" ng-model="regData.Raddress" placeholder="Address" rows="3"></textarea>
+                    </div>
+  									<div class="form-group" ng-class="{ 'has-error' : RegForm.pincode.$invalid && !RegForm.pincode.$pristine }"><!--Pin Code-->
+  										<input type="text" class="form-control" name="pincode" placeholder="Pin Code" ng-model="regData.Rpincode" ng-minlength="6" ng-maxlength="6" required>
+    									<span ng-show="RegForm.pincode.$error.minlength" class="help-block">Pin Code should be 6 digits.</span>
+    									<span ng-show="RegForm.pincode.$error.maxlength" class="help-block">Pin Code is only 6 digits!</span>
+  									</div>
+                    <div class="form-group"><!--User Type-->
+                      <h6 class="signup_h6">What kind of user you want to be?</h6>
+                      <select class="form-control" ng-change="userSelect()" ng-model="userType">
+                        <option value="normal">Normal User</option>
+                        <option value="seller">Seller</option>
+                      </select>
+                    </div>
+  									<button type="submit" class="btn btn-default">Signup</button>
+  								</form>
+  							</div><!--/sign up form-->
+  						</div>
+  					</div>
+  				</div>
+  			</section><!--/form-->
+  		</div>
+
+  		<div id="footer" ng-include src="'templates/footer.html'"><!--Footer-->
+          </div><!--/Footer-->
+
+  		<script src="scripts/js/jquery.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.7/angular.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.7/angular-cookies.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.7/angular-sanitize.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.7/angular-animate.js"></script>
+  		<script src="scripts/js/angularjs-geolocation.min.js"></script>
+  		<script src="scripts/js/ui-bootstrap-tpls-3.0.6.min.js"></script>
+      <script src="scripts/js/tinymce/ui.tinymce.min.js"></script>
+      <script src="scripts/js/angular-file-model.js"></script>
+      <script src="scripts/app.js"></script>
+  		<script src="scripts/services/authFact.js"></script>
+      <script src="scripts/services/proinfo.js"></script>
+      <script src="scripts/controllers/MainController.js"></script>
+  		<script src="scripts/controllers/cartCtrl.js"></script>
+      <script src="scripts/controllers/contactCtrl.js"></script>
+  		<script src="scripts/controllers/loginCtrl.js"></script>
+  		<script src="scripts/controllers/locCtrl.js"></script>
     </body>
 </html>

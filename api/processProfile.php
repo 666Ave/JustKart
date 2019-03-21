@@ -1,6 +1,7 @@
 <?php
 	include 'conn.php';
 	$data = array();
+	$_POST = json_decode(file_get_contents("php://input"), true);
 	$fName = $_POST['fName'];
     $lName = $_POST['lName'];
     $gender = $_POST['gender'];

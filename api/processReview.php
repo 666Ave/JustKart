@@ -1,12 +1,13 @@
 <?php
 	include 'conn.php';
 	$data = array();
-    $PID = $_POST['pID'];
+	$_POST = json_decode(file_get_contents("php://input"), true);
+  $PID = $_POST['pID'];
 	$UID = $_POST['userID'];
 	$rating = $_POST['rating'];
-    $title = $_POST['title'];
+  $title = $_POST['title'];
 	$content = $_POST['content'];
-    $time_added = date("Y-m-d H:i:s");
+  $time_added = date("Y-m-d H:i:s");
 
 	$get_comment = "update reviews set review_title='$title',review_content='$content',review_date='$time_added',rating='$rating' where review_userID='$UID'";
 	$run_comment = mysqli_query($link,$get_comment);

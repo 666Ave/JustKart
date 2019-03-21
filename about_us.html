@@ -6,9 +6,9 @@
         <meta name="description" content="An express local shopping website">
         <meta name="author" content="Avian Silveira && Umesh Basniwal">
         <title>About Us | JustKart</title>
-        <link rel="shortcut icon" href="/images/logo.ico" />
+        <link rel="shortcut icon" href="images/logo.ico" />
         <link href="styles/bootstrap.min.css" rel="stylesheet">
-        <link href="styles/font-awesome.min.css" rel="stylesheet">
+        <link href="styles/all.css" rel="stylesheet">
         <link href="styles/animate.css" rel="stylesheet">
         <link href="styles/main.css" rel="stylesheet">
         <link href="styles/responsive.css" rel="stylesheet">
@@ -16,13 +16,13 @@
     <body ng-app="Myapp" class="bg">
         <div id="header" ng-include src="'templates/header.html'"><!--header-->
         </div><!--/header-->
-        <section class="pad-down">
+        <section  ng-controller="MainController"  class="pad-down">
             <div class="container fg">
                 <div class="row">
                     <div id="about_wall_1" class="about_image" data-stellar-background-ratio="0.4" ></div>
                     <div id=content_1 class="about_content">
                         <h2>Just<span>K</span>art</h2>
-                        <h4>Local online shopping site</h4>    
+                        <h4>Local online shopping site</h4>
                         <p>Exprience fast delivery and local shop discount at your fingertips.</p>
                     </div>
                     <div id="about_wall_2" class="about_image" data-stellar-background-ratio="0.4" ></div>
@@ -34,39 +34,40 @@
                     <div id="about_wall_3" class="about_image" data-stellar-background-ratio="0.4" ></div>
                     <div id=content_3 class="about_content">
                         <h2>Just<span>K</span>art</h2>
-                        <h4>7 Day return Policy</h4>    
+                        <h4>7 Day return Policy</h4>
                         <p>Yes, no one can cheat you now!!</p>
                     </div>
                     <div id="about_wall_4" class="about_image" data-stellar-background-ratio="0.4" ></div>
                     <div id=content_4 class="about_content">
                         <h2>Just<span>K</span>art</h2>
-                        <h4>Pay with your eyes closed</h4>    
+                        <h4>Pay with your eyes closed</h4>
                         <p>Payments are now secured through PayPal.</p>
                     </div>
                     <div id="about_wall_5" class="about_image" data-stellar-background-ratio="0.4" ></div>
                     <div id=content_5 class="about_content">
                         <h2>Just<span>K</span>art</h2>
-                        <h4>Design <i class="fa fa-heart"></i></h4>    
+                        <h4>Design <i class="fa fa-heart"></i></h4>
                         <p>Designed this responsive website with the Twitter BootStrap CSS framework.</p>
                     </div>
                     <div id="about_wall_6" class="about_image" data-stellar-background-ratio="0.4" ></div>
                     <div id=content_6 class="about_content">
                         <h2>Just<span>K</span>art</h2>
-                        <h4>Developed easily</h4>    
+                        <h4>Developed easily</h4>
                         <p>This website was developed with AngularJS framework.</p>
                     </div>
                 </div>
             </div>
         </section>
-        <div id="footer" ng-include src="'../templates/footer.html'"><!--Footer-->		
+        <div id="footer" ng-include src="'templates/footer.html'"><!--Footer-->
         </div><!--/Footer-->
         <script src="scripts/js/jquery.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.7/angular.js"></script>
+    		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.7/angular-cookies.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.7/angular-sanitize.js"></script>
+    		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.7/angular-animate.js"></script>
         <script src="scripts/js/jquery.stellar.min.js"></script>
-        <script src="scripts/js/angular.min.js"></script>
-        <script src="scripts/js/angular-cookies.min.js"></script>
         <script src="scripts/js/angularjs-geolocation.min.js"></script>
-        <script src="scripts/js/ui-bootstrap-tpls-1.1.2.min.js"></script>
-        <script src="scripts/js/angular-animate.min.js"></script>
+        <script src="scripts/js/ui-bootstrap-tpls-3.0.6.min.js"></script>
         <script src="scripts/js/tinymce/ui.tinymce.min.js"></script>
         <script src="scripts/js/angular-file-model.js"></script>
         <script src="scripts/app.js"></script>

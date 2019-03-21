@@ -11,6 +11,7 @@
                     'cat_title' => $row['cat_title']
                 );
             }
+            //echo("<script>console.log('PHP: ".$run_cats."');</script>");
             header('Content-type: application/json');
             echo json_encode($cats);
         }

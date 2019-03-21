@@ -1,7 +1,7 @@
 <?php
     include 'conn.php';
     $data = array();
-
+    $_POST = json_decode(file_get_contents("php://input"), true);
     $product_title = $_POST['product_title'];
     $product_cat = $_POST['product_cat'];
     $product_brand = $_POST['product_brand'];
@@ -16,7 +16,7 @@
     //$product_image_tmp = $_FILES['product_image']['tmp_name'];
     //$product_image_location = "../images/products/$product_image";
 
-    //move_uploaded_file($product_image_tmp,$product_image_location); 
+    //move_uploaded_file($product_image_tmp,$product_image_location);
     if(isset($_POST['dt']))
         $insert_product_old = "insert into products (product_cat,product_brand,product_title,product_price,shop_id,product_descrp,product_image,time_added,product_keywords,launch_date,Inactive) values ('$product_cat','$product_brand','$product_title','$product_price','$shop_id','$product_desc','$product_image','$time_added','$product_keywords','$launch_date',0)";
     else

@@ -1,13 +1,14 @@
-app.controller('recentviewedCtrl',function($scope,$http){ 
+app.controller('recentviewedCtrl',function($scope,$http){
 	$scope.myInterval = 5000;
 	$scope.noWrapSlides = false;
 	$scope.active = 0;
 
-    $http.get("api/getRecentViewed.php")
-        .success(function(response) {
+    $http({
+			method: 'GET',
+			url: "api/getRecentViewed.php"
+		}).then(function(response) {
             $scope.slides = response;
-        })
-        .error(function(response){
+        }, function(response){
             console.log('error occured3');
         });
 

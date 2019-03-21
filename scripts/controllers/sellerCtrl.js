@@ -1,5 +1,5 @@
 app.controller('sellerCtrl',function($scope,$http,$cookies,$window,$filter){
-    
+
     $scope.options = {
         maxDate: new Date(),
         showWeeks: true
@@ -20,98 +20,103 @@ app.controller('sellerCtrl',function($scope,$http,$cookies,$window,$filter){
     $scope.product.product_image = null;
     $scope.launch = true;
     $scope.title = "Dont want to add";
-    
+
     $scope.toggleLaunch = function(){
-        $scope.launch = !$scope.launch
+        $scope.launch = !$scope.launch;
         if($scope.launch == true)
             $scope.title = "Dont want to add";
         else
             $scope.title = "Want to add";
     };
-    
+
     if($window.location.pathname == "/seller.html" && !$cookies.get('userID')){
         $window.alert("Please log in first");
-        $window.location.href = '/login.html';
+        $window.location.href = '/JustKart/login.html';
     }
-    
+
     if($cookies.get('userType') != "seller"){
         $window.alert("You're not a seller ... please leave!");
-        $window.location.href = '/';
+        $window.location.href = '/JustKart/';
     }
-    
+
     if($cookies.get('shopID') == null){
         $window.alert("You're not a seller ... please leave!");
     }
-    
-    $http.get("/api/getCat.php")
-        .success(function(response) {
-            $scope.category = response;
-        })
-        .error(function(response){
+
+    $http({
+			method: 'GET',
+			url: "api/getCat.php"
+		}).then(function(response) {
+            $scope.category = response.data;
+        }, function(response){
             console.log('error occured1');
         });
-    
-    $http.get("/api/getBrand.php")
-        .success(function(response) {
-            $scope.brands = response;
-        })
-        .error(function(response){
+
+    $http({
+			method: 'GET',
+			url: "api/getBrand.php"
+		}).then(function(response) {
+            $scope.brands = response.data;
+        }, function(response){
             console.log('error occured2');
         });
-    
+
     if($cookies.get('shopID') != 0){
-        $http.get("/api/getShops.php",{params:{sid:$cookies.get('shopID')}})
-            .success(function(response) {
-                $scope.shop = response;
+        $http({
+    			method: 'GET',
+    			url: "api/getShops.php",
+    			params: {sid:$cookies.get('shopID')}
+    		}).then(function(response) {
+                $scope.shop = response.data;
                 $scope.shop[0].shop_id = $cookies.get('shopID');
                 $scope.shopLink=$scope.shop[0].shop_name.split(' ').join('_');
-            })
-            .error(function(response){
+            }, function(response){
                 console.log('error occured2');
             });
-    
-        $http.get("/api/getShop.php",{params:{shopid:$cookies.get('shopID')}})
-            .success(function(response) {
-                $scope.products = response;
+
+        $http({
+    			method: 'GET',
+    			url: "api/getShop.php",
+    			params: {shopid:$cookies.get('shopID')}
+    		}).then(function(response) {
+                $scope.products = response.data;
                 delete $scope.products.area_name;
                 delete $scope.products.owner_name;
                 delete $scope.products.rating;
                 delete $scope.products.reviews;
                 delete $scope.products.shop_image;
-            })
-            .error(function(response){
+            }, function(response){
                 console.log('error occured2');
             });
     }
     else{
         $scope.noshop = true;
     }
-    
+
     $scope.postShop = function(){
         if($cookies.get('userType') != "seller"){
             $window.alert("You're not a seller ... please leave!");
-            $window.location.href = '/';
+            $window.location.href = '/JustKart/';
         }
-        
+
         if($scope.shop.shop_image != null)
             $scope.shop.shop_image = $scope.shop.shop_image.name;
         else{
             $window.alert("Please upload the file again");
             return 0;
         }
-            
+
         $http({
 				method: 'POST',
 				url: 'api/insert_shop.php',
-				data: $.param($scope.shop),
-				headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+				data: $scope.shop
 			})
-				.success(function(data) {
-					if (!data.success) {
-						$window.alert(data.message);
-					} 
+				.then(function(data) {
+					if (!data.data.success) {
+						$window.alert(data.data.message);
+					}
 					else {
-						$window.alert(data.message);
+						$window.alert(data.data.message);
                         var cookies = $cookies.getAll();
                         angular.forEach(cookies, function (v, k) {
                             $cookies.remove(k);
@@ -120,81 +125,81 @@ app.controller('sellerCtrl',function($scope,$http,$cookies,$window,$filter){
 					}
 				});
     };
-    
+
     $scope.postPro = function(){
         if($cookies.get('userType') != "seller"){
             $window.alert("You're not a seller ... please leave!");
-            $window.location.href = '/';
+            $window.location.href = '/JustKart/';
         }
         if($scope.launch == false)
             delete $scope.product.dt;
         else
             $scope.product.dt = $filter('date')($scope.product.dt,"yyyy-MM-dd");
-        
+
         if($scope.product.product_image != null)
             $scope.product.product_image = $scope.product.product_image.name;
         else{
             $window.alert("Please upload the file again");
             return 0;
         }
-            
+
         $http({
 				method: 'POST',
 				url: 'api/insert_products.php',
-				data: $.param($scope.product),
-				headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+				data: $scope.product
 			})
-				.success(function(data) {
-					if (!data.success) {
-						$window.alert(data.message);
-					} 
+				.then(function(data) {
+					if (!data.data.success) {
+						$window.alert(data.data.message);
+					}
 					else {
-						$window.alert(data.message);
-                        $window.location.reload();
+						$window.alert(data.data.message);
+            $window.location.reload();
 					}
 				});
     };
-    
+
     $scope.postBrand = function(){
         if($cookies.get('userType') != "seller"){
             $window.alert("You're not a seller ... please leave!");
-            $window.location.href = '/';
+            $window.location.href = '/JustKart/';
         }
-        
+
         for(var i=0; i<$scope.brands.length; i++){
             if($scope.brands[i].brand_title == $scope.brand.brand_title){
                 $window.alert("This brand already exists");
                 return 0;
             }
         }
-            
+
         $http({
 				method: 'POST',
 				url: 'api/insert_brand.php',
-				data: $.param($scope.brand),
-				headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+				data: $scope.brand
 			})
-				.success(function(data) {
-					if (!data.success) {
-						$window.alert(data.message);
-					} 
+				.then(function(data) {
+					if (!data.data.success) {
+						$window.alert(data.data.message);
+					}
 					else {
-						$window.alert(data.message);
-                        $window.location.reload();
+						$window.alert(data.data.message);
+            $window.location.reload();
 					}
 				});
     };
-    
+
     $scope.removePro = function(data){
-        $http.get("/api/removeProduct.php",{params:{proid:data}})
-            .success(function(response) {
-                $window.alert(response);
+        $http({
+    			method: 'GET',
+    			url: "api/removeProduct.php",
+    			params: {proid:data}
+    		}).then(function(response) {
+                $window.alert(response.data);
                 $window.location.reload();
-            })
-            .error(function(response){
+            }, function(response){
                 console.log('error occured2');
             })
-        ;   
+        ;
     };
-    
+
 });

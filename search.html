@@ -6,80 +6,78 @@
         <meta name="description" content="An express local shopping website">
         <meta name="author" content="Avian Silveira && Umesh Basniwal">
         <title>Search Products | JustKart</title>
-		<link rel="shortcut icon" href="/images/logo.ico" />
+		<link rel="shortcut icon" href="images/logo.ico" />
+        <link href="styles/all.css" rel="stylesheet">
         <link href="styles/bootstrap.min.css" rel="stylesheet">
-        <link href="styles/font-awesome.min.css" rel="stylesheet">
         <link href="styles/animate.css" rel="stylesheet">
         <link href="styles/main.css" rel="stylesheet">
     </head><!--/head-->
 
-    <body ng-app="Myapp">             
-		<div ng-controller="MainController" class="bg">
-			<div ng-controller="searchCtrl">
+    <body ng-app="Myapp">
+  		<div class="bg pad-down" ng-controller="searchCtrl">
 				<div id="header" ng-include src="'templates/header.html'"><!--header-->
 				</div><!--/header-->
-				<section ng-if="total != 0">
-					<div class="container fg space-top">
+        <div class="container fg">
+  				<section ng-if="total != 0"> <!-- search total -->
+  					<div class="row">
+  						<div class="col text-center">
+  							<p id="search_results">Showing {{ total }} results for "{{ user_query }}"</p>
+  						</div>
+  					</div>
+  				</section> <!-- /search total -->
+
+  				<section> <!-- search results -->
 						<div class="row">
-							<div class="col-sm-12">
-								<p id="search_results">Showing {{ total }} results for "{{ user_query }}"</p>
-							</div>
-						</div>
-					</div>
-				</section>
-				<section class="pad-down">
-					<div class="container fg pad-top">
-						<div class="row">
-				            <div class="col-sm-12">
+				      <div class="col-sm-12">
 								<div class="features_items" ng-init="total = 0"><!--features_items-->
-                                    <div class="row">
-                                        <h2 class="title text-center">Featured Items</h2>
-                                        <div ng-repeat="pro in searchProd track by $index">
-                                            <div class="col-sm-4">
-                                                <div class="product-image-wrapper">
-                                                    <div class="single-products">
-                                                        <div class="productinfo text-center" ng-init="$parent.total = $parent.total + 1">
-                                                                <a class="product-image" href="product-details.html#/?pid={{pro.product_id}}">
-                                                                    <img src="images/products/{{pro.product_image}}" alt="{{pro.product_image}}"/>
-                                                                </a>
-                                                            <h2>{{ pro.product_price | currency :"₹" :0}}</h2>
-                                                            <a href="product-details.html#/?pid={{pro.product_id}}" class="product-title">
-                                                                <p>{{ pro.product_title| limitTo: 30 }}{{ pro.product_title.length > 30 ? '...' : ''}}</p>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <p ng-if="noPro" class="text-center">No Such Product. Back to <a href="/">Home</a></p>
-                                    </div>
+                  <h2 class="title text-center">Featured Items</h2>
+                  <div class="row">
+                    <div ng-repeat="pro in searchProd track by $index">
+                      <div class="col-sm-4">
+                        <div class="product-image-wrapper">
+                          <div class="single-products">
+                            <div class="productinfo text-center" ng-init="$parent.total = $parent.total + 1">
+                              <a class="product-image" href="product-details.html?pid={{pro.product_id}}" target="_self">
+                                  <img src="images/products/{{pro.product_image}}" alt="{{pro.product_image}}"/>
+                              </a>
+                              <h2>{{ pro.product_price | currency :"₹" :0}}</h2>
+                              <a href="product-details.html?pid={{pro.product_id}}" class="product-title" target="_self">
+                                  <p>{{ pro.product_title| limitTo: 25 }}{{ pro.product_title.length > 25 ? '...' : ''}}</p>
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <p ng-if="noPro" class="text-center">No Such Product. Back to <a href="/">Home</a></p>
+                  </div>
 								</div><!--features_items-->
 							</div>
 						</div>
-					</div>
-				</section>
-			</div>
-		</div>
-	
-        <div id="footer" ng-include src="'templates/footer.html'"><!--Footer-->		
-        </div><!--/Footer-->
-			
-		<script src="scripts/js/jquery.js"></script>			
-        <script src="scripts/js/angular.min.js"></script>
-		<script src="scripts/js/angular-cookies.min.js"></script>
-		<script src="scripts/js/angularjs-geolocation.min.js"></script>
-		<script src="scripts/js/ui-bootstrap-tpls-1.1.2.min.js"></script>
-		<script src="scripts/js/angular-animate.min.js"></script>
-        <script src="scripts/js/tinymce/ui.tinymce.min.js"></script>
-        <script src="scripts/js/angular-file-model.js"></script>
-        <script src="scripts/app.js"></script>
-		<script src="scripts/services/proinfo.js"></script>
-		<script src="scripts/services/authFact.js"></script>
-        <script src="scripts/controllers/MainController.js"></script>
-		<script src="scripts/controllers/searchCtrl.js"></script>
-		<script src="scripts/controllers/cartCtrl.js"></script>
-		<script src="scripts/controllers/loginCtrl.js"></script>
-		<script src="scripts/controllers/locCtrl.js"></script>
-        <script src="scripts/controllers/contactCtrl.js"></script>		
+  				</section> <!-- /search total -->
+        </div>
+  		</div>
+
+      <div id="footer" ng-include src="'templates/footer.html'"><!--Footer-->
+      </div><!--/Footer-->
+
+  		<script src="scripts/js/jquery.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.7/angular.js"></script>
+  		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.7/angular-cookies.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.7/angular-sanitize.js"></script>
+  		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.7/angular-animate.js"></script>
+  		<script src="scripts/js/angularjs-geolocation.min.js"></script>
+  		<script src="scripts/js/ui-bootstrap-tpls-3.0.6.min.js"></script>
+      <script src="scripts/js/tinymce/ui.tinymce.min.js"></script>
+      <script src="scripts/js/angular-file-model.js"></script>
+      <script src="scripts/app.js"></script>
+  		<script src="scripts/services/proinfo.js"></script>
+  		<script src="scripts/services/authFact.js"></script>
+      <script src="scripts/controllers/MainController.js"></script>
+  		<script src="scripts/controllers/searchCtrl.js"></script>
+  		<script src="scripts/controllers/cartCtrl.js"></script>
+  		<script src="scripts/controllers/loginCtrl.js"></script>
+  		<script src="scripts/controllers/locCtrl.js"></script>
+      <script src="scripts/controllers/contactCtrl.js"></script>
     </body>
 </html>

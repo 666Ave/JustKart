@@ -1,41 +1,42 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="Myapp" ng-controller="shopCtrl">
+<html lang="en" ng-app="Myapp" >
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="An express local shopping website">
         <meta name="author" content="Avian Silveira && Umesh Basniwal">
-        <title ng-bind="title"></title>
-		<link rel="shortcut icon" href="/images/logo.ico" />
+        <title>Shop | JustKart</title>
+		<link rel="shortcut icon" href="images/logo.ico" />
         <link href="styles/bootstrap.min.css" rel="stylesheet">
-        <link href="styles/font-awesome.min.css" rel="stylesheet">
+        <link href="styles/all.css" rel="stylesheet">
         <link href="styles/animate.css" rel="stylesheet">
         <link href="styles/main.css" rel="stylesheet">
     </head><!--/head-->
 
-    <body>             
+    <body ng-controller="shopCtrl">
 		<div ng-controller="MainController" class="bg">
             <div id="header" ng-include src="'templates/header.html'"><!--header-->
             </div><!--/header-->
             <section>
-                <div class="container fg">
-                    <div class="row">
+                <div class="container ">
+                    <div class="row bg">
                         <div class="col-sm-12">
-                            <div class="breadcrumbs">
+                            <nav aria-label="breadcrumb">
                                 <span ng-show="shop==0">
-                                    <ol class="breadcrumb">
-                                        <li><a href="/">Home</a></li>
-                                        <li ng-class="{'active': activey == 'true'}"><span ng-hide="activey == 'true'"><a href="" ng-click="reload()">{{cat}}</a></span><span ng-show="activey == 'true'">{{cat}}</span></li>
-                                        <li class="active"><span ng-hide="activey == 'true'">{{brandLink}}</span></li>
+                                    <ol class="breadcrumb bc">
+                                        <li class="breadcrumb-item"><a href="/JustKart/" target="_self">Home</a></li>
+                                        <li ng-hide="activey == 'false'" class="breadcrumb-item active">{{cat}}</li>
+                                        <li ng-hide="activey == 'true'" class="breadcrumb-item"><a href="/JustKart/shop.html?catname={{catLink}}&catid={{product[0].product_cat}}" ng-click="reload()">{{cat}}</a></li>
+                                        <li ng-hide="activey == 'true'" class="breadcrumb-item active">{{brandLink}}</li>
                                     </ol>
                                 </span>
                                 <span ng-show="shop==1">
                                     <ol class="breadcrumb">
-                                        <li><a href="/">Home</a></li>
+                                        <li><a href="/" target="_self">Home</a></li>
                                         <li class="active">{{shopname}}</li>
                                     </ol>
                                 </span>
-                            </div>
+                            </nav>
                         </div>
                     </div>
                 </div>
@@ -46,19 +47,20 @@
                         <div class="col-sm-12">
                             <span ng-show="shop==0">
                                 <div class="features_items"><!--featured_items-->
+                                    <h2 class="title text-center">Featured Items</h2>
                                     <div class="row">
-                                        <h2 class="title text-center">Featured Items</h2>
                                         <div ng-repeat="pro in product">
+                                            <div class="clearfix" ng-if="$index % 5 == 0"></div>
                                             <div class="col-sm-4">
                                                 <div class="product-image-wrapper">
                                                     <div class="single-products">
                                                         <div class="productinfo text-center">
-                                                                <a class="product-image" href="product-details.html#/?pid={{pro.product_id}}">
+                                                                <a class="product-image" target="_self" href="product-details.html?pid={{pro.product_id}}">
                                                                     <img src="images/products/{{pro.product_image}}" alt="{{pro.product_image}}"/>
                                                                 </a>
                                                             <h2>{{ pro.product_price | currency :"₹" :0}}</h2>
-                                                            <a href="product-details.html#/?pid={{pro.product_id}}" class="product-title">
-                                                                <p>{{ pro.product_title| limitTo: 30 }}{{ pro.product_title.length > 30 ? '...' : ''}}</p>
+                                                            <a href="product-details.html?pid={{pro.product_id}}" target="_self" class="product-title">
+                                                                <p>{{ pro.product_title| limitTo: 25 }}{{ pro.product_title.length > 25 ? '...' : ''}}</p>
                                                             </a>
                                                         </div>
                                                     </div>
@@ -80,7 +82,7 @@
                                                 <h1>{{ shopname }}</h1>
                                                 <p><b>Location :</b> {{ area_name }}</p>
                                                 <p><b>Owner :</b> {{ owner_name }}</p>
-                                                <p><b>Rating :</b> <i class="fa fa-star"></i> {{ rating }} out of 5 , based on {{ reviews }} reviews</p>
+                                                <p><b>Rating :</b> <i class="fas fa-star"></i> {{ rating }} out of 5 , based on {{ reviews }} reviews</p>
                                             </div>
                                         </div>
                                         <h2 class="title text-center">Products</h2>
@@ -89,11 +91,11 @@
                                                 <div class="product-image-wrapper">
                                                     <div class="single-products">
                                                         <div class="productinfo text-center">
-                                                                <a class="product-image" href="product-details.html#/?pid={{pro.product_id}}">
+                                                                <a class="product-image" href="product-details.html#/?pid={{pro.product_id}}" target="_self">
                                                                     <img src="images/products/{{pro.product_image}}" alt="{{pro.product_image}}"/>
                                                                 </a>
                                                             <h2>{{ pro.product_price | currency :"₹" :0}}</h2>
-                                                            <a href="product-details.html#/?pid={{pro.product_id}}" class="product-title">
+                                                            <a href="product-details.html#/?pid={{pro.product_id}}" class="product-title" target="_self">
                                                                 <p>{{ pro.product_title | limitTo: 30 }}{{ pro.product_title.length > 30 ? '...' : ''}}</p>
                                                             </a>
                                                         </div>
@@ -103,27 +105,28 @@
                                         </div>
                                     </div>
                                 </div><!--/shop_view-->
-                            </span> 
+                            </span>
                         </div>
                     </div>
                 </div>
             </section>
 		</div>
-	
-        <div id="footer" ng-include src="'templates/footer.html'"><!--Footer-->		
+
+        <div id="footer" ng-include src="'templates/footer.html'"><!--Footer-->
         </div><!--/Footer-->
-			
-		<script src="scripts/js/jquery.js"></script>			
-        <script src="scripts/js/angular.min.js"></script>
-		<script src="scripts/js/angular-cookies.min.js"></script>
+
+		<script src="scripts/js/jquery.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.7/angular.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.7/angular-cookies.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.7/angular-sanitize.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.7/angular-animate.js"></script>
 		<script src="scripts/js/angularjs-geolocation.min.js"></script>
-		<script src="scripts/js/ui-bootstrap-tpls-1.1.2.min.js"></script>
-		<script src="scripts/js/angular-animate.min.js"></script>
-        <script src="scripts/js/tinymce/ui.tinymce.min.js"></script>
-        <script src="scripts/js/angular-file-model.js"></script>
-        <script src="scripts/app.js"></script>
+		<script src="scripts/js/ui-bootstrap-tpls-3.0.6.min.js"></script>
+    <script src="scripts/js/tinymce/ui.tinymce.min.js"></script>
+    <script src="scripts/js/angular-file-model.js"></script>
+    <script src="scripts/app.js"></script>
 		<script src="scripts/services/proinfo.js"></script>
-        <script src="scripts/controllers/MainController.js"></script>
+    <script src="scripts/controllers/MainController.js"></script>
 		<script src="scripts/services/authFact.js"></script>
 		<script src="scripts/controllers/shopCtrl.js"></script>
 		<script src="scripts/controllers/cartCtrl.js"></script>

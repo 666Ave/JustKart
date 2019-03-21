@@ -1,5 +1,5 @@
 var app = angular
-    .module('Myapp',['ngCookies','geolocation','ui.bootstrap','ngAnimate','ui.tinymce','file-model']);
+    .module('Myapp',['ngCookies','geolocation','ui.bootstrap','ngAnimate', 'ngSanitize', 'ui.tinymce','file-model']);
 
 app.filter('num', function() {
     return function(input) {
@@ -11,7 +11,7 @@ app.controller('LocModalInstanceCtrl', function ($scope, $uibModalInstance, loca
 	$scope.input="";
   	$scope.location = location;
 	$scope.error = error;
-	
+
 	$scope.ok = function () {
 	$uibModalInstance.close($scope.input);
 	};
@@ -23,16 +23,16 @@ app.controller('LocModalInstanceCtrl', function ($scope, $uibModalInstance, loca
 
 /*.config(function($stateProvider, $urlRouterProvider){
     $urlRouterProvider.otherwise('/home');
-    
+
     $stateProvider
-    
+
         //Home
         .state('home',{
             url: '/home',
             templateUrl: 'index.html',
 			controller: 'MainController'
         })
-    
+
         .state('productDetails',{
             url: '/productDetails?:pid',
             templateUrl: 'product-details.html',
@@ -53,39 +53,39 @@ app.controller('LocModalInstanceCtrl', function ($scope, $uibModalInstance, loca
 						return response.data;
 					})
 				}
-			
+
 		})
-  
+
         //orders
         .state('orders',{
             url: '/orders',
             templateUrl: 'orders.html'
         })
-    
+
         //help
         .state('help',{
             url: '/help',
             templateUrl: 'help.html'
         })
-    
+
         //myaccount
         .state('myaccount',{
             url: '/myAccount',
             templateUrl: 'myaccount.html'
         })
-    
+
         //cart
         .state('cart',{
             url: '/cart',
             templateUrl: 'cart.html'
         })
-    
+
         //login
         .state('login',{
             url: '/login',
             templateUrl: 'login.html'
         })
-	
+
 		//adminpage
 		.state('insertproducts',{
             url: '/insertproducts',

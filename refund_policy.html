@@ -6,21 +6,21 @@
         <meta name="description" content="An express local shopping website">
         <meta name="author" content="Avian Silveira && Umesh Basniwal">
         <title>Refund Policy| JustKart</title>
-        <link rel="shortcut icon" href="/images/logo.ico" />
+        <link rel="shortcut icon" href="images/logo.ico" />
         <link href="styles/bootstrap.min.css" rel="stylesheet">
-        <link href="styles/font-awesome.min.css" rel="stylesheet">
+        <link href="styles/all.css" rel="stylesheet">
         <link href="styles/animate.css" rel="stylesheet">
         <link href="styles/main.css" rel="stylesheet">
         <link href="styles/responsive.css" rel="stylesheet">
     </head><!--/head-->
     <body ng-app="Myapp" class="bg">
-        <div id="header" ng-include src="'../templates/header.html'"><!--header-->
+        <div id="header" ng-include src="'templates/header.html'"><!--header-->
         </div><!--/header-->
         <div class="container">
             <div class="row">
                 <pre>
 Buyer's Product related complainant for refund or replacement will the processed in accordance with the TrustPay Policy available at http://www.justkart.com/info/TrustPay. Both Buyer and Seller agree to this TrustPay Policy. However, in the event of false, frivolous or baseless complaints regarding the delivery or quality of the Products, the Buyer will not be eligible for refund or replacement.
-                
+
 Before accepting delivery of any Product, the Buyer shall reasonably ensure that the Product's packaging is not damaged or tampered.
 
 The return process of a Product may be subject to additional terms depending on the nature and category of the Product. Any such additional terms may be specified on the Website or be intimated by the Seller at the time of purchase of the Product.
@@ -31,14 +31,15 @@ Buyer agrees that if the returned Product is not accepted by the Seller then Jus
                 </pre>
             </div>
         </div>
-        <div id="footer" ng-include src="'../templates/footer.html'"><!--Footer-->		
+        <div id="footer" ng-include src="'templates/footer.html'"><!--Footer-->
         </div><!--/Footer-->
-        <script src="scripts/js/jquery.js"></script>			
-        <script src="scripts/js/angular.min.js"></script>
-        <script src="scripts/js/angular-cookies.min.js"></script>
+        <script src="scripts/js/jquery.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.7/angular.js"></script>
+    		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.7/angular-cookies.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.7/angular-sanitize.js"></script>
+    		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.7/angular-animate.js"></script>
         <script src="scripts/js/angularjs-geolocation.min.js"></script>
-        <script src="scripts/js/ui-bootstrap-tpls-1.1.2.min.js"></script>
-        <script src="scripts/js/angular-animate.min.js"></script>
+        <script src="scripts/js/ui-bootstrap-tpls-3.0.6.min.js"></script>
         <script src="scripts/js/tinymce/ui.tinymce.min.js"></script>
         <script src="scripts/js/angular-file-model.js"></script>
         <script src="scripts/app.js"></script>

@@ -1,9 +1,10 @@
-app.controller('recentLaunchCtrl',function($scope,$http){  
-    $http.get("api/getRecentLaunch.php")
-        .success(function(response) {
+app.controller('recentLaunchCtrl',function($scope,$http){
+    $http({
+			method: 'GET',
+			url: "api/getRecentLaunch.php"
+		}).then(function(response) {
             $scope.recent = response;
-        })
-        .error(function(response){
+        }, function(response){
             console.log('error occured3');
         });
 

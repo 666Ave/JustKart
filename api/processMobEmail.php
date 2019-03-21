@@ -1,7 +1,8 @@
 <?php
 	include 'conn.php';
 	$data = array();
-    $mobile = $_POST['mobile'];
+	$_POST = json_decode(file_get_contents("php://input"), true);
+  $mobile = $_POST['mobile'];
 	$email = $_POST['email'];
     $uid = $_POST['userID'];
 

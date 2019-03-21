@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="Myapp">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
         <meta name="description" content="An express local shopping website">
         <meta name="author" content="Avian Silveira && Umesh Basniwal">
         <title>Home | JustKart</title>
-		<link rel="shortcut icon" href="/images/logo.ico" />
+		<link rel="shortcut icon" href="images/logo.ico" />
         <link href="styles/bootstrap.min.css" rel="stylesheet">
-        <link href="styles/font-awesome.min.css" rel="stylesheet">
+        <link href="styles/all.css" rel="stylesheet">
         <link href="styles/prettyPhoto.css" rel="stylesheet">
         <link href="styles/animate.css" rel="stylesheet">
         <link href="styles/main.css" rel="stylesheet">
     </head><!--/head-->
 
-    <body ng-app="Myapp"> 
+    <body>
 		<div ng-controller="MainController" class="bg">
 			<div id="header" ng-include src="'templates/header.html'"><!--header-->
 			</div><!--/header-->
@@ -25,11 +25,11 @@
 							 <div class="left-sidebar">
 								<div class="category-products"><!--category-products-->
 									<h2>Category</h2>
-									<div class="panel-group category-products" id="accordian"> 
+									<div class="panel-group category-products" id="accordian">
 										<div class="panel panel-default" ng-repeat="cat in category">
 											<div class="panel-heading">
 												<h4 class="panel-title">
-													<a href="shop.html#/?catname={{cat.cat_title}}&catid={{cat.cat_id}}">
+													<a href="shop.html?catname={{cat.cat_title}}&catid={{cat.cat_id}}" target="_self">
 														{{ cat.cat_title }}
 													</a>
 												</h4>
@@ -42,44 +42,43 @@
 						<div class="col-sm-9 padding-right">
 							<div class="features_items"><!--features_items-->
 								<h2 class="title text-center">Featured Items</h2>
-								<div ng-repeat="pro in products"  ng-if="$index < 8">
-									<div class="col-sm-4">
-										<div class="product-image-wrapper">
-											<div class="single-products">
-													<div class="productinfo text-center">
-															<a class="product-image" href="product-details.html#/?pid={{pro.product_id}}">
+                <div class="row">
+  								<div ng-repeat="pro in products">
+                    <div class="clearfix" ng-if="$index % 3 == 0"></div>
+  									<div class="col-sm-4">
+  										<div class="product-image-wrapper">
+													<div class="productinfo  text-center">
+															<a class="product-image" href="product-details.html?pid={{pro.product_id}}" target="_self">
 																<img src="images/products/{{pro.product_image}}" alt="{{pro.product_image}}"/>
 															</a>
 														<h2>{{ pro.product_price | currency :"₹" :0}}</h2>
-														<a href="product-details.html#/?pid={{pro.product_id}}" class="product-title">
-															<p>{{ pro.product_title | limitTo: 30 }}{{ pro.product_title.length > 30 ? '...' : ''}}</p>
+														<a href="product-details.html?pid={{pro.product_id}}" class="product-title" target="_self">
+															<p>{{ pro.product_title | limitTo: 25 }}{{ pro.product_title.length > 25 ? '...' : ''}}</p>
 														</a>
 													</div>
-											</div>
+  										</div>
+  									</div>
+  								</div>
+                </div>
+							</div><!--features_items-->
+
+						<!--	<div class="recent-launches" ng-controller="recentLaunchCtrl"><!--recent launches-->
+							<!--	<h2 class="title text-center">New Launches</h2>
+								<div class="col-sm-3" ng-repeat="pro in recent" ng-if="$index<4">
+									<div class="product-image-wrapper" >
+										<div class="productinfo text-center">
+											<a class="product-image" href="product-details.html#/?pid={{pro.product_id}}">
+												<img src="images/products/{{pro.product_image}}" alt="{{pro.product_image}}"/>
+											</a>
+											<a href="product-details.html#/?pid={{pro.product_id}}" class="product-title">
+												<p>{{ pro.product_title}}</p>
+											</a>
 										</div>
 									</div>
 								</div>
-							</div><!--features_items-->
-
-							<div class="recent-launches" ng-controller="recentLaunchCtrl"><!--recent launches-->
-								<h2 class="title text-center">New Launches</h2>
-								<div class="col-sm-3" ng-repeat="pro in recent" ng-if="$index<4">
-									<div class="product-image-wrapper" >
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<a class="product-image" href="product-details.html#/?pid={{pro.product_id}}">
-													<img src="images/products/{{pro.product_image}}" alt="{{pro.product_image}}"/>
-												</a>
-												<a href="product-details.html#/?pid={{pro.product_id}}" class="product-title">
-													<p>{{ pro.product_title}}</p>
-												</a>
-											</div>
-										</div>
-									</div>
-								</div> 
 							</div><!--/recent launches-->
-							<span ng-controller="recentviewedCtrl" ng-hide="nologin==false"><!--recently viewed-->
-								<div class="recentviewed">
+							<!-- <span ng-controller="recentviewedCtrl" ng-hide="nologin==false">--><!--recently viewed-->
+								<!--<div class="recentviewed">
 									<h2 class="title text-center">recently viewed items</h2>
 									<uib-carousel id="recentviewed-carousel" no-transition="false" active="active" interval="5000">
 										<uib-slide ng-repeat="slide in slides track by slide[0]['product_id']" index="slide.id">
@@ -90,36 +89,37 @@
 									  	</uib-slide>
 									</uib-carousel>
 								</div>
-							</span><!--/recently viewed-->
+							</span>--><!--/recently viewed-->
 						</div>
 					</div>
 				</div>
 			</section>
 		</div>
-            
-        <div id="footer" ng-include src="'templates/footer.html'"><!--Footer-->		
+
+        <div id="footer" ng-include src="'templates/footer.html'"><!--Footer-->
         </div><!--/Footer-->
-			
-		<script src="scripts/js/jquery.js"></script>			
-        <script src="scripts/js/angular.min.js"></script>
-		<script src="scripts/js/angular-cookies.min.js"></script>
-		<script src="scripts/js/angularjs-geolocation.min.js"></script>
-		<script src="scripts/js/ui-bootstrap-tpls-1.1.2.min.js"></script>
-		<script src="scripts/js/angular-animate.min.js"></script>
-        <script src="scripts/js/tinymce/ui.tinymce.min.js"></script>
-        <script src="scripts/js/angular-file-model.js"></script>
-        <script src="scripts/app.js"></script>
+
+		<script src="scripts/js/jquery.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.7/angular.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.7/angular-cookies.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.7/angular-sanitize.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.7/angular-animate.js"></script>
+    <script src="scripts/js/angularjs-geolocation.min.js"></script>
+    <script src="scripts/js/ui-bootstrap-tpls-3.0.6.min.js"></script>
+    <script src="scripts/js/tinymce/ui.tinymce.min.js"></script>
+    <script src="scripts/js/angular-file-model.js"></script>
+    <script src="scripts/app.js"></script>
 		<script src="scripts/services/proinfo.js"></script>
 		<script src="scripts/services/authFact.js"></script>
-        <script src="scripts/controllers/MainController.js"></script>
+    <script src="scripts/controllers/MainController.js"></script>
 		<script src="scripts/controllers/cartCtrl.js"></script>
 		<script src="scripts/controllers/loginCtrl.js"></script>
 		<script src="scripts/controllers/locCtrl.js"></script>
-        <script src="scripts/controllers/contactCtrl.js"></script>
+    <script src="scripts/controllers/contactCtrl.js"></script>
 		<script src="scripts/controllers/recentLaunchCtrl.js"></script>
 		<script src="scripts/controllers/recentviewedCtrl.js"></script>
-        <script src="scripts/js/jquery.scrollUp.min.js"></script>
+    <script src="scripts/js/jquery.scrollUp.min.js"></script>
 		<script src="scripts/js/bootstrap.min.js"></script>
-        <script src="scripts/js/main.js"></script>
+    <script src="scripts/js/main.js"></script>
     </body>
 </html>

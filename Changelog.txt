@@ -265,3 +265,10 @@
 6)Removed the coupon part in the cart page.
 7)Made all the input field has a class of form-control.
 8)Fixed the issue on the search page that even if there are products it would display that there are no products.
+
+Version 2.0.0.2019.03.22
+1)Updated all the libraries to the latest.
+2)Fixed a lot of issues involving when updateing to the latest version.
+3)Fixed a lot of the css code.
+4)The seller page and admin page is functional but may still have bugs as I only made it working for now.
+5)The contact us page map is having some error.

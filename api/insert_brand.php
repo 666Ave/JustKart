@@ -1,7 +1,7 @@
 <?php
     include 'conn.php';
     $data = array();
-
+    $_POST = json_decode(file_get_contents("php://input"), true);
     $brand_title = $_POST['brand_title'];
 
     $insert_brand = "insert into brands (brand_title) values ('$brand_title')";

@@ -6,30 +6,29 @@
         <meta name="description" content="An express local shopping website">
         <meta name="author" content="Avian Silveira && Umesh Basniwal">
         <title>Contact US | JustKart</title>
-        <link rel="shortcut icon" href="/images/logo.ico" />
+        <link rel="shortcut icon" href="images/logo.ico" />
         <link href="styles/bootstrap.min.css" rel="stylesheet">
-        <link href="styles/font-awesome.min.css" rel="stylesheet">
+        <link href="styles/all.css" rel="stylesheet">
         <link href="styles/animate.css" rel="stylesheet">
         <link href="styles/main.css" rel="stylesheet">
-        <link href="styles/responsive.css" rel="stylesheet">
-        <script src="http://maps.google.com/maps/api/js"></script>
+        <script src="https://maps.google.com/maps/api/js?key=AIzaSyAeogOgL1xxxJdmF6Js1p-7VQopeVzRD4k"></script>
         <script src="scripts/js/gmaps.js"></script>
     </head><!--/head-->
 
     <body ng-app="Myapp" class="bg">
-	
+
         <div id="header" ng-include src="'templates/header.html'"><!--header-->
         </div><!--/header-->
         <section class="pad-down">
             <div id="contact-page" class="container fg">
-                <div class="row">    		
-                    <div class="col-sm-12 space-top">    			   			
-                        <h2 class="title text-center">Contact Us</h2>    			    				    				
+                <div class="row">
+                    <div class="col-sm-12 space-top">
+                        <h2 class="title text-center">Contact Us</h2>
                         <div id="gmap" class="contact-map">
                         </div>
-                    </div>			 		
-                </div>    	
-                <div class="row">  	
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-sm-8">
                         <div class="contact-form" ng-controller="contactCtrl">
                             <h2 class="title text-center">Get In Touch</h2>
@@ -46,7 +45,7 @@
                                 </div>
                                 <div class="form-group col-md-12">
                                     <textarea name="message" id="message" class="form-control" ng-model="contactData.message" rows="8" placeholder="Your Message Here"></textarea>
-                                </div>                        
+                                </div>
                                 <div class="form-group col-md-12">
                                     <input type="submit" name="submit" class="btn btn-primary pull-right" value="Submit">
                                 </div>
@@ -68,34 +67,35 @@
                                 <h2 class="title text-center">Social Networking</h2>
                                 <ul>
                                     <li>
-                                        <a href="#"><i class="fa fa-facebook"></i></a>
+                                        <a href="#"><i class="fab fa-facebook-square"></i></a>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="fa fa-twitter"></i></a>
+                                        <a href="#"><i class="fab fa-twitter-square"></i></a>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="fa fa-google-plus"></i></a>
+                                        <a href="#"><i class="fab fa-google-plus-square"></i></a>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="fa fa-youtube"></i></a>
+                                        <a href="#"><i class="fab fa-youtube-square"></i></a>
                                     </li>
                                 </ul>
                             </div>
                         </div>
-                    </div>    			
-                </div> 
+                    </div>
+                </div>
             </div>
         </div><!--/#contact-page-->
         </section>
-        <div id="footer" ng-include src="'../templates/footer.html'"><!--Footer-->		
+        <div id="footer" ng-include src="'templates/footer.html'"><!--Footer-->
         </div><!--/Footer-->
 
-        <script src="scripts/js/jquery.js"></script>			
-        <script src="scripts/js/angular.min.js"></script>
-        <script src="scripts/js/angular-cookies.min.js"></script>
+        <script src="scripts/js/jquery.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.7/angular.js"></script>
+    		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.7/angular-cookies.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.7/angular-sanitize.js"></script>
+    		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.7/angular-animate.js"></script>
         <script src="scripts/js/angularjs-geolocation.min.js"></script>
-        <script src="scripts/js/ui-bootstrap-tpls-1.1.2.min.js"></script>
-        <script src="scripts/js/angular-animate.min.js"></script>
+        <script src="scripts/js/ui-bootstrap-tpls-3.0.6.min.js"></script>
         <script src="scripts/js/tinymce/ui.tinymce.min.js"></script>
         <script src="scripts/js/angular-file-model.js"></script>
         <script src="scripts/app.js"></script>

@@ -1,7 +1,8 @@
 <?php
 	include 'conn.php';
 	$data = array();
-    $address = $_POST['address'];
+	$_POST = json_decode(file_get_contents("php://input"), true);
+  $address = $_POST['address'];
 	$pin = $_POST['pin'];
     $uid = $_POST['userID'];
 

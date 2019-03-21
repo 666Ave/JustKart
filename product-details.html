@@ -6,29 +6,29 @@
         <meta name="description" content="An express local shopping website">
         <meta name="author" content="Avian Silveira && Umesh Basniwal">
         <title>Product-Details | JustKart</title>
-		<link rel="shortcut icon" href="/images/logo.ico" />
+		    <link rel="shortcut icon" href="images/logo.ico" />
         <link href="styles/bootstrap.min.css" rel="stylesheet">
-        <link href="styles/font-awesome.min.css" rel="stylesheet">
+        <link href="styles/all.css" rel="stylesheet">
         <link href="styles/animate.css" rel="stylesheet">
         <link href="styles/main.css" rel="stylesheet">
     </head><!--/head-->
     <body ng-app="Myapp">
 		<div ng-controller="MainController" class="bg">
 			<div ng-controller="proCtrl">
-				<section> 
+				<section>
 					<div id="header" ng-include src="'templates/header.html'"><!--header-->
 					</div><!--/header-->
-					<div class="container fg">
+					<div class="container">
 						<div class="row">
 							<div class="col-sm-12">
-								<div class="breadcrumbs">
-									<ol class="breadcrumb">
-										<li><a href="/">Home</a></li>
-										<li><a href="/shop.html#/?catname={{catLink}}&catid={{product[0].product_cat}}">{{product[0].catName}}</a></li>
-										<li><a href="/shop.html#/?catname={{catLink}}&brandname={{brandLink}}&brandid={{product[0].product_brand}}">{{product[0].brandName}}</a></li>
-										<li class="active">{{product[0].product_title}}</li>
+								<nav aria-label="breadcrumb">
+									<ol class="breadcrumb bc bg">
+										<li class="breadcrumb-item"><a href="/JustKart/" target="_self">Home</a></li>
+										<li class="breadcrumb-item"><a href="/JustKart/shop.html?catname={{catLink}}&catid={{product[0].product_cat}}" target="_self">{{product[0].catName}}</a></li>
+										<li class="breadcrumb-item"><a href="/JustKart/shop.html?catname={{catLink}}&brandname={{brandLink}}&brandid={{product[0].product_brand}}" target="_self">{{product[0].brandName}}</a></li>
+										<li class="breadcrumb-item active">{{product[0].product_title}}</li>
 									</ol>
-								</div>
+								</nav>
 							</div>
 						</div>
 					</div>
@@ -38,103 +38,109 @@
 						<div class="row">
 							<div class="col-sm-12">
 								<div class="product-details"><!--product-details-->
-									<div class="col-sm-5">
-										<div class="view-product">
-											<img src="images/products/{{product[0].product_image}}" alt="" />
-										</div>
-									</div>
-                                    <div class="col-sm-7" ng-controller="cartCtrl">
-                                        <div class="product-information"><!--/product-information-->
-                                            <h2>{{product[0].product_title}}</h2>
-                                            <p><i class="fa fa-star"></i>{{ tot_rating | currency :"":1 }} out of {{ ratings.max }} , based on {{ tot_comments }} comments</p>
-                                            <span>
-                                                <span>{{product[0].product_price | currency :"₹":0}}</span>
-                                                <label>Quantity:</label>
-                                                <input type="number" ng-model="pQty"
-   min="1" max="3" name="product_qty"/>
-                                                <button type="button" ng-click="cartAdd(product[0].product_id,this.product_qty.value);" class="btn btn-fefault cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-                                            </span>
-                                            <p><b>Brand:</b> <a href="/shop.html#/?catname={{catLink}}&brandname={{brandLink}}&brandid={{product[0].product_brand}}">{{product[0].brandName}}</a></p>
-                                            <p><b>Shop:</b> <a href="/shop.html#/?shopname={{shopLink}}&shopid={{product[0].shop_id}}">{{product[0].shopName}}</a></p>
-                                        </div><!--/product-information-->
-                                    </div>
+                  <div class="row">
+  									<div class="col-sm-5">
+  										<div class="view-product">
+  											<img src="images/products/{{product[0].product_image}}" alt="" />
+  										</div>
+  									</div>
+                    <div class="col-sm-7" ng-controller="cartCtrl">
+                        <div class="product-information"><!--/product-information-->
+                            <h2>{{product[0].product_title}}</h2>
+                            <p><i class="fas fa-star"></i>{{ tot_rating }} out of {{ max }} , based on {{ tot_comments }} comments</p>
+                            <span>
+                                <span>{{product[0].product_price | currency :"₹":0}}</span>
+                                <label>Quantity:</label>
+                                <input type="number" ng-model="pQty"
+  min="1" max="3" name="product_qty"/>
+                                <button type="button" ng-click="cartAdd(product[0].product_id);" class="btn btn-fefault cart"><i class="fas fa-shopping-cart"></i>Add to cart</button>
+                            </span>
+                            <p><b>Brand:</b> <a href="/JustKart/shop.html?catname={{catLink}}&brandname={{brandLink}}&brandid={{product[0].product_brand}}" target="_self">{{product[0].brandName}}</a></p>
+                            <p><b>Shop:</b> <a href="/JustKart/shop.html?shopname={{shopLink}}&shopid={{product[0].shop_id}}" target="_self">{{product[0].shopName}}</a></p>
+                        </div><!--/product-information-->
+                    </div>
+                  </div>
 								</div><!--/product-details-->
-                                <div class="container"><!--product-description-->
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <h2 class="title text-center">Product Description</h2>
-                                            <div id="details" > 
-                                                <div class="col-sm-12">
-                                                    <ul>
-                                                        <li ng-repeat="descrp in pro_descp"><i class="fa fa-tag"></i>{{descrp}}</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row-sm-12">
-                                            <h2 class="title text-center">Reviews</h2>
-                                            <div id="reviews" >
-                                                <div class="col-sm-12">
-                                                    <div ng-repeat="r in reviews">
-                                                        <span ng-if="r.user_ID!=commentData.userID">
-                                                            <ul>
-                                                                <li><i class="fa fa-user"></i>{{ r.user_name }}</li>
-                                                                <li><i class="fa fa-clock-o"></i>{{ r.review_date*1000 | date:'hh:mm a'}}</li>
-                                                                <li><i class="fa fa-calendar-o"></i>{{ r.review_date*1000 | date:'dd EEE yyyy' : UTC}}</li>
-                                                                <li><i class="fa fa-star"></i>{{ r.rating }}</li>
-                                                            </ul>
-                                                            <h4>{{ r.review_title }}</h4>
-                                                            <p>{{ r.review_content }}</p>
-                                                            <hr/>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="review">
-                                                <div class="col-sm-12">
-                                                    <span ng-hide="!notReviewed"><p><b>Write Your Review</b></p></span>
-                                                    <span ng-hide="notReviewed"><p><b>Edit Your Review</b></p></span>
-                                                    <form name="comment" ng-submit="postComment()">
-                                                        <input type="text" class="form-control" name="Title" ng-model="commentData.title" placeholder="Title"/>
-                                                        <textarea name="Content" class="form-control" placeholder="Content" ng-model="commentData.content">{{commentData.content}}</textarea>
-                                                        <b>Rating: </b> <span ng-show="overStar == null">{{commentData.rating}}</span> <span ng-hide="overStar == null">{{overStar}}</span> out of {{max}}
-                                                        <uib-rating ng-model="commentData.rating" max="max" read-only="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three','four','five']" aria-labelledby="default-rating" class="rating"></uib-rating>
-                                                        <span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}" ng-show="overStar && !isReadonly">{{percent}}%</span>
-                                                        <button type="submit" class="btn btn-default pull-right">Submit</button>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div><!--product-description-->
-                                <div ng-hide="similars[0].length == 0" class="similar_items"><!--similar_items-->
-                                    <h2 class="title text-center">similar items</h2>
-                                    <uib-carousel id="similar-item-carousel" no-transition="false" active="active" interval="5000">
-										<uib-slide ng-repeat="simi in similars track by simi[0]['product_id']" index="simi.id">
-											<img height="200" width="200" ng-src="images/products/{{simi[0]['product_image']}}" style="margin:auto;">
-											<div class="carousel-caption">
-                                                <a href="" ng-click="reload(simi[0]['product_id'])"  class="recent-product-title"><p>{{simi[0]['product_title']}}</p></a>
-											</div>
-									  	</uib-slide>
-									</uib-carousel>
-                                </div><!--/similar_items-->
+
+                <div class="row"> <!--product-description-->
+                    <div class="col">
+                        <h2 class="title text-center">Product Description</h2>
+                    </div>
+                    <div class="w-100"></div>
+                    <div id="details" >
+                    <div class="col">
+                        <ul>
+                            <li ng-repeat="descrp in pro_descp"><i class="fas fa-tag"></i>{{descrp}}</li>
+                        </ul>
+                    </div>
+                    </div>
+                  </div><!--product-description-->
+                  <div class="row"><!-- display reviews -->
+                    <div class="col">
+                      <h2 class="title text-center">Reviews</h2>
+                    </div>
+                    <div class="w-100"></div>
+                    <div id="reviews">
+                      <div class="col">
+                            <div ng-repeat="r in reviews">
+                                <ul>
+                                    <li><i class="fas fa-user"></i>{{ r.user_name }}</li>
+                                    <li><i class="fas fa-clock"></i>{{ r.review_date*1000 | date:'hh:mm a'}}</li>
+                                    <li><i class="fas fa-calendar"></i>{{ r.review_date*1000 | date:'dd EEE yyyy' : UTC}}</li>
+                                    <li><i class="fas fa-star"></i>{{ r.rating }}</li>
+                                </ul>
+                                <h4>{{ r.review_title }}</h4>
+                                <p>{{ r.review_content }}</p>
+                                <hr/>
                             </div>
                         </div>
-                     </div>
-                </section>
-            </div>
+                      </div>
+                    </div> <!-- /display reviews -->
+                      <div class="review">
+                        <div class="row">
+                            <div class="col">
+                                <span ng-hide="!notReviewed"><p><b>Write Your Review</b></p></span>
+                                <span ng-hide="notReviewed"><p><b>Edit Your Review</b></p></span>
+                                <form name="comment" ng-submit="postComment()">
+                                    <input type="text" class="form-control" name="Title" ng-model="commentData.title" placeholder="Title"/>
+                                    <textarea name="Content" class="form-control" placeholder="Content" ng-model="commentData.content">{{commentData.content}}</textarea>
+                                    <b>Rating: </b> <span ng-show="overStar == null">{{commentData.rating}}</span> <span ng-hide="overStar == null">{{overStar}}</span> out of {{max}}
+                                    <span uib-rating ng-model="commentData.rating" max="max" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three','four','five']"  aria-labelledby="default-rating" class="rating"></span>
+                                    <span class="badge" ng-class="{'badge-danger': percent==20 , 'badge-warning': percent==40, 'badge-info': percent==60, 'badge-primary' : percent==80,'badge-success': percent==100}"  ng-show="overStar">{{percent}}%</span>
+                                    <button type="submit" class="btn btn-default pull-right">Submit</button>
+                                </form>
+                            </div>
+                          </div>
+                        </div>
+                      <div ng-hide="similars[0].length == 0" class="similar_items"><!--similar_items-->
+                          <h2 class="title text-center">similar items</h2>
+                          <uib-carousel id="similar-item-carousel" no-transition="false" active="active" interval="5000">
+              						<uib-slide ng-repeat="simi in similars track by simi[0]['product_id']" index="simi.id">
+              							<img height="200" width="200" ng-src="images/products/{{simi[0]['product_image']}}" style="margin:auto;">
+              							<div class="carousel-caption">
+                              <a href="" ng-click="reload(simi[0]['product_id'])"  class="recent-product-title"><p>{{simi[0]['product_title']}}</p></a>
+              							</div>
+              					  	</uib-slide>
+              					</uib-carousel>
+                      </div><!--/similar_items-->
+                    </div>
+                </div>
+             </div>
+        </section>
+      </div>
 		</div>
-        <div id="footer" ng-include src="'templates/footer.html'"><!--Footer-->		
+        <div id="footer" ng-include src="'templates/footer.html'"><!--Footer-->
         </div><!--/Footer-->
-		<script src="scripts/js/jquery.js"></script>			
-        <script src="scripts/js/angular.min.js"></script>
-		<script src="scripts/js/angular-cookies.min.js"></script>
+		<script src="scripts/js/jquery.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.7/angular.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.7/angular-cookies.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.7/angular-sanitize.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.7/angular-animate.js"></script>
 		<script src="scripts/js/angularjs-geolocation.min.js"></script>
-		<script src="scripts/js/ui-bootstrap-tpls-1.1.2.min.js"></script>
-		<script src="scripts/js/angular-animate.min.js"></script>
-        <script src="scripts/js/tinymce/ui.tinymce.min.js"></script>
-        <script src="scripts/js/angular-file-model.js"></script>
-        <script src="scripts/app.js"></script>
+		<script src="scripts/js/ui-bootstrap-tpls-3.0.6.min.js"></script>
+    <script src="scripts/js/tinymce/ui.tinymce.min.js"></script>
+    <script src="scripts/js/angular-file-model.js"></script>
+    <script src="scripts/app.js"></script>
 		<script src="scripts/services/proinfo.js"></script>
 		<script src="scripts/services/authFact.js"></script>
         <script src="scripts/controllers/MainController.js"></script>

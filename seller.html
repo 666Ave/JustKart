@@ -6,29 +6,29 @@
         <meta name="description" content="An express local shopping website">
         <meta name="author" content="Avian Silveira && Umesh Basniwal">
         <title>Seller Panel | JustKart</title>
-		<link rel="shortcut icon" href="/images/logo.ico" />
+		<link rel="shortcut icon" href="images/logo.ico" />
         <link href="styles/bootstrap.min.css" rel="stylesheet">
-        <link href="styles/font-awesome.min.css" rel="stylesheet">
+        <link href="styles/all.css" rel="stylesheet">
         <link href="styles/animate.css" rel="stylesheet">
         <link href="styles/main.css" rel="stylesheet">
     </head><!--/head-->
 
-    <body ng-app="Myapp" class="bg"> 
+    <body ng-app="Myapp" class="bg">
 		<div ng-controller="sellerCtrl" class="pad-down">
 			<div id="header" ng-include src="'templates/header.html'"><!--header-->
 			</div><!--/header-->
-            <div class="container fg">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="breadcrumbs">
-                            <ol class="breadcrumb">
-                                <li><a href="/">Home</a></li>
-                                <li class="active">Seller Panel</li>
-                            </ol>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div class="container">
+  						<div class="row">
+  							<div class="col-sm-12">
+  								<nav aria-label="breadcrumb">
+  									<ol class="breadcrumb bc bg">
+  										<li class="breadcrumb-item"><a href="/JustKart/" target="_self">Home</a></li>
+  										<li class="breadcrumb-item active">Seller Panel</li>
+  									</ol>
+  								</nav>
+  							</div>
+  						</div>
+  					</div>
             <div class="container fg">
                 <div class="row">
                     <div class="col-md-12">
@@ -85,16 +85,16 @@
                                             </tr>
                                             <tr>
                                                 <td class="table_title"><b>Product Category : </b></td>
-                                                <td>   
+                                                <td>
                                                     <select ng-model="product.product_cat" required>
                                                         <option ng-repeat="cat in category" value="{{ cat.cat_id }}">{{ cat.cat_title }}</option>
                                                     </select>
                                                 </td>
-                                            </tr> 
+                                            </tr>
                                             <tr>
                                                 <td class="table_title"><b>Product Brand : </b></td>
                                                 <td>
-                                                    <select ng-model="product.product_brand" required>      
+                                                    <select ng-model="product.product_brand" required>
                                                             <option ng-repeat="brand in brands" value="{{ brand.brand_id }}">{{ brand.brand_title }}</option>
                                                     </select>
                                                     <div>Cant find your brand? Click on the next tab</div>
@@ -102,9 +102,9 @@
                                             </tr>
                                             <tr>
                                                 <td class="table_title"><b>Your shop : </b></td>
-                                                <td>      
+                                                <td>
                                                     <div class="col-sm-6">
-                                                        <img src="/images/shops/{{ shop[0].shop_image }}">
+                                                        <img src="images/shops/{{ shop[0].shop_image }}">
                                                     </div>
                                                     <div class="col-sm-6">
                                                         <h1>{{ shop[0].shop_name }}</h1>
@@ -172,17 +172,17 @@
                                         <div class="product-image-wrapper" >
                                             <div class="single-products">
                                                 <div class="productinfo text-center">
-                                                    <a class="product-image" href="product-details.html#/?pid={{pro.product_id}}">
+                                                    <a class="product-image" href="product-details.html?pid={{pro.product_id}}" target="_self">
                                                         <img src="images/products/{{pro.product_image}}" alt="{{pro.product_image}}"/>
                                                     </a>
-                                                    <a href="product-details.html#/?pid={{pro.product_id}}" class="product-title">
+                                                    <a href="product-details.html?pid={{pro.product_id}}" class="product-title" target="_self">
                                                         <p>{{ pro.product_title| limitTo: 30 }}{{ pro.product_title.length > 30 ? '...' : ''}}</p>
                                                     </a>
                                                     <button type="button" ng-click="removePro(pro.product_id);" class="btn btn-sm btn-danger"><i class="fa fa-eye-slash"></i>Remove product</button>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div> 
+                                    </div>
                                 </div>
                             </uib-tab>
                             <uib-tab ng-if="!noshop" index="5" heading="Your Shop">
@@ -193,7 +193,7 @@
                                 <div class="col-sm-6">
                                     <h1>{{ shop[0].shop_name }}</h1>
                                     <p><b>Owner :</b> {{ shop[0].owner_name }}</p>
-                                    <p><b><a href="/shop.html#/?shopname={{shopLink}}&shopid={{shop[0].shop_id}}">Products in your Shop</a></b></p>
+                                    <p><b><a href="shop.html?shopname={{shopLink}}&shopid={{shop[0].shop_id}}" target="_self">Products in your Shop</a></b></p>
                                 </div>
                             </uib-tab>
                           </uib-tabset>
@@ -201,25 +201,26 @@
                 </div>
             </div>
         </div>
-        <div id="footer" ng-include src="'templates/footer.html'"><!--Footer-->		
+        <div id="footer" ng-include src="'templates/footer.html'"><!--Footer-->
         </div><!--/Footer-->
-			
-		<script src="scripts/js/jquery.js"></script>			
-        <script src="scripts/js/angular.min.js"></script>
-		<script src="scripts/js/angular-cookies.min.js"></script>
-		<script src="scripts/js/angularjs-geolocation.min.js"></script>
-		<script src="scripts/js/ui-bootstrap-tpls-1.1.2.min.js"></script>
-		<script src="scripts/js/angular-animate.min.js"></script>
+
+    		<script src="scripts/js/jquery.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.7/angular.js"></script>
+    		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.7/angular-cookies.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.7/angular-sanitize.js"></script>
+    		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.7/angular-animate.js"></script>
+    		<script src="scripts/js/angularjs-geolocation.min.js"></script>
+    		<script src="scripts/js/ui-bootstrap-tpls-3.0.6.min.js"></script>
         <script src="scripts/js/tinymce/ui.tinymce.min.js"></script>
         <script src="scripts/js/angular-file-model.js"></script>
         <script src="scripts/app.js"></script>
-		<script src="scripts/services/authFact.js"></script>
+    		<script src="scripts/services/authFact.js"></script>
         <script src="scripts/services/proinfo.js"></script>
         <script src="scripts/controllers/MainController.js"></script>
-		<script src="scripts/controllers/cartCtrl.js"></script>
+    		<script src="scripts/controllers/cartCtrl.js"></script>
         <script src="scripts/controllers/contactCtrl.js"></script>
-		<script src="scripts/controllers/loginCtrl.js"></script>
-		<script src="scripts/controllers/locCtrl.js"></script>
+    		<script src="scripts/controllers/loginCtrl.js"></script>
+    		<script src="scripts/controllers/locCtrl.js"></script>
         <script src="scripts/controllers/searchCtrl.js"></script>
         <script src="scripts/controllers/sellerCtrl.js"></script>
         <script src="scripts/js/tinymce/tinymce.min.js"></script>

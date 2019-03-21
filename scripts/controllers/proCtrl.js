@@ -1,22 +1,28 @@
-app.controller('proCtrl',function($scope,$http,$location,$window,$cookies,$filter){
-	var self=this; 
-    
+app.config(['$locationProvider', function($locationProvider) {
+	$locationProvider.html5Mode({
+enabled: true,
+requireBase: false
+});
+		$locationProvider.hashPrefix('*');
+    }])
+.controller('proCtrl',function($scope,$http,$location,$window,$cookies,$filter){
+	var self=this;
+
     $scope.notReviewed = true;
     $scope.similars = [];
     $scope.commentData = {};
     $scope.commentData.userID = $cookies.get('userID');
-    $scope.commentData.pID = $location.search().pid;  
+    $scope.commentData.pID = $location.search().pid;
     $scope.tot_rating = 0;
-    $scope.tot_comments = 0;  
+    $scope.tot_comments = 0;
     $scope.commentData.rating = 1;
     $scope.max = 5;
-    $scope.isReadonly = false;
 
     $scope.hoveringOver = function(value) {
         $scope.overStar = value;
         $scope.percent = 100 * (value / $scope.max);
     };
-    
+
     $scope.postComment = function() {
         if(!$cookies.get('userID')){
 			$window.alert("Please log in first");
@@ -39,86 +45,98 @@ app.controller('proCtrl',function($scope,$http,$location,$window,$cookies,$filte
             $window.alert("Admins have better other work to do.");
             return 0;
         }
-        if(!$scope.notReviewed){ 
+        if(!$scope.notReviewed){
             $http({
 				method: 'POST',
 				url: 'api/processReview.php',
-				data: $.param($scope.commentData),
-				headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+				data: $scope.commentData
 			})
-				.success(function(data) {
-                    if(data.success){
+				.then(function(data) {
+                    if(data.data.success){
 					   $window.location.reload();
                     }
                     else{
                         $window.alert("Error while posting comment Please try again.");
                     }
-				}); 
+				});
         }
         else{
             $http({
 				method: 'POST',
 				url: 'api/postComment.php',
-				data: $.param($scope.commentData),
-				headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+				data: $scope.commentData
 			})
-				.success(function(data) {
-                    if(data.success){
+				.then(function(data) {
+                    if(data.data.success){
 					   $window.location.reload();
                     }
                     else{
                         $window.alert("Error while posting comment Please try again.");
                     }
-				});   
+				});
         }
     }
-    
-	$http.get("api/getProductByID.php",{params:{pid:$location.search().pid}})
-		.success(function(response) {
-            if(response[0].Inactive == 1){
+
+	$http({
+		method: 'GET',
+		url: "api/getProductByID.php",
+		params: {pid:$location.search().pid}
+	}).then(function(response) {
+            if(response.data[0].Inactive == 1){
                 $window.alert("Sorry this product no longer exists.");
-                $window.location.href = "/";
+                $window.location.href = "/JustKart";
             }
-			$scope.product = response;
+			$scope.product = response.data;
             $scope.product[0].catName = "";
             $scope.product[0].brandName = "";
             $scope.product[0].shopName = "";
-			$http.get("api/getCatByID.php",{params:{catid:$scope.product[0].product_cat}})
-                .success(function(data) {
-                    $scope.product[0].catName = data;
+			$http({
+				method: 'GET',
+				url: 'api/getCatByID.php',
+				params: {catid:$scope.product[0].product_cat}
+			}).then(function(data) {
+                    $scope.product[0].catName = data.data;
                     $scope.catLink=$scope.product[0].catName.split(' ').join('_');
-                })
-                .error(function(response){
+                }, function(response){
                     console.log('error occured1');
                 });
 
-            $http.get("api/getBrandByID.php",{params:{brandid:$scope.product[0].product_brand}})
-                .success(function(data) {
-                    $scope.product[0].brandName = data;
+            $http({
+							method: 'GET',
+							url: 'api/getBrandByID.php',
+							params: {brandid:$scope.product[0].product_brand}
+						}).then(function(data) {
+                    $scope.product[0].brandName = data.data;
                     $scope.brandLink=$scope.product[0].brandName.split(' ').join('_');
-                })
-                .error(function(response){
+                }, function(response){
                     console.log('error occured1');
                 });
-        
-            $http.get("api/getShopByID.php",{params:{shopid:$scope.product[0].shop_id}})
-                .success(function(data) {
-                    $scope.product[0].shopName = data;
+
+            $http({
+							method: 'GET',
+							url: "api/getShopByID.php",
+							params: {shopid:$scope.product[0].shop_id}
+						}).then(function(data) {
+                    $scope.product[0].shopName = data.data;
                     $scope.shopLink=$scope.product[0].shopName.split(' ').join('_');
-                })
-                .error(function(response){
+                }, function(response){
                     console.log('error occured1');
                 });
             $scope.pro_descp = $scope.product[0].product_descrp.split("~");
-		})
-		.error(function(response){
+		}, function(response){
 			console.log('error occured ');
 		});
-	
-    $http.get("api/getReviews.php",{params:{pid:$location.search().pid}})
-		.success(function(response) {
-			$scope.reviews = response;
+
+    $http({
+			method: 'GET',
+			url: 'api/getReviews.php',
+			params: {pid:$location.search().pid}
+		}).then(function(response) {
+			$scope.reviews = response.data;
             $scope.tot_comments = $scope.reviews.length;
+						if($scope.reviews == 0){
+							$scope.reviews.rating = 0;
+						}
             for(var i=0; i<$scope.tot_comments; i++){
                 $scope.tot_rating +=$filter('num')($scope.reviews[i].rating);
                 if($scope.reviews[i].user_ID == $scope.commentData.userID){
@@ -128,21 +146,24 @@ app.controller('proCtrl',function($scope,$http,$location,$window,$cookies,$filte
                     $scope.commentData.title = $scope.reviews[i].review_title;
                 }
             }
-            $scope.tot_rating /=$scope.tot_comments;
-		})
-		.error(function(response){
+						if($scope.tot_comments != 0){
+            	$scope.tot_rating /=$scope.tot_comments;
+						}
+		}, function(response){
 			console.log('error occured ');
 		});
-    
-    $http.get("api/getSimilar.php",{params:{pid:$location.search().pid}})
-		.success(function(response) {
-			$scope.similar = response;
+
+    $http({
+			method: 'GET',
+			url: 'api/getSimilar.php',
+			params: {pid:$location.search().pid}
+		}).then(function(response) {
+			$scope.similar = response.data;
             $scope.similars.push($scope.similar);
-		})
-		.error(function(response){
+		}, function(response){
 			console.log('error occured ');
 		});
-    
+
     $scope.reload = function(data) {
         $window.location.href = "/product-details.html#/?pid="+data;
         $window.location.reload();

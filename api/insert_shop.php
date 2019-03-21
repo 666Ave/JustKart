@@ -1,7 +1,7 @@
 <?php
     include 'conn.php';
     $data = array();
-    
+    $_POST = json_decode(file_get_contents("php://input"), true);
     $user_id = $_POST['user_id'];
     $shop_name = $_POST['shop_name'];
     $area_name = $_POST['area_name'];
@@ -10,7 +10,7 @@
     //$product_image_tmp = $_FILES['product_image']['tmp_name'];
     //$product_image_location = "../images/products/$product_image";
 
-    //move_uploaded_file($product_image_tmp,$product_image_location); 
+    //move_uploaded_file($product_image_tmp,$product_image_location);
 
     $insert_shop = "insert into shops (user_id,shop_name,area_name,owner_name,shop_image,Inactive) values ('$user_id','$shop_name','$area_name','$owner_name','$shop_image',0)";
 
